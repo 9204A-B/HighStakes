@@ -1,3 +1,5 @@
+#include "pid.h"
+
 using namespace vex;
 
 extern brain Brain;
@@ -13,13 +15,8 @@ extern motor_group rightMotors;
 extern drivetrain Drivetrain;
 
 extern digital_out mobileGoalLock;
-
-extern motor intakeA;
-extern motor intakeB;
-extern motor_group intake;
-
-extern distance Distance;
-// Update name to be clearer
+extern distance goalDetect;
+extern bool goal;
 
 extern inertial Inertial;
 
