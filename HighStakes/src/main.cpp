@@ -12,7 +12,17 @@ using namespace vex;
 
 int main() 
 {
-    vexcodeInit(); 
+    vexcodeInit();    
+    Inertial.calibrate(0);
+     
+    while (Inertial.isCalibrating())
+    {
+        Brain.Screen.print("Calibrating inertial ");
+        wait(150, msec);
+    }
+    wait(250, msec);
+    Brain.Screen.print("Calibrated!");
+    Brain.Screen.clearScreen();
     Competition.autonomous(auton);
     Competition.drivercontrol(drive);
 }
