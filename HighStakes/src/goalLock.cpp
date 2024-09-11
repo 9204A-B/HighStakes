@@ -4,27 +4,23 @@ using namespace vex;
 
 void lock()
 {
+    bool locked = false;
     while (true)
     {
-        // Wait until button press and goal detected
-        while (!Controller.ButtonL1.pressing() || !goalDetect.objectDistance(mm) > 20)
+        while (!(Controller.ButtonL1.pressing() && goalDetect.objectDistance(mm) <= 55))
         {
             wait(5, msec);
         }
-        mobileGoalLock.set(true);
 
-        // Wait until button release
+        locked = !locked;
+        mobileGoalLock.set(locked);
+
         while (Controller.ButtonL1.pressing())
         {
             wait(5, msec);
         }
 
-        while (!Controller.ButtonL1.pressing())
-        {
-            wait(5, msec);
-        }
-        mobileGoalLock.set(false);
-        wait(5, msec);
+        wait(10, msec);
     }
 }
 
