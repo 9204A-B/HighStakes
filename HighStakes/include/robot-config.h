@@ -19,6 +19,14 @@ extern distance goalDetect;
 extern bool goal;
 
 extern inertial Inertial;
+extern motor firstStageIntake;
+extern motor secondStageIntake;
+extern motor_group intakeMotors;
+extern int intakeSpeed;
+extern bool intakeForward;
+extern bool intakeReverse;
+
+extern motor armMotor;
 
 extern competition Competition;
 
