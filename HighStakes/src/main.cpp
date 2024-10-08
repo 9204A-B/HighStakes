@@ -6,6 +6,7 @@
 /*    Description:  V5 project                                                */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
+
 #include "vex.h"
 
 using namespace vex;
@@ -20,9 +21,14 @@ int main()
         Brain.Screen.print("Calibrating inertial ");
         wait(150, msec);
     }
-    wait(250, msec);
+    wait(25, msec);
     Brain.Screen.print("Calibrated!");
     Brain.Screen.clearScreen();
+    
     Competition.autonomous(auton);
     Competition.drivercontrol(drive);
+
+    Controller.ButtonR1.pressed(R1Press);
+    Controller.ButtonR2.pressed(R2Press);
+    wait(15, msec);
 }
