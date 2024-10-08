@@ -30,5 +30,6 @@ int main()
 
     Controller.ButtonR1.pressed(R1Press);
     Controller.ButtonR2.pressed(R2Press);
+    thread tempThread = thread(warning);
     wait(15, msec);
 }
