@@ -2,11 +2,12 @@
 #include "pid.h"
 
 using namespace vex;
+using namespace Autons;
 
 void drive(void)
 {
-    thread lock = thread(lock);
-
+    thread lockThread = thread(lock);
+    thread intakeThread = thread(intake);
     Drivetrain.setDriveVelocity(100, percent);
     Drivetrain.setStopping(brake);
     while (true)
@@ -24,10 +25,6 @@ void drive(void)
 }
 
 void auton(void)
-{    
-    pid piddrive = pid(leftMotors, rightMotors, 3.25, 1.145, 0.065, 0.15, 2.25);
-    pid pidturn = pid(Inertial, leftMotors, rightMotors, 3.25, 0.15, 0.0, 0.0, 2.25);
-    piddrive.enable = true;
-    //piddrive.move(5, forward);
-    piddrive.turn(90, left);
+{   
+    LeftSide::run();
 }

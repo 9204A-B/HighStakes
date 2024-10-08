@@ -10,6 +10,7 @@
 #include "robot-config.h"
 #include "methods.h"
 #include "pid.h"
+#include "autons.h"
 
 
 #define waitUntil(condition)                                                   \
