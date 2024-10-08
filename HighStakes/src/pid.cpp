@@ -5,6 +5,7 @@ using namespace vex;
 
     void pid::move(double desiredValue, directionType direction)
     {
+        enable = true;
         double position = 0.0;
         double previousPosition = 0.0;
         double time = Brain.timer(msec);
@@ -118,6 +119,7 @@ using namespace vex;
     
     void pid::turn(double desiredValue, directionType direction)
     {
+        enable = true;
         double rotation = 0.0;
         double time = Brain.timer(msec);
         double previousTime = 0.0;
