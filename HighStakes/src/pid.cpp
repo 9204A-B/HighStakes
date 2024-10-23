@@ -119,6 +119,7 @@ using namespace vex;
     
     void pid::turn(double desiredValue, directionType direction)
     {
+        desiredValue = 22.6544 * pow(1.00901, desiredValue);
         enable = true;
         double rotation = 0.0;
         double time = Brain.timer(msec);
@@ -136,7 +137,7 @@ using namespace vex;
                 {
                     wait(150, msec);
                 }
-                rotation = Inertial.rotation(degrees);    
+                rotation = Inertial.rotation(degrees); 
             }
             else if (MotorsA != NULL)
             {
@@ -155,7 +156,7 @@ using namespace vex;
             {
                 if (sensor != NULL)
                 {
-                    sensor->calibrate(0);
+                    //sensor->calibrate(0);
                 }
                 
                 if (MotorsA != NULL)
@@ -222,7 +223,7 @@ using namespace vex;
                 }
             }
 
-            wait(10, msec);
+            wait(5, msec);
         }
     }
 
