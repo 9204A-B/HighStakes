@@ -5,6 +5,8 @@ namespace Autons
 {
     void LeftSide::run()
     {
+        pid piddrive = pid(leftMotors, rightMotors, 3.25, 1.145, 0.065, 0.15, 2.25);
+        pid pidturn = pid(Inertial, leftMotors, rightMotors, 10.0, 0, 0.0, 0.0, 2.25);
         piddrive.move(5, forward);
         piddrive.move(24, reverse);
         pidturn.turn(45, right);

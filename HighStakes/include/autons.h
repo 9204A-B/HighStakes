@@ -3,9 +3,9 @@
 
 namespace Autons
 {
-    extern pid piddrive;
-    extern pid pidturn;
-    
+    //extern pid piddrive;
+    //extern pid pidturn;
+
     class LeftSide
     {
         public:
