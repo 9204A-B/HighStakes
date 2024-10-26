@@ -4,7 +4,6 @@ using namespace vex;
 
 void lock()
 {
-    bool locked = false;
     while (true)
     {
 
