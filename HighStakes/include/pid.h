@@ -2,8 +2,6 @@ using namespace vex;
 
 #ifndef PID_H
 #define PID_H
-#define left vex::reverse
-#define right vex::forward
 
 /**
  * @brief Use the PID class to make and control PID loops
@@ -138,7 +136,7 @@ class pid
         * @param desiredValue Amount to turn in degrees
         * @param direction Chose whether the robot will turn left or right
        */
-       void turn(double desiredValue, directionType direction);
+       void turn(double desiredValue, turnType direction);
        /**
         * @brief Reset PID positioning
        */

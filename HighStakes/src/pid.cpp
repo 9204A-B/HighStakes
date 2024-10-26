@@ -1,4 +1,5 @@
 #include "vex.h"
+#include "pid.h"
 #include <math.h>
 
 using namespace vex;
@@ -117,9 +118,14 @@ using namespace vex;
         }
     }
     
-    void pid::turn(double desiredValue, directionType direction)
+    void pid::turn(double desiredValue, turnType turnDir)
     {
-        desiredValue = 22.6544 * pow(1.00901, desiredValue);
+        directionType direction = forward;
+        if (turnDir == vex::turnType::left)
+        {
+            direction = reverse;
+        }
+        //desiredValue = 22.6544 * pow(1.00901, desiredValue);
         enable = true;
         double rotation = 0.0;
         double time = Brain.timer(msec);
