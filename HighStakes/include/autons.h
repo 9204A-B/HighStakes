@@ -3,19 +3,22 @@
 
 namespace Autons
 {
-    //extern pid piddrive;
-    //extern pid pidturn;
+    enum Color
+    {
+        red,
+        blue
+    }; 
 
     class LeftSide
     {
         public:
-            static void run();
+            static void run(Autons::Color Color);
     };
 
     class RightSide
     {
         public:
-            static void run();
+            static void run(Autons::Color Color);
     };
 
     class Skills
