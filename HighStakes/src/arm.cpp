@@ -3,31 +3,36 @@ using namespace vex;
 
 void armMovement()
 {
-    bool up = false;
+    armMotors.setMaxTorque(100, percent);
+    armMotorA.setBrake(brake);
+    armMotorB.setBrake(brake);
     while (true)
     {
+        armMotors.setVelocity(30, percent);
 
-            while (!(Controller.ButtonL2.pressing()))
-            {
-                wait(5, msec);
-            }
-
-            up = !up;
-            if (up)
-            {
-                armMotor.spinTo(800, degrees, false);
-            }
-            else
-            {
-                armMotor.spinTo(10, degrees, false);
-            }
-
-            while (Controller.ButtonL1.pressing())
-            {
-                wait(5, msec);
-            }
-
-            wait(10, msec);
+        if (Controller.ButtonUp.pressing())
+        {
+            armMotors.spin(forward);
+            armMotorA.setBrake(hold);
+            armMotorB.setBrake(hold);
+        }
+        else if (Controller.ButtonDown.pressing())
+        {
+            armMotors.spin(reverse);
+            armMotorA.setBrake(brake);
+            armMotorB.setBrake(brake);
+        }
+        else if (Controller.ButtonLeft.pressing() || Controller.ButtonRight.pressing())
+        {
+            armMotorA.setBrake(brake);
+            armMotorB.setBrake(brake);
+            armMotors.setVelocity(60, percent);
+            armMotors.spinFor(vex::directionType::rev, 350, msec, 60.0, vex::velocityUnits::pct);
+        }
+        else 
+        {
+            armMotors.stop();
         }
         wait(5, msec);
+    }
 }
