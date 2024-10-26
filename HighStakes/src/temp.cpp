@@ -4,8 +4,8 @@ using namespace vex;
 
 void warning()
 {
-    motor* motors[] = {&leftMotorA, &leftMotorB, &rightMotorA, &rightMotorB, &firstStageIntake, &secondStageIntake, &armMotor};
-    int ports[] = {11, 12, 19, 20, 13, 21, 4};
+    motor* motors[] = {&leftMotorA, &leftMotorB, &rightMotorA, &rightMotorB, &firstStageIntake, &secondStageIntake, &armMotorA, &armMotorB};
+    int ports[] = {11, 12, 19, 20, 13, 21, 4, 5};
 
     while (true)
     {
@@ -15,7 +15,7 @@ void warning()
             {            
                 Controller.Screen.clearScreen();
                 Controller.Screen.setCursor(1, 1);
-                Controller.Screen.print("Motor port: ", ports[x]);
+                Controller.Screen.print("Motor port: %d", ports[x]);
                 Controller.Screen.print(", temp: %f", motors[x]->temperature(celsius));
                 Controller.rumble("...--");
             }
