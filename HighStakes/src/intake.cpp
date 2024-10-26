@@ -23,8 +23,17 @@ void intake()
     {
         if (intakeForward)
         {
-            intakeMotors.setVelocity(intakeSpeed, percent);
-            intakeMotors.spin(forward);
+            if (locked)
+            {
+                intakeMotors.setVelocity(intakeSpeed, percent);
+                intakeMotors.spin(forward);
+            }
+            else 
+            {
+                intakeMotors.setVelocity(60, percent);
+                intakeMotors.spin(forward);   
+            }
+            
         }
         else if (intakeReverse)
         {
