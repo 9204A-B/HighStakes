@@ -9,6 +9,7 @@ void drive(void)
     thread lockThread = thread(lock);
     thread intakeThread = thread(intake);
     thread armThread = thread(armMovement);
+    thread timeThread = thread(startTimer);
     Drivetrain.setDriveVelocity(100, percent);
     Drivetrain.setStopping(brake);
     while (true)
@@ -27,8 +28,26 @@ void drive(void)
 
 void auton(void)
 {   
-    pid piddrive = pid(leftMotors, rightMotors, 3.25, 1.145, 0.065, 0.15, 2.25);
-    pid pidturn = pid(Inertial, leftMotors, rightMotors, 3.25, 0.08, 0.045, 0.02, 2.25);
-    LeftSide::run();
-    //add auton selector
+    //pid piddrive = pid(leftMotors, rightMotors, 3.25, 1.145, 0.065, 0.15, 2.25);
+    //pid pidturn = pid(Inertial, leftMotors, rightMotors, 3.25, 0.08, 0.045, 0.02, 2.25);
+    if (autonSelect == 0)
+    {
+        Autons::LeftSide::run(Autons::Color::red);
+    }
+    else if (autonSelect == 1)
+    {
+        Autons::RightSide::run(Autons::Color::red);
+    }
+    else if (autonSelect == 2)
+    {
+        Autons::LeftSide::run(Autons::Color::blue);
+    }
+    else if (autonSelect == 3)
+    {
+        Autons::RightSide::run(Autons::Color::blue);
+    }
+    else
+    {
+        Autons::Skills::run();
+    }
 }
