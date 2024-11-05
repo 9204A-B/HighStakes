@@ -11,7 +11,7 @@ namespace Autons
         if (color == Autons::Color::red)
         {
             Drivetrain.setDriveVelocity(45, percent);
-            Drivetrain.setTurnVelocity(35, percent);
+            Drivetrain.setTurnVelocity(18, percent);
             Drivetrain.setStopping(brake);
             
             pid piddrive = pid(leftMotors, rightMotors, 3.25, 1.145, 0.065, 0.15, 2.25);
@@ -23,25 +23,23 @@ namespace Autons
             Drivetrain.stop();
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(.5, sec);
+            wait(.65, sec);
             intakeMotors.stop();
             piddrive.move(4, reverse);
             Drivetrain.turnFor(50, degrees, true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            piddrive.move(40, forward);
+            piddrive.move(47.5, forward);
             intakeMotors.stop();
-            piddrive.move(1, reverse);
-            Drivetrain.turnFor(95, degrees, true);
-            intakeMotors.spin(forward);
-            piddrive.move(30, forward);
+            Drivetrain.turnFor(180, degrees, true);
+            piddrive.move(200, forward);
             wait(.5, sec);
             intakeMotors.stop();
         }
         else
         {
             Drivetrain.setDriveVelocity(45, percent);
-            Drivetrain.setTurnVelocity(35, percent);
+            Drivetrain.setTurnVelocity(18, percent);
             Drivetrain.setStopping(brake);
             
             pid piddrive = pid(leftMotors, rightMotors, 3.25, 1.145, 0.065, 0.15, 2.25);
@@ -53,16 +51,16 @@ namespace Autons
             Drivetrain.stop();
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(.5, sec);
+            wait(.65, sec);
             intakeMotors.stop();
             piddrive.move(4, reverse);
             Drivetrain.turnFor(50, degrees, true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            piddrive.move(45, forward);
+            piddrive.move(47.5, forward);
             intakeMotors.stop();
-            Drivetrain.turnFor(195, degrees, true);
-            piddrive.move(50, forward);
+            Drivetrain.turnFor(95, degrees, true);
+            piddrive.move(100, forward);
         }
     }
 }
