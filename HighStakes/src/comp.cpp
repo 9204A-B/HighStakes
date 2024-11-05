@@ -8,7 +8,6 @@ void drive(void)
 {
     thread lockThread = thread(lock);
     thread intakeThread = thread(intake);
-    thread armThread = thread(armMovement);
     thread timeThread = thread(startTimer);
     Drivetrain.setDriveVelocity(100, percent);
     Drivetrain.setStopping(brake);
