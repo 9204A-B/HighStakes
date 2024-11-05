@@ -20,17 +20,10 @@ extern distance goalDetect;
 extern bool goal;
 extern bool locked;
 
-
-extern motor firstStageIntake;
-extern motor secondStageIntake;
-extern motor_group intakeMotors;
+extern motor intakeMotors;
 extern int intakeSpeed;
 extern bool intakeForward;
 extern bool intakeReverse;
-
-extern motor armMotorA;
-extern motor armMotorB;
-extern motor_group armMotors;
 
 extern competition Competition;
 extern digital_in button;

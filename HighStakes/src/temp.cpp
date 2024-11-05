@@ -4,8 +4,8 @@ using namespace vex;
 
 void warning()
 {
-    motor* motors[] = {&leftMotorA, &leftMotorB, &rightMotorA, &rightMotorB, &firstStageIntake, &secondStageIntake, &armMotorA, &armMotorB};
-    int ports[] = {11, 12, 19, 20, 13, 21, 4, 5};
+    motor* motors[] = {&leftMotorA, &leftMotorB, &rightMotorA, &rightMotorB, &intakeMotors};
+    int ports[] = {11, 12, 19, 20, 13};
 
     while (true)
     {
