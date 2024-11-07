@@ -7,7 +7,7 @@ void lock()
     while (true)
     {
 
-            while (!(Controller.ButtonL1.pressing() && goalDetect.objectDistance(mm) <= 55))
+            while (!(Controller.ButtonL1.pressing() && goalDetect.objectDistance(mm) <= clampDistance))
             {
                 wait(5, msec);
             }

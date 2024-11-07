@@ -18,7 +18,7 @@ namespace Autons
             pid pidturn = pid(Inertial, leftMotors, rightMotors, 3.25, 0.08, 0.045, 0.02, 2.25);
             Drivetrain.driveFor(1.25, inches, true);
             Drivetrain.drive(reverse);
-            waitUntil(goalDetect.objectDistance(mm) < 55);
+            waitUntil(goalDetect.objectDistance(mm) < clampDistance);
             mobileGoalLock.set(true);
             Drivetrain.stop();
             intakeMotors.setVelocity(intakeSpeed, percent);
@@ -46,7 +46,7 @@ namespace Autons
             pid pidturn = pid(Inertial, leftMotors, rightMotors, 3.25, 0.08, 0.045, 0.02, 2.25);
             Drivetrain.driveFor(1.25, inches, true);
             Drivetrain.drive(reverse);
-            waitUntil(goalDetect.objectDistance(mm) < 55);
+            waitUntil(goalDetect.objectDistance(mm) < clampDistance);
             mobileGoalLock.set(true);
             Drivetrain.stop();
             intakeMotors.setVelocity(intakeSpeed, percent);

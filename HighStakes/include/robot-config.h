@@ -19,6 +19,7 @@ extern digital_out mobileGoalLock;
 extern distance goalDetect;
 extern bool goal;
 extern bool locked;
+extern int clampDistance;
 
 extern motor intakeMotors;
 extern int intakeSpeed;
