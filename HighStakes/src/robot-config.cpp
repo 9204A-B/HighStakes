@@ -19,7 +19,7 @@ smartdrive Drivetrain = smartdrive(leftMotors, rightMotors, Inertial, 82.55, 387
 digital_out mobileGoalLock = digital_out(Brain.ThreeWirePort.A);
 distance goalDetect = distance(PORT2);
 bool locked = false;
-int clampDistance = 45;
+int clampDistance = 80;
 
 motor intakeMotors = motor(PORT13, ratio6_1);
 int intakeSpeed = 93;
