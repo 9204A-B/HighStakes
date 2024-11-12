@@ -6,10 +6,12 @@ using namespace vex;
 brain Brain;
 controller Controller;
 
-motor leftMotorA = motor(PORT11, ratio6_1, true);
-motor leftMotorB = motor(PORT12, ratio6_1);
-motor rightMotorA = motor(PORT19, ratio6_1, true);
-motor rightMotorB = motor(PORT20, ratio6_1);
+motor leftMotorA = motor(PORT11, ratio6_1);
+motor leftMotorB = motor(PORT12, ratio6_1, true);
+motor leftMotorC = motor(PORT13, ratio6_1, true);
+motor rightMotorA = motor(PORT18, ratio6_1, true);
+motor rightMotorB = motor(PORT19, ratio6_1);
+motor rightMotorC = motor(PORT20, ratio6_1);
 
 inertial Inertial = inertial(PORT1);
 motor_group leftMotors = motor_group(leftMotorA, leftMotorB);
@@ -21,7 +23,7 @@ distance goalDetect = distance(PORT2);
 bool locked = false;
 int clampDistance = 80;
 
-motor intakeMotors = motor(PORT13, ratio6_1);
+motor intakeMotors = motor(PORT21, ratio6_1);
 int intakeSpeed = 93;
 bool intakeForward = false;
 bool intakeReverse = false;

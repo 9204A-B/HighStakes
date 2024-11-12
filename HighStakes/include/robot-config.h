@@ -7,8 +7,10 @@ extern controller Controller;
 
 extern motor leftMotorA;
 extern motor leftMotorB;
+extern motor leftMotorC;
 extern motor rightMotorA;
 extern motor rightMotorB;
+extern motor rightMotorC;
 
 extern inertial Inertial;
 extern motor_group leftMotors;
