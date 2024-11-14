@@ -28,6 +28,8 @@ extern int intakeSpeed;
 extern bool intakeForward;
 extern bool intakeReverse;
 
+extern digital_out Doinker;
+
 extern competition Competition;
 extern digital_in button;
 extern int autonSelect;

@@ -28,6 +28,8 @@ int intakeSpeed = 93;
 bool intakeForward = false;
 bool intakeReverse = false;
 
+digital_out Doinker = digital_out(Brain.ThreeWirePort.C);
+
 competition Competition;
 digital_in button = digital_in(Brain.ThreeWirePort.B);
 int autonSelect = 0;
