@@ -13,18 +13,10 @@ void drive(void)
     Drivetrain.setStopping(brake);
     while (true)
     {
-        leftMotorA.setVelocity(Controller.Axis3.position() + Controller.Axis1.position() * .8, percent);
-        leftMotorB.setVelocity(Controller.Axis3.position() + Controller.Axis1.position() * .8, percent);
-        leftMotorC.setVelocity(Controller.Axis3.position() + Controller.Axis1.position() * .8, percent);
-        rightMotorA.setVelocity(Controller.Axis3.position() - Controller.Axis1.position() * .8, percent);
-        rightMotorB.setVelocity(Controller.Axis3.position() - Controller.Axis1.position() * .8, percent);
-        rightMotorC.setVelocity(Controller.Axis3.position() - Controller.Axis1.position() * .8, percent);
-        leftMotorA.spin(forward);
-        leftMotorB.spin(forward);
-        leftMotorC.spin(forward);
-        rightMotorA.spin(forward);
-        rightMotorB.spin(forward);
-        rightMotorC.spin(forward);
+        leftMotors.setVelocity(Controller.Axis3.position() + Controller.Axis1.position() * .8, percent);
+        rightMotors.setVelocity(Controller.Axis3.position() - Controller.Axis1.position() * .8, percent);
+        leftMotors.spin(forward);
+        rightMotors.spin(forward);
         wait(10, msec);
     }
 }
