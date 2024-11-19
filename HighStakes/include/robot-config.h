@@ -1,5 +1,3 @@
-#include "pid.h"
-
 using namespace vex;
 
 extern brain Brain;
@@ -27,6 +25,8 @@ extern motor intakeMotors;
 extern int intakeSpeed;
 extern bool intakeForward;
 extern bool intakeReverse;
+
+extern motor lb;
 
 extern digital_out Doinker;
 

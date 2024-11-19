@@ -1,5 +1,4 @@
 #include "vex.h"
-#include "pid.h"
 
 using namespace vex;
 using namespace Autons;
@@ -8,6 +7,7 @@ void drive(void)
 {
     thread lockThread = thread(lock);
     thread intakeThread = thread(intake);
+    thread lbThread = thread(ladybrown);
     thread timeThread = thread(startTimer);
     Drivetrain.setDriveVelocity(100, percent);
     Drivetrain.setStopping(brake);
