@@ -7,7 +7,7 @@ void doink()
     {
         bool down = false;
 
-        while (!Controller.ButtonUp.pressing())
+        while (!Controller.ButtonY.pressing())
         {
             wait(5, msec);
         }
@@ -15,7 +15,7 @@ void doink()
         down = !down;
         Doinker.set(down);
 
-        while (Controller.ButtonUp.pressing())
+        while (Controller.ButtonY.pressing())
         {
             wait(5, msec);
         }
