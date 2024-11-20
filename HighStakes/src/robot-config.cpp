@@ -16,7 +16,7 @@ inertial Inertial = inertial(PORT1);
 motor_group leftMotors = motor_group(leftMotorA, leftMotorB, leftMotorC);
 motor_group rightMotors = motor_group(rightMotorA, rightMotorB, rightMotorC);
 smartdrive Drivetrain = smartdrive(leftMotors, rightMotors, Inertial, 82.55, 387.35, 304.8, mm, 1);
-Drive pidDrivetrain(ZERO_TRACKER_NO_ODOM, leftMotors, rightMotors, PORT1, 3.25, 1, 360, PORT1, -PORT2, PORT3, -PORT4, 3, 2.75, -2, 1, -2.75, 5.5);
+Drive pidDrivetrain(ZERO_TRACKER_NO_ODOM, leftMotors, rightMotors, PORT1, 3.25, 1.67, 360, PORT1, -PORT2, PORT3, -PORT4, 3, 2.75, -2, 1, -2.75, 5.5);
 
 digital_out mobileGoalLock = digital_out(Brain.ThreeWirePort.A);
 distance goalDetect = distance(PORT2);
