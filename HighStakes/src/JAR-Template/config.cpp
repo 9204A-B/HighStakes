@@ -10,7 +10,7 @@
 
 void default_constants(){
   // Each constant set is in the form of (maxVoltage, kP, kI, kD, startI).
-  pidDrivetrain.set_drive_constants(10, 1.5, 0, 10, 0);
+  pidDrivetrain.set_drive_constants(6, 20, .003, .25, 0);
   pidDrivetrain.set_heading_constants(6, .4, 0, 1, 0);
   pidDrivetrain.set_turn_constants(12, .4, .03, 3, 15);
   pidDrivetrain.set_swing_constants(12, .3, .001, 2, 15);
