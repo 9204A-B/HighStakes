@@ -10,7 +10,11 @@ namespace Autons
         {
             case Autons::Color::red:
             {     
-                pidDrivetrain.drive_distance(10);
+                pidDrivetrain.drive_distance(5);
+                //pidDrivetrain.turn_to_angle(180);
+                //pidDrivetrain.drive_distance(24);
+                //pidDrivetrain.left_swing_to_angle(90);
+                //pidDrivetrain.right_swing_to_angle(0);
                 break;
             }
             case Autons::Color::blue:
