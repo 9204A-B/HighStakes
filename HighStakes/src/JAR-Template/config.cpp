@@ -10,13 +10,13 @@
 
 void default_constants(){
   // Each constant set is in the form of (maxVoltage, kP, kI, kD, startI).
-  pidDrivetrain.set_drive_constants(6, 20, .003, .25, 0);
+  pidDrivetrain.set_drive_constants(13, 1.6, 0, 0, 0);
   pidDrivetrain.set_heading_constants(6, .4, 0, 1, 0);
   pidDrivetrain.set_turn_constants(12, .4, .03, 3, 15);
   pidDrivetrain.set_swing_constants(12, .3, .001, 2, 15);
 
   // Each exit condition set is in the form of (settle_error, settle_time, timeout).
-  pidDrivetrain.set_drive_exit_conditions(1.5, 300, 5000);
+  pidDrivetrain.set_drive_exit_conditions(0, 300, 0);
   pidDrivetrain.set_turn_exit_conditions(1, 300, 3000);
   pidDrivetrain.set_swing_exit_conditions(1, 300, 3000);
 }
