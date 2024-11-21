@@ -12,8 +12,10 @@ void ladybrown()
             wait(5, msec);
         }
 
-        lb.setBrake(hold);
-        lb.spinToPosition(30, degrees, true);
+        lb.setBrake(hold);        
+        Drive::MotorTurn(lb, 43.5, 8, 2, 300, 1500, .4, .03, 2, 5);    
+        lb.setBrake(hold);        
+        //Braking is still being set to brake and not hold after adding PID
 
         // Wait until button is let go
         while (Controller.ButtonRight.pressing())
@@ -27,7 +29,7 @@ void ladybrown()
             wait(5, msec);
         }
 
-        lb.spinToPosition(400, degrees, false);
+        Drive::MotorTurn(lb, 190, 8, 1.5, 300, 2000, .4, .03, 2, 5);
         wait(.5, sec);
 
         lb.stop(coast);
@@ -44,7 +46,7 @@ void ladybrown()
             wait(5, msec);
         }
 
-        lb.spinToPosition(0, degrees, false); 
+        Drive::MotorTurn(lb, -230, 8, 3, 300, 1800, .4, .03, 2, 5);
         lb.setBrake(coast);
         // Wait until release
         while (Controller.ButtonRight.pressing())
