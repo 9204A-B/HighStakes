@@ -36,6 +36,12 @@ void intake()
         {
             intakeMotors.setVelocity(0, percent);
         }
+
+        if (Controller.ButtonY.pressing())
+        {
+            intakeMotors.stop();
+            intakeMotors.spinFor(reverse, .25, sec);
+        }
     
         wait(15, msec);
     }
