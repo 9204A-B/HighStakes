@@ -18,8 +18,10 @@ namespace Autons
 
     enum Route
     {
-        4ringmogo_corner,
-        4ringmogo_ladder
+        fourRingMogo_Corner,
+        fourRingMogo_Ladder,
+        mogoSide_Corner,
+        mogoSide_Ladder
     };
 
     class LeftSide
@@ -35,6 +37,12 @@ namespace Autons
     };
 
     class RedAlliance
+    {
+    public:
+        static void run(Autons::Route Route);
+    }
+
+    class BlueAlliance
     {
     public:
         static void run(Autons::Route Route);

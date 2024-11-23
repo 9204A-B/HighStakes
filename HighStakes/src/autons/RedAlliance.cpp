@@ -8,21 +8,21 @@ namespace Autons
         default_constants();
         switch (route)
         {
-        case Autons::Route::4ringmogo_corner:
+        case Autons::Route::fourRingMogo_Corner:
         {
             // starting on the left
             // gets 4 rings onto a mobile goal
             // ends in positive corner
 
             // back into the mobile goal and drop match load ring
-            pidDrivetrain.drive_distance(-(24 * sqrt(2)));
+            pidDrivetrain.drive_distance(-41.6);
             mobileGoalLock.set(true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
             wait(500);
 
             // turn and drive forwards for ring 2
-            pidDrivetrain.right_swing_to_angle(45);
+            pidDrivetrain.right_swing_to_angle(60);
             pidDrivetrain.drive_distance(24 + (7 / 5));
             wait(500);
 
@@ -45,21 +45,21 @@ namespace Autons
 
                 break;
         }
-        case Autons::Route::4ringmogo_ladder:
+        case Autons::Route::fourRingMogo_Ladder:
         {
             // starting on the left
             // gets 4 rings onto a mobile goal
             // ends touching ladder
 
             // back into the mobile goal and drop match load ring
-            pidDrivetrain.drive_distance(-(24 * sqrt(2)));
+            pidDrivetrain.drive_distance(-41.6); // this number can be made smaller if the robot doesn't start in the middle of the line
             mobileGoalLock.set(true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
             wait(500);
 
             // turn and drive forwards for ring 2
-            pidDrivetrain.right_swing_to_angle(45);
+            pidDrivetrain.right_swing_to_angle(60);
             pidDrivetrain.drive_distance(24 + (7 / 5));
             wait(500);
 
@@ -81,6 +81,48 @@ namespace Autons
             pidDrivetrain.drive_distance(53);
 
             break;
+        }
+        case Autons::Route::mogoSide_Corner:
+        {
+            // starting on the left
+
+            // back into the mobile goal and drop match load ring
+            pidDrivetrain.drive_distance(-41.6);
+            mobileGoalLock.set(true);
+            intakeMotors.setVelocity(intakeSpeed, percent);
+            intakeMotors.spin(forward);
+            wait(500);
+
+            // turn and drive forwards for ring 2
+            pidDrivetrain.left_swing_to_angle(60);
+            pidDrivetrain.drive_distance(36);
+            wait(500);
+            intakeMotors.stop();
+
+            // turn and drive into the corner head-first
+            pidDrivetrain.right_swing_to_angle(90);
+            pidDrivetrain.drive_distance(70);
+        }
+        case Autons::Route::mogoSide_Ladder:
+        {
+            // starting on the left
+
+            // back into the mobile goal and drop match load ring
+            pidDrivetrain.drive_distance(-41.6);
+            mobileGoalLock.set(true);
+            intakeMotors.setVelocity(intakeSpeed, percent);
+            intakeMotors.spin(forward);
+            wait(500);
+
+            // turn and drive forwards for ring 2
+            pidDrivetrain.right_swing_to_angle(60);
+            pidDrivetrain.drive_distance(36);
+            wait(500);
+            intakeMotors.stop();
+
+            // turn and drive head-first into ladder
+            pidDrivetrain.right_swing_to_angle(180);
+            pidDrivetrain.drive_distance(60);
         }
         }
     }
