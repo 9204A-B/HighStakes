@@ -111,6 +111,7 @@ namespace Autons
             // starting on the right
             // gets two mobile goals
             // scores 2 rings
+            // ends in the positive corner
 
             // back into mogo 1 and drop match load
             pidDrivetrain.turn_to_angle(330);
@@ -140,6 +141,50 @@ namespace Autons
             intakeMotors.stop();
 
             // driving into the corner
+            pidDrivetrain.turn_to_angle(153.4);
+            pidDrivetrain.drive_distance(53.7 - 5); // tweak until the robot stops completely ramming into the corner
+
+            break;
+        }
+        case Autons::Route::mogoSide_Ladder:
+        {
+            // starting on the right
+            // gets two mobile goals
+            // scores 2 rings
+            // ends touching the ladder
+
+            // back into mogo 1 and drop match load
+            pidDrivetrain.turn_to_angle(330);
+            pidDrivetrain.drive_distance(-41.6);
+            mobileGoalLock.set(true);
+            intakeMotors.setVelocity(intakeSpeed, percent);
+            intakeMotors.spin(forward);
+            wait(500);
+
+            // putting the first mogo close to the corner
+            pidDrivetrain.turn_to_angle(22.8);
+            pidDrivetrain.drive_distance(-26 - 10); // tweak this until the robot can drop the goal and completely drive away
+            intakeMotors.stop();
+            mobileGoalLock.set(false);
+
+            // grabbing the second mobile goal
+            pidDrivetrain.drive_distance(10);
+            pidDrivetrain.turn_to_angle(330);
+            pidDrivetrain.drive_distance(-27.7); // this will have to be tweaked to make sure the bot doesn't go over the line
+            mobileGoalLock.set(true);
+            intakeMotors.spin(forward);
+
+            // intaking the second ring
+            pidDrivetrain.turn_to_angle(0); // same with this angle (see above)
+            pidDrivetrain.drive_distance(24); // and possibly this
+            wait(500);
+            intakeMotors.stop();
+
+            // driving into the ladder
+            pidDrivetrain.turn_to_angle(90);
+            pidDrivetrain.drive_distance(48 - 5); // tweak until the robot doesn't break itself on the ladder
+
+            break;
         }
         }
     }
