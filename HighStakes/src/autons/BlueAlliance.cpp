@@ -1,4 +1,5 @@
-#include "vex.h";
+#include "vex.h"
+#include <math.h>
 using namespace vex;
 
 // in JAR template, positive angles -> clockwise, negative -> counter-clockwise
@@ -32,7 +33,7 @@ namespace Autons
 
             // back into the mobile goal and drop match load ring
             pidDrivetrain.turn_to_angle(180 - 30);
-            pidDrivetrain.drive_distance(-41.6);
+            pidDrivetrain.drive_distance(-41.6 + 0); // tweak this depending on where the robot starts on the line
             mobileGoalLock.set(true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
@@ -60,8 +61,9 @@ namespace Autons
             intakeMotors.stop();
 
             // turning and driving into the corner
-            pidDrivetrain.turn_to_angle(180 - 270);
-            pidDrivetrain.drive_distance(24) // tweak until the robot doesn't break itself on the ladder
+            pidDrivetrain.turn_to_angle(291.8);
+            pidDrivetrain.drive_distance(129.2 - 15); // tweak this until the robot doesn't completely ram into the corner
+            // this auton ends with the intake facing the corner. can be easily changed.
 
             break;
         }
@@ -73,7 +75,7 @@ namespace Autons
 
             // back into the mobile goal and drop match load ring
             pidDrivetrain.turn_to_angle(180 - 30);
-            pidDrivetrain.drive_distance(-41.6);
+            pidDrivetrain.drive_distance(-41.6 + 0); // tweak this depending on where the robot starts on the line
             mobileGoalLock.set(true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
@@ -100,30 +102,9 @@ namespace Autons
             pidDrivetrain.drive_distance(-1 * clusterDist);
             intakeMotors.stop();
 
-            // turn and drive into the corner head-first
-            pidDrivetrain.left_swing_to_angle(180 - 90);
-            pidDrivetrain.drive_distance(70);
-        }
-        case Autons::Route::mogoSide_Ladder:
-        {
-            // starting on the right
-
-            // back into the mobile goal and drop match load ring
-            pidDrivetrain.drive_distance(-41.6);
-            mobileGoalLock.set(true);
-            intakeMotors.setVelocity(intakeSpeed, percent);
-            intakeMotors.spin(forward);
-            wait(500);
-
-            // turn and drive forwards for ring 2
-            pidDrivetrain.left_swing_to_angle(60);
-            pidDrivetrain.drive_distance(36);
-            wait(500);
-            intakeMotors.stop();
-
-            // turn and drive head-first into ladder
-            pidDrivetrain.left_swing_to_angle(180);
-            pidDrivetrain.drive_distance(60);
+            // turn and drive into the ladder
+            pidDrivetrain.turn_to_angle(180 - 270);
+            pidDrivetrain.drive_distance(24 - 5) // tweak until the robot doesn't break itself on the ladder
         }
         }
     }

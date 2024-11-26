@@ -1,5 +1,5 @@
 #include "vex.h"
-#inlcude <math.h>
+#include <math.h>
 using namespace vex;
 
 // in JAR template, positive angles -> clockwise, negative -> counter-clockwise
@@ -31,7 +31,7 @@ namespace Autons
 
             // back into the mobile goal and drop match load ring
             pidDrivetrain.turn_to_angle(30);
-            pidDrivetrain.drive_distance(-41.6);
+            pidDrivetrain.drive_distance(-41.6 + 0); // tweak this depending on where the robot starts on the line
             mobileGoalLock.set(true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
@@ -60,7 +60,7 @@ namespace Autons
 
             // turning and driving into the corner
             pidDrivetrain.turn_to_angle(291.8);
-            pidDrivetrain.drive_distance(129.2 - 0); // tweak this until the robot doesn't completely ram into the corner
+            pidDrivetrain.drive_distance(129.2 - 15); // tweak this until the robot doesn't completely ram into the corner
             // this auton ends with the intake facing the corner. can be easily changed.
 
             break;
@@ -73,7 +73,7 @@ namespace Autons
 
             // back into the mobile goal and drop match load ring
             pidDrivetrain.turn_to_angle(30);
-            pidDrivetrain.drive_distance(-41.6);
+            pidDrivetrain.drive_distance(-41.6 + 0); // tweak this depending on where the robot starts on the line
             mobileGoalLock.set(true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
@@ -100,12 +100,46 @@ namespace Autons
             pidDrivetrain.drive_distance(-1 * clusterDist);
             intakeMotors.stop();
 
-            // turning and driving into the corner
+            // turning and driving into the ladder
             pidDrivetrain.turn_to_angle(270);
-            pidDrivetrain.drive_distance(24) // tweak until the robot doesn't break itself on the ladder
+            pidDrivetrain.drive_distance(24 - 5) // tweak until the robot doesn't break itself on the ladder
 
             break;
+        }
+        case Autons::Route::mogoSide_Corner:
+        {
+            // starting on the right
+            // gets two mobile goals
+            // scores 2 rings
 
+            // back into mogo 1 and drop match load
+            pidDrivetrain.turn_to_angle(330);
+            pidDrivetrain.drive_distance(-41.6);
+            mobileGoalLock.set(true);
+            intakeMotors.setVelocity(intakeSpeed, percent);
+            intakeMotors.spin(forward);
+            wait(500);
+
+            // putting the first mogo close to the corner
+            pidDrivetrain.turn_to_angle(22.8);
+            pidDrivetrain.drive_distance(-26 - 10); // tweak this until the robot can drop the goal and completely drive away
+            intakeMotors.stop();
+            mobileGoalLock.set(false);
+
+            // grabbing the second mobile goal
+            pidDrivetrain.drive_distance(10);
+            pidDrivetrain.turn_to_angle(330);
+            pidDrivetrain.drive_distance(-27.7); // this will have to be tweaked to make sure the bot doesn't go over the line
+            mobileGoalLock.set(true);
+            intakeMotors.spin(forward);
+
+            // intaking the second ring
+            pidDrivetrain.turn_to_angle(0); // same with this angle (see above)
+            pidDrivetrain.drive_distance(24); // and possibly this
+            wait(500);
+            intakeMotors.stop();
+
+            // driving into the corner
         }
         }
     }
