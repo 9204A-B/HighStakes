@@ -29,10 +29,6 @@ namespace Autons
             // gets 4 rings onto a mobile goal
             // ends in positive corner
 
-            // in JAR template, positive angles -> clockwise, negative -> counter-clockwise
-            // if we want the robot to start with the clamp already pointed at the goal, subtract 30 from all .turn_to_angle functions.
-            // i might just do that after changing out all the turning functions, its a pretty easy fix.
-
             // back into the mobile goal and drop match load ring
             pidDrivetrain.turn_to_angle(30);
             pidDrivetrain.drive_distance(-41.6);
