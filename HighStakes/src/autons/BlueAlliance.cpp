@@ -3,7 +3,7 @@
 using namespace vex;
 
 // in JAR template, positive angles -> clockwise, negative -> counter-clockwise
-// if we want the robot to start with the clamp already pointed at the goal, subtract 30 from all .turn_to_angle() functions.
+// if we want the robot to start with the clamp already pointed at the goal, **ADD** 30 from all .turn_to_angle() functions.
 // i might just do that after changing out all the turning functions, its a pretty easy fix.
 
 // these are values for grabbing the two rings on the auton line.
@@ -11,7 +11,7 @@ float clusterTarget = 3.5; // this is currently aimed right at the center of the
 // 3.5 aims for dead-center on the ring. tweak this until the other ring doesn't get knocked too badly
 
 float clusterAngleRad = atan(clusterTarget / 24); 
-float clusterAngle = clusterAngleRad * (360 / 3.141); // this is in degrees, c++ trig uses radians
+float clusterAngle = clusterAngleRad * (360 / 3.141); // this is in degrees now
 
 float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 0; // tweak this until the robot doesn't go over the auton line
 // you should only be tweaking clusterTarget and clusterDist
