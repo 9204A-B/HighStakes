@@ -10,7 +10,7 @@ using namespace vex;
 float clusterTarget = 3.5; // this is currently aimed right at the center of the ring. increase to make it further from where the two rings touch.
 // 3.5 aims for dead-center on the ring. tweak this until the other ring doesn't get knocked too badly
 
-float clusterAngleRad = atan(clusterTarget / 24); 
+float clusterAngleRad = atan(clusterTarget / 24);
 float clusterAngle = clusterAngleRad * (360 / 3.141); // this is in degrees now
 
 float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 0; // tweak this until the robot doesn't go over the auton line
@@ -20,11 +20,15 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 0; // tweak this un
 
 namespace Autons
 {
-    void RedAlliance::run(Autons::Route route)
+    void BlueAlliance::run(Autons::Route route)
     {
         default_constants();
         switch (route)
         {
+        case Autons::Route::test:
+        {
+            // blue testing slot
+        }
         case Autons::Route::fourRingMogo_Corner:
         {
             // starting on the right
@@ -49,7 +53,7 @@ namespace Autons
 
             // turn and drive into ring 3 on the line
             pidDrivetrain.turn_to_angle(360 - clusterAngle);
-            pidDrivetrain.drive_distance(clusterDist); 
+            pidDrivetrain.drive_distance(clusterDist);
             wait(500);
 
             // turn and drive into ring 4
@@ -91,7 +95,7 @@ namespace Autons
 
             // turn and drive into ring 3 on the line
             pidDrivetrain.turn_to_angle(360 - clusterAngle);
-            pidDrivetrain.drive_distance(clusterDist); 
+            pidDrivetrain.drive_distance(clusterDist);
             wait(500);
 
             // turn and drive into ring 4
@@ -108,81 +112,123 @@ namespace Autons
         }
         case Autons::Route::mogoSide_Corner:
         {
-            // starting on the right
-            // gets two mobile goals
-            // scores 2 rings
-            // ends in the positive corner
+            // starting on the left of the mobile goal
+            // scores 2 rings on 1 mobile goal
+            // finishes in the corner
 
-            // back into mogo 1 and drop match load
-            pidDrivetrain.turn_to_angle(360 - 330);
-            pidDrivetrain.drive_distance(-41.6);
+            // get mogo and drop match load
+            pidDrivetrain.drive_distance(-36);
+            pidDrivetrain.turn_to_angle(360 - 270);
+            pidDrivetrain.drive_distance(-12);
             mobileGoalLock.set(true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
             wait(500);
 
-            // putting the first mogo close to the corner
-            pidDrivetrain.turn_to_angle(360 - 22.8);
-            pidDrivetrain.drive_distance(-26 - 10); // tweak this until the robot can drop the goal and completely drive away
-            intakeMotors.stop();
-            mobileGoalLock.set(false);
-
-            // grabbing the second mobile goal
-            pidDrivetrain.drive_distance(10);
-            pidDrivetrain.turn_to_angle(360 - 330);
-            pidDrivetrain.drive_distance(-27.7); // this will have to be tweaked to make sure the bot doesn't go over the line
-            mobileGoalLock.set(true);
-            intakeMotors.spin(forward);
-
-            // intaking the second ring
-            pidDrivetrain.turn_to_angle(0); // same with this angle (see above)
-            pidDrivetrain.drive_distance(24); // and possibly this
-            wait(500);
-            intakeMotors.stop();
-
-            // driving into the corner
-            pidDrivetrain.turn_to_angle(360 - 153.4);
-            pidDrivetrain.drive_distance(53.7 - 5); // tweak until the robot stops completely ramming into the corner
+            // intake ring 2 and driving into the corner
+            pidDrivetrain.drive_distance(36);
+            pidDrivetrain.turn_to_angle(0);
+            pidDrivetrain.drive_distance(24);
 
             break;
         }
         case Autons::Route::mogoSide_Ladder:
         {
-            // starting on the right
-            // gets two mobile goals
-            // scores 2 rings
-            // ends touching the ladder
+            // starting on the left of the mobile goal
+            // scores 2 rings on 1 mobile goal
+            // finishes touching the ladder
 
-            // back into mogo 1 and drop match load
-            pidDrivetrain.turn_to_angle(360 - 330);
-            pidDrivetrain.drive_distance(-41.6);
+            // get mogo and drop match load
+            pidDrivetrain.drive_distance(-36);
+            pidDrivetrain.turn_to_angle(360 - 270);
+            pidDrivetrain.drive_distance(-12);
             mobileGoalLock.set(true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
             wait(500);
 
-            // putting the first mogo close to the corner
-            pidDrivetrain.turn_to_angle(360 - 22.8);
-            pidDrivetrain.drive_distance(-26 - 10); // tweak this until the robot can drop the goal and completely drive away
+            // intake ring 2 and driving into the ladder
+            pidDrivetrain.drive_distance(24);
+            pidDrivetrain.turn_to_angle(360 - 90);
+            pidDrivetrain.drive_distance(48 - 5); // tweak this until the robot just touches the ladder
+
+            break;
+        }
+        case Autons::Route::mogoSide_GoalRush_Corner:
+        {
+            // starting between the nearer and further mobile goal
+            // scores 1 ring on each goal
+            // finishes in the corner
+
+            // goal rush
+            pidDrivetrain.drive_distance(-1 * (36 + (24 - 20.8))); // 20.8 = 12 / tan(30)
+            pidDrivetrain.turn_to_angle(360 - 30);
+            float goalGrabDist = 24 - 0; // tweak this until the robot doesn't go over the line
+            pidDrivetrain.drive_distance(-1 * goalGrabDist);
+            mobileGoalLock.set(true);
+            pidDrivetrain.drive_distance(goalGrabDist);
+
+            // scoring preload onto goal rushed goal
+            intakeMotors.setVelocity(intakeSpeed, percent);
+            intakeMotors.spin(forward);
+            wait(500);
+
+            // putting away the goal rushed goal
+            pidDrivetrain.turn_to_angle(0);
+            pidDrivetrain.drive_distance(-1 * ((24 - 20.8) + 24));
             intakeMotors.stop();
             mobileGoalLock.set(false);
 
-            // grabbing the second mobile goal
-            pidDrivetrain.drive_distance(10);
-            pidDrivetrain.turn_to_angle(360 - 330);
-            pidDrivetrain.drive_distance(-27.7); // this will have to be tweaked to make sure the bot doesn't go over the line
+            // clamping the second goal
+            pidDrivetrain.drive_distance(24);
+            pidDrivetrain.turn_to_angle(360 - 270);
+            pidDrivetrain.drive_distance(-12);
             mobileGoalLock.set(true);
+
+            // intaking a second ring and driving into the corner
             intakeMotors.spin(forward);
+            pidDrivetrain.drive_distance(36);
+            pidDrivetrain.turn_to_angle(0);
+            pidDrivetrain.drive_distance(24);
 
-            // intaking the second ring
-            pidDrivetrain.turn_to_angle(0); // same with this angle (see above)
-            pidDrivetrain.drive_distance(24); // and possibly this
+            break;
+        }
+        case Autons::Route::mogoSide_GoalRush_Ladder:
+        {
+            // starting between the nearer and further mobile goal
+            // scores 1 ring on each goal
+            // finishes touching the ladder
+
+            // goal rush
+            pidDrivetrain.drive_distance(-1 * (36 + (24 - 20.8))); // 20.8 = 12 / tan(30)
+            pidDrivetrain.turn_to_angle(360 - 30);
+            float goalGrabDist = 24 - 0; // tweak this until the robot doesn't go over the line
+            pidDrivetrain.drive_distance(-1 * goalGrabDist);
+            mobileGoalLock.set(true);
+            pidDrivetrain.drive_distance(goalGrabDist);
+
+            // scoring preload onto goal rushed goal
+            intakeMotors.setVelocity(intakeSpeed, percent);
+            intakeMotors.spin(forward);
             wait(500);
-            intakeMotors.stop();
 
-            // driving into the ladder
+            // putting away the goal rushed goal
+            pidDrivetrain.turn_to_angle(0);
+            pidDrivetrain.drive_distance(-1 * ((24 - 20.8) + 24));
+            intakeMotors.stop();
+            mobileGoalLock.set(false);
+
+            // clamping the second goal
+            pidDrivetrain.drive_distance(24);
+            pidDrivetrain.turn_to_angle(360 - 270);
+            pidDrivetrain.drive_distance(-12);
+            mobileGoalLock.set(true);
+
+            // intaking a second ring and driving into the corner
+            intakeMotors.spin(forward);
+            pidDrivetrain.drive_distance(24);
             pidDrivetrain.turn_to_angle(360 - 90);
-            pidDrivetrain.drive_distance(48 - 5); // tweak until the robot doesn't break itself on the ladder
+            pidDrivetrain.drive_distance(48 - 5); // tweak this until the robot just touches the ladder
 
             break;
         }
