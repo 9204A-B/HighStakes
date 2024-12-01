@@ -22,7 +22,8 @@ namespace Autons
         fourRingMogo_Ladder,
         mogoSide_Corner,
         mogoSide_Ladder,
-        mogoSide_GoalRush,
+        mogoSide_GoalRush_Corner,
+        mogoSide_GoalRush_Ladder,
         test
     };
 
