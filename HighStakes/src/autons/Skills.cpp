@@ -5,7 +5,7 @@ using namespace vex;
 // these are values for dodging the ladder towards the end.
 float dodgeAngle = 15.0; // tweak this value until the robot misses the ladder
 
-float dodgeAngleRad = 15 * (3.141 / 360);
+float dodgeAngleRad = dodgeAngle * (3.141 / 360);
 float dodgeDriveDistance = 24 / cos(dodgeAngleRad);
 
 namespace Autons
@@ -31,8 +31,8 @@ namespace Autons
         pidDrivetrain.drive_distance(24);
 
         // intaking near-left corner rings
-        pidDrivetrain.turn_to_angle(26.6); // 26.6 = arctan(12 / 24)
-        pidDrivetrain.drive_distance(26.8);            // 26.8 = sqrt(12^2 + 24^2)
+        pidDrivetrain.turn_to_angle(26.6);  // 26.6 = arctan(12 / 24)
+        pidDrivetrain.drive_distance(26.8); // 26.8 = sqrt(12^2 + 24^2)
         pidDrivetrain.turn_to_angle(270);
         pidDrivetrain.drive_distance(12);
         pidDrivetrain.turn_to_angle(0);
@@ -55,10 +55,10 @@ namespace Autons
         pidDrivetrain.turn_to_angle(180);
         intakeMotors.spin(forward);
         pidDrivetrain.drive_distance(24);
-        pidDrivetrain.turn_to_angle(180 + 56.3);             // 56.3 = arctan(36 / 24)
-        pidDrivetrain.drive_distance(43.3);                   // 43.3 = sqrt(24^2 + 36^2)
-        pidDrivetrain.turn_to_angle(26.6); // 26.6 = arctan(12 / 24)
-        pidDrivetrain.drive_distance(26.8);                   // 26.8 = sqrt(12^2 + 24^2)
+        pidDrivetrain.turn_to_angle(180 + 56.3); // 56.3 = arctan(36 / 24)
+        pidDrivetrain.drive_distance(43.3);      // 43.3 = sqrt(24^2 + 36^2)
+        pidDrivetrain.turn_to_angle(26.6);       // 26.6 = arctan(12 / 24)
+        pidDrivetrain.drive_distance(26.8);      // 26.8 = sqrt(12^2 + 24^2)
 
         // intake near-right corner rings
         pidDrivetrain.turn_to_angle(0);
@@ -75,7 +75,7 @@ namespace Autons
         // drive towards goal 3 and clamp
         pidDrivetrain.drive_distance(goalDropDist);
         pidDrivetrain.turn_to_angle(180 - 20.6); // 20.6 = arctan(36 / 96).
-        pidDrivetrain.drive_distance(102.5); // 102.5 = sqrt(36^2 + 96^2)
+        pidDrivetrain.drive_distance(102.5);     // 102.5 = sqrt(36^2 + 96^2)
         pidDrivetrain.turn_to_angle(270);
         pidDrivetrain.drive_distance(-24);
         mobileGoalLock.set(true);
@@ -95,7 +95,7 @@ namespace Autons
         pidDrivetrain.turn_to_angle(0);
         pidDrivetrain.drive_distance(24);
         pidDrivetrain.turn_to_angle(26.6); // 26.6 = arctan(12 / 24)
-        pidDrivetrain.drive_distance(26.8); 
+        pidDrivetrain.drive_distance(26.8);
         pidDrivetrain.turn_to_angle(180);
         pidDrivetrain.drive_distance(24);
 
@@ -107,7 +107,7 @@ namespace Autons
 
         // grabbing goal 4
         pidDrivetrain.drive_distance(goalDropDist + 26.8);
-        pidDrivetrain.turn_to_angle(63.4); // 63.4 = arctan(72 / 36)
+        pidDrivetrain.turn_to_angle(63.4);   // 63.4 = arctan(72 / 36)
         pidDrivetrain.drive_distance(-80.5); // 80.5 = sqrt(72^2 + 36^2)
         mobileGoalLock.set(true);
 
@@ -117,7 +117,7 @@ namespace Autons
         pidDrivetrain.drive_distance(-1 * goal4DropDist);
         mobileGoalLock.set(false);
         pidDrivetrain.drive_distance(goal4DropDist);
-        
+
         // if nothing goes wrong, this should get us a 44 point programming skills run :D
 
         break;
