@@ -10,7 +10,7 @@ using namespace vex;
 float clusterTarget = 3.5; // this is currently aimed right at the center of the ring. increase to make it further from where the two rings touch.
 // 3.5 aims for dead-center on the ring. tweak this until the other ring doesn't get knocked too badly
 
-float clusterAngleRad = atan(clusterTarget / 24); 
+float clusterAngleRad = atan(clusterTarget / 24);
 float clusterAngle = clusterAngleRad * (360 / 3.141); // this is in degrees now
 
 float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 0; // tweak this until the robot doesn't go over the auton line
@@ -23,6 +23,21 @@ namespace Autons
         default_constants();
         switch (route)
         {
+        case Autons::Route::test:
+        {
+            // testing scoring a ring onto alliance stake during auton
+
+            pidDrivetrain.drive_distance(-12);
+            pidDrivetrain.turn_to_angle(90);
+            pidDrivetrain.drive_distance(-1); // tweak this until the robot stops in the right spot
+            intakeMotors.setVelocity(intakeSpeed, percent);
+            intakeMotors.spin(forward);
+            wait(500);
+
+            pidDrivetrain.drive_distance(1);
+            pidDrivetrain.turn_to_angle(0);
+            pidDrivetrain.drive_distance(12);
+        }
         case Autons::Route::fourRingMogo_Corner:
         {
             // starting on the left
@@ -47,7 +62,7 @@ namespace Autons
 
             // turn and drive into ring 3 on the line
             pidDrivetrain.turn_to_angle(180 + clusterAngle);
-            pidDrivetrain.drive_distance(clusterDist); 
+            pidDrivetrain.drive_distance(clusterDist);
             wait(500);
 
             // turn and drive into ring 4
@@ -89,7 +104,7 @@ namespace Autons
 
             // turn and drive into ring 3 on the line
             pidDrivetrain.turn_to_angle(180 + clusterAngle);
-            pidDrivetrain.drive_distance(clusterDist); 
+            pidDrivetrain.drive_distance(clusterDist);
             wait(500);
 
             // turn and drive into ring 4
@@ -104,7 +119,7 @@ namespace Autons
             pidDrivetrain.turn_to_angle(270);
             pidDrivetrain.drive_distance(24 - 5) // tweak until the robot doesn't break itself on the ladder
 
-            break;
+                break;
         }
         case Autons::Route::mogoSide_Corner:
         {
@@ -135,7 +150,7 @@ namespace Autons
             intakeMotors.spin(forward);
 
             // intaking the second ring
-            pidDrivetrain.turn_to_angle(0); // same with this angle (see above)
+            pidDrivetrain.turn_to_angle(0);   // same with this angle (see above)
             pidDrivetrain.drive_distance(24); // and possibly this
             wait(500);
             intakeMotors.stop();
@@ -175,7 +190,7 @@ namespace Autons
             intakeMotors.spin(forward);
 
             // intaking the second ring
-            pidDrivetrain.turn_to_angle(0); // same with this angle (see above)
+            pidDrivetrain.turn_to_angle(0);   // same with this angle (see above)
             pidDrivetrain.drive_distance(24); // and possibly this
             wait(500);
             intakeMotors.stop();

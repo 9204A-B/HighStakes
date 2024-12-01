@@ -21,7 +21,9 @@ namespace Autons
         fourRingMogo_Corner,
         fourRingMogo_Ladder,
         mogoSide_Corner,
-        mogoSide_Ladder
+        mogoSide_Ladder,
+        mogoSide_GoalRush,
+        test
     };
 
     class LeftSide
