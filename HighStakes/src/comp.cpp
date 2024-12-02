@@ -23,8 +23,6 @@ void drive(void)
 
 void auton(void)
 {
-    // pid piddrive = pid(leftMotors, rightMotors, 3.25, 1.145, 0.065, 0.15, 2.25);
-    // pid pidturn = pid(Inertial, leftMotors, rightMotors, 3.25, 0.08, 0.045, 0.02, 2.25);
     if (allianceSelect == 0)
     {
         if (autonSelect == 0)
