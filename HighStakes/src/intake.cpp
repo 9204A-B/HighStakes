@@ -32,15 +32,15 @@ void intake()
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(reverse);
         }
+        else if (Controller.ButtonY.pressing())
+        {
+            intakeMotors.setVelocity(50, percent);
+            intakeMotors.stop();
+            intakeMotors.spinFor(reverse, 150, msec);
+        }        
         else
         {
             intakeMotors.setVelocity(0, percent);
-        }
-
-        if (Controller.ButtonY.pressing())
-        {
-            intakeMotors.stop();
-            intakeMotors.spinFor(reverse, .25, sec);
         }
     
         wait(15, msec);
