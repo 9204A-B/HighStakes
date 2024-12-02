@@ -6,7 +6,7 @@ void selector(void)
     while (true)
     {
         Brain.Screen.setCursor(1, 1);
-        if (autonSelect < 5 && button.HIGH)
+        if (autonSelect < 6 && button.HIGH)
         {
             autonSelect++;
             wait(200, msec);
@@ -40,27 +40,31 @@ void selector(void)
             Brain.Screen.print("Red Alliance selected");
             Brain.Screen.setCursor(1, 2);
 
-            if (autonSelect == 0)
+            if (autonSelect == 1)
             {
-                Brain.Screen.print("Left 4-ring mobile goal + Corner End");
-            }
-            else if (autonSelect == 1)
-            {
-                Brain.Screen.print("Left 4-ring mobile goal + Ladder Touch");
+                Brain.Screen.print("Left side 4-ring mobile goal + Corner End");
             }
             else if (autonSelect == 2)
             {
-                Brain.Screen.print("Right 2-ring mobile goal + Corner End");
+                Brain.Screen.print("Left side 4-ring mobile goal + Ladder Touch");
             }
             else if (autonSelect == 3)
             {
-                Brain.Screen.print("Right 2-ring mobile goal + Ladder Touch");
+                Brain.Screen.print("Right side 2-ring mobile goal + Corner End");
             }
             else if (autonSelect == 4)
             {
-                Brain.Screen.print("2-ring goal rush");
+                Brain.Screen.print("Right side 2-ring mobile goal + Ladder Touch");
             }
             else if (autonSelect == 5)
+            {
+                Brain.Screen.print("Right side goal rush + Corner End");
+            }
+            else if (autonSelect == 6)
+            {
+                Brain.Screen.print("Right side goal rush + Ladder Touch");
+            }
+            else if (autonSelect == 0)
             {
                 Brain.Screen.print("Red test slot");
             }
@@ -71,27 +75,31 @@ void selector(void)
             Brain.Screen.print("Blue Alliance selected");
             Brain.Screen.setCursor(1, 2);
 
-            if (autonSelect == 0)
+            if (autonSelect == 1)
             {
-                Brain.Screen.print("Right 4-ring mobile goal + Corner End");
-            }
-            else if (autonSelect == 1)
-            {
-                Brain.Screen.print("Right 4-ring mobile goal + Ladder Touch");
+                Brain.Screen.print("Right side  4-ring mobile goal + Corner End");
             }
             else if (autonSelect == 2)
             {
-                Brain.Screen.print("Left 2-ring mobile goal + Corner End");
+                Brain.Screen.print("Right side  4-ring mobile goal + Ladder Touch");
             }
             else if (autonSelect == 3)
             {
-                Brain.Screen.print("Left 2-ring mobile goal + Ladder Touch");
+                Brain.Screen.print("Left side  2-ring mobile goal + Corner End");
             }
             else if (autonSelect == 4)
             {
-                Brain.Screen.print("2-ring goal rush");
+                Brain.Screen.print("Left side  2-ring mobile goal + Ladder Touch");
             }
             else if (autonSelect == 5)
+            {
+                Brain.Screen.print("Left side goal rush + Corner End");
+            }
+            else if (autonSelect == 6)
+            {
+                Brain.Screen.print("Left side goal rush + Corner End");
+            }
+            else if (autonSelect == 0)
             {
                 Brain.Screen.print("Blue test slot");
             }

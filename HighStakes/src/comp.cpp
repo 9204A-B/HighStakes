@@ -25,54 +25,62 @@ void auton(void)
 {
     if (allianceSelect == 0)
     {
-        if (autonSelect == 0)
+        if (autonSelect == 1)
         {
             Autons::RedAlliance::run(Autons::Route::fourRingMogo_Corner);
         }
-        else if (autonSelect == 1)
+        else if (autonSelect == 2)
         {
             Autons::RedAlliance::run(Autons::Route::fourRingMogo_Ladder);
         }
-        else if (autonSelect == 2)
+        else if (autonSelect == 3)
         {
             Autons::RedAlliance::run(Autons::Route::mogoSide_Corner);
         }
-        else if (autonSelect == 3)
+        else if (autonSelect == 4)
         {
             Autons::RedAlliance::run(Autons::Route::mogoSide_Ladder);
         }
-        else if (autonSelect == 4)
-        {
-            Autons::RedAlliance::run(Autons::Route::mogoSide_GoalRush);
-        }
         else if (autonSelect == 5)
         {
-            Autons::RedAlliance::run(Autons::Route::test);
+            Autons::RedAlliance::run(Autons::Route::mogoSide_GoalRush_Corner);
+        }
+        else if (autonSelect == 6)
+        {
+            Autons::RedAlliance::run(Autons::Route::mogoSide_GoalRush_Ladder);
+        }
+        else if (autonSelect == 0)
+        {
+            Autons::RedAlliance::run(Autons::Route::test:);
         }
     }
     else if (allianceSelect == 1)
     {
-        if (autonSelect == 0)
+        if (autonSelect == 1)
         {
             Autons::BlueAlliance::run(Autons::Route::fourRingMogo_Corner);
         }
-        else if (autonSelect == 1)
+        else if (autonSelect == 2)
         {
             Autons::BlueAlliance::run(Autons::Route::fourRingMogo_Ladder);
         }
-        else if (autonSelect == 2)
+        else if (autonSelect == 3)
         {
             Autons::BlueAlliance::run(Autons::Route::mogoSide_Corner);
         }
-        else if (autonSelect == 3)
+        else if (autonSelect == 4)
         {
             Autons::BlueAlliance::run(Autons::Route::mogoSide_Ladder);
         }
-        else if (autonSelect == 4)
-        {
-            Autons::BlueAlliance::run(Autons::Route::mogoSide_GoalRush);
-        }
         else if (autonSelect == 5)
+        {
+            Autons::BlueAlliance::run(Autons::Route::mogoSide_GoalRush_Corner);
+        }
+        else if (autonSelect == 6)
+        {
+            Autons::BlueAlliance::run(Autons::Route::mogoSide_GoalRush_Ladder);
+        }
+        else if (autonSelect == 0)
         {
             Autons::BlueAlliance::run(Autons::Route::test);
         }
