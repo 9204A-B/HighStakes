@@ -16,13 +16,13 @@ void selector(void)
             autonSelect = 0;
             wait(200, msec);
         }
-
-        if (allianceSelect < 2 && brainScreen)
+                        //Was brainScreen supposed to be this?
+        if (allianceSelect < 2 && Brain.Screen.pressing())
         {
             allianceSelect++;
             wait(200, msec);
         }
-        else if (brainScreen)
+        else if (Brain.Screen.pressing())
         {
             allianceSelect = 0;
             wait(200, msec);

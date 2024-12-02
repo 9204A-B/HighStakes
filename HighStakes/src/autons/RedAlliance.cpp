@@ -32,7 +32,7 @@ namespace Autons
             pidDrivetrain.drive_distance(-1); // tweak this until the robot stops in the right spot
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(500);
+            wait(500, msec);
 
             pidDrivetrain.drive_distance(1);
             pidDrivetrain.turn_to_angle(0);
@@ -50,12 +50,12 @@ namespace Autons
             mobileGoalLock.set(true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(500);
+            wait(500, msec);
 
             // turn and drive forwards for ring 2
             pidDrivetrain.turn_to_angle(90);
             pidDrivetrain.drive_distance(24);
-            wait(500);
+            wait(500, msec);
 
             // update: i've decided to just turn and drive towards the ring from the previous ring's position.
             // it's painfully slow, but that's the best i can do without access to the robot
@@ -63,13 +63,13 @@ namespace Autons
             // turn and drive into ring 3 on the line
             pidDrivetrain.turn_to_angle(180 + clusterAngle);
             pidDrivetrain.drive_distance(clusterDist);
-            wait(500);
+            wait(500, msec);
 
             // turn and drive into ring 4
             pidDrivetrain.drive_distance(-1 * clusterDist);
             pidDrivetrain.turn_to_angle(180 - clusterAngle);
             pidDrivetrain.drive_distance(clusterDist);
-            wait(500);
+            wait(500, msec);
             pidDrivetrain.drive_distance(-1 * clusterDist);
             intakeMotors.stop();
 
@@ -92,12 +92,12 @@ namespace Autons
             mobileGoalLock.set(true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(500);
+            wait(500, msec);
 
             // turn and drive forwards for ring 2
             pidDrivetrain.turn_to_angle(90);
             pidDrivetrain.drive_distance(24);
-            wait(500);
+            wait(500, msec);
 
             // update: i've decided to just turn and drive towards the ring from the previous ring's position.
             // it's painfully slow, but that's the best i can do without access to the robot
@@ -105,13 +105,13 @@ namespace Autons
             // turn and drive into ring 3 on the line
             pidDrivetrain.turn_to_angle(180 + clusterAngle);
             pidDrivetrain.drive_distance(clusterDist);
-            wait(500);
+            wait(500, msec);
 
             // turn and drive into ring 4
             pidDrivetrain.drive_distance(-1 * clusterDist);
             pidDrivetrain.turn_to_angle(180 - clusterAngle);
             pidDrivetrain.drive_distance(clusterDist);
-            wait(500);
+            wait(500, msec);
             pidDrivetrain.drive_distance(-1 * clusterDist);
             intakeMotors.stop();
 
@@ -134,7 +134,7 @@ namespace Autons
             mobileGoalLock.set(true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(500);
+            wait(500, msec);
 
             // intake ring 2 and driving into the corner
             pidDrivetrain.drive_distance(36);
@@ -156,7 +156,7 @@ namespace Autons
             mobileGoalLock.set(true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(500);
+            wait(500, msec);
 
             // intake ring 2 and driving into the ladder
             pidDrivetrain.drive_distance(24);
@@ -182,7 +182,7 @@ namespace Autons
             // scoring preload onto goal rushed goal
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(500);
+            wait(500, msec);
 
             // putting away the goal rushed goal
             pidDrivetrain.turn_to_angle(0);
@@ -221,7 +221,7 @@ namespace Autons
             // scoring preload onto goal rushed goal
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(500);
+            wait(500, msec);
 
             // putting away the goal rushed goal
             pidDrivetrain.turn_to_angle(0);

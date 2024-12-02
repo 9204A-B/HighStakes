@@ -22,7 +22,7 @@ namespace Autons
         mobileGoalLock.set(true);
         intakeMotors.setVelocity(intakeSpeed, percent);
         intakeMotors.spin(forward);
-        wait(500);
+        wait(500, msec);
 
         // intaking first 2 rings
         pidDrivetrain.turn_to_angle(180);
@@ -42,11 +42,11 @@ namespace Autons
         pidDrivetrain.turn_to_angle(180 + 63.4); // 63.4 = arctan(24 / 12)
         intakeMotors.stop();
         float goalDropDist = 26.8 - 15; // tweak this until the goal is in the corner properly
-        pidDriveTrain.drive_distance(-1 * goalDropDist);
+        pidDrivetrain.drive_distance(-1 * goalDropDist);
         mobileGoalLock.set(false);
 
         // drive towards goal 2 and clamp
-        pidDriveTrain.drive_distance(goalDropDist + 26.8); // this should get the robot to the original position of goal 1
+        pidDrivetrain.drive_distance(goalDropDist + 26.8); // this should get the robot to the original position of goal 1
         pidDrivetrain.turn_to_angle(90);
         pidDrivetrain.drive_distance(-48);
         mobileGoalLock.set(true);
@@ -119,7 +119,5 @@ namespace Autons
         pidDrivetrain.drive_distance(goal4DropDist);
 
         // if nothing goes wrong, this should get us a 44 point programming skills run :D
-
-        break;
     }
 }
