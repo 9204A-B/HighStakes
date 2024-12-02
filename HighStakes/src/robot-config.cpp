@@ -34,9 +34,11 @@ digital_out Doinker = digital_out(Brain.ThreeWirePort.C);
 
 competition Competition;
 digital_in button = digital_in(Brain.ThreeWirePort.B);
+bool brainScreen = Brain.pressing();
+int allianceSelect = 0;
 int autonSelect = 0;
 
 void vexcodeInit(void)
 {
-    //Vex requires this to compile   
+    // Vex requires this to compile
 }

@@ -9,9 +9,9 @@ void startTimer()
     Controller.Screen.setCursor(1, 1);
     Controller.Screen.print("30 Seconds Left");
     Controller.rumble("..");
-    while (Timer.time(sec) != 105){}
+    while (Timer.time(sec) != 100){}
     Controller.Screen.clearScreen();
     Controller.Screen.setCursor(1, 1);
-    Controller.Screen.print("10 Seconds Left");
+    Controller.Screen.print("15 Seconds Left");
     Controller.rumble("..--");
 }

@@ -32,6 +32,7 @@ extern digital_out Doinker;
 
 extern competition Competition;
 extern digital_in button;
+extern int allianceSelect = 0;
 extern int autonSelect;
 
 void vexcodeInit(void);
