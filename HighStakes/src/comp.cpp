@@ -83,4 +83,26 @@ void auton(void)
     {
         Autons::Skills::run();
     }
+
+    // old auton runner code
+    // if (autonSelect == 0)
+    // {
+    //     Autons::LeftSide::run(Autons::Color::red);
+    // }
+    // else if (autonSelect == 1)
+    // {
+    //     Autons::RightSide::run(Autons::Color::red);
+    // }
+    // else if (autonSelect == 2)
+    // {
+    //     Autons::LeftSide::run(Autons::Color::blue);
+    // }
+    // else if (autonSelect == 3)
+    // {
+    //     Autons::RightSide::run(Autons::Color::blue);
+    // }
+    // else
+    // {
+    //     Autons::Skills::run();
+    // }
 }
