@@ -1,3 +1,5 @@
+#ifndef ROBOT_CONFIG_H
+#define ROBOT_CONFIG_H
 using namespace vex;
 
 extern brain Brain;
@@ -32,7 +34,8 @@ extern digital_out Doinker;
 
 extern competition Competition;
 extern digital_in button;
-extern int allianceSelect = 0;
+extern int allianceSelect;
 extern int autonSelect;
 
 void vexcodeInit(void);
+#endif

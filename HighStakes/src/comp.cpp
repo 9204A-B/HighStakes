@@ -51,7 +51,7 @@ void auton(void)
         }
         else if (autonSelect == 0)
         {
-            Autons::RedAlliance::run(Autons::Route::test:);
+            Autons::RedAlliance::run(Autons::Route::test);
         }
     }
     else if (allianceSelect == 1)

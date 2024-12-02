@@ -2,7 +2,11 @@
 #include <math.h>
 using namespace vex;
 
-// in JAR template, positive angles -> clockwise, negative -> counter-clockwise
+namespace Autons
+{
+    void RedAlliance::run(Autons::Route route)
+    {
+        // in JAR template, positive angles -> clockwise, negative -> counter-clockwise
 // if we want the robot to start with the clamp already pointed at the goal, **ADD** 30 from all .turn_to_angle() functions.
 // i might just do that after changing out all the turning functions, its a pretty easy fix.
 
@@ -15,11 +19,6 @@ float clusterAngle = clusterAngleRad * (360 / 3.141); // this is in degrees now
 
 float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 0; // tweak this until the robot doesn't go over the auton line
 // you should only be tweaking clusterTarget and clusterDist
-
-namespace Autons
-{
-    void RedAlliance::run(Autons::Route route)
-    {
         default_constants();
         switch (route)
         {
