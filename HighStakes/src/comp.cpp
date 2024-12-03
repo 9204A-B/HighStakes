@@ -9,6 +9,7 @@ void drive(void)
     thread intakeThread = thread(intake);
     thread lbThread = thread(ladybrown);
     thread timeThread = thread(startTimer);
+    thread doinkerThread = thread(doink);
     Drivetrain.setDriveVelocity(100, percent);
     Drivetrain.setStopping(brake);
     while (true)
@@ -25,90 +26,88 @@ void auton(void)
 {
     if (allianceSelect == 0)
     {
-        if (autonSelect == 1)
-        {
-            Autons::RedAlliance::run(Autons::Route::fourRingMogo_Corner);
-        }
-        else if (autonSelect == 2)
-        {
-            Autons::RedAlliance::run(Autons::Route::fourRingMogo_Ladder);
-        }
-        else if (autonSelect == 3)
-        {
-            Autons::RedAlliance::run(Autons::Route::mogoSide_Corner);
-        }
-        else if (autonSelect == 4)
-        {
-            Autons::RedAlliance::run(Autons::Route::mogoSide_Ladder);
-        }
-        else if (autonSelect == 5)
-        {
-            Autons::RedAlliance::run(Autons::Route::mogoSide_GoalRush_Corner);
-        }
-        else if (autonSelect == 6)
-        {
-            Autons::RedAlliance::run(Autons::Route::mogoSide_GoalRush_Ladder);
-        }
-        else if (autonSelect == 0)
-        {
-            Autons::RedAlliance::run(Autons::Route::test);
-        }
+        switch (autonSelect)
+        {    
+            case 1:
+            {
+                Autons::RedAlliance::run(Autons::Route::fourRingMogo_Corner);
+                break;
+            }
+            case 2:
+            {
+                Autons::RedAlliance::run(Autons::Route::fourRingMogo_Ladder);
+                break;
+            }
+            case 3:
+            {
+                Autons::RedAlliance::run(Autons::Route::mogoSide_Corner);
+                break;
+            }
+            case 4:
+            {
+                Autons::RedAlliance::run(Autons::Route::mogoSide_Ladder);
+                break;
+            }
+            case 5:
+            {
+                Autons::RedAlliance::run(Autons::Route::mogoSide_GoalRush_Corner);
+                break;
+            }
+            case 6:
+            {
+                Autons::RedAlliance::run(Autons::Route::mogoSide_GoalRush_Ladder);
+                break;
+            }
+            default:
+            {
+                Autons::RedAlliance::run(Autons::Route::test);
+                break;
+            }
+        }   
     }
     else if (allianceSelect == 1)
     {
-        if (autonSelect == 1)
+        switch (autonSelect)
         {
-            Autons::BlueAlliance::run(Autons::Route::fourRingMogo_Corner);
-        }
-        else if (autonSelect == 2)
-        {
-            Autons::BlueAlliance::run(Autons::Route::fourRingMogo_Ladder);
-        }
-        else if (autonSelect == 3)
-        {
-            Autons::BlueAlliance::run(Autons::Route::mogoSide_Corner);
-        }
-        else if (autonSelect == 4)
-        {
-            Autons::BlueAlliance::run(Autons::Route::mogoSide_Ladder);
-        }
-        else if (autonSelect == 5)
-        {
-            Autons::BlueAlliance::run(Autons::Route::mogoSide_GoalRush_Corner);
-        }
-        else if (autonSelect == 6)
-        {
-            Autons::BlueAlliance::run(Autons::Route::mogoSide_GoalRush_Ladder);
-        }
-        else if (autonSelect == 0)
-        {
-            Autons::BlueAlliance::run(Autons::Route::test);
+            case 1:
+            {
+                Autons::BlueAlliance::run(Autons::Route::fourRingMogo_Corner);
+                break;
+            }
+            case 2:
+            {
+                Autons::BlueAlliance::run(Autons::Route::fourRingMogo_Ladder);
+                break;
+            }
+            case 3:
+            {
+                Autons::BlueAlliance::run(Autons::Route::mogoSide_Corner);
+                break;
+            }
+            case 4:
+            {
+                Autons::BlueAlliance::run(Autons::Route::mogoSide_Ladder);
+                break;
+            }
+            case 5:
+            {
+                Autons::BlueAlliance::run(Autons::Route::mogoSide_GoalRush_Corner);
+                break;
+            }
+            case 6:
+            {
+                Autons::BlueAlliance::run(Autons::Route::mogoSide_GoalRush_Ladder);
+                break;
+            }
+            default:
+            {
+                Autons::BlueAlliance::run(Autons::Route::test);
+                break;
+            }
         }
     }
     else
     {
         Autons::Skills::run();
     }
-
-    // old auton runner code
-    // if (autonSelect == 0)
-    // {
-    //     Autons::LeftSide::run(Autons::Color::red);
-    // }
-    // else if (autonSelect == 1)
-    // {
-    //     Autons::RightSide::run(Autons::Color::red);
-    // }
-    // else if (autonSelect == 2)
-    // {
-    //     Autons::LeftSide::run(Autons::Color::blue);
-    // }
-    // else if (autonSelect == 3)
-    // {
-    //     Autons::RightSide::run(Autons::Color::blue);
-    // }
-    // else
-    // {
-    //     Autons::Skills::run();
-    // }
 }
