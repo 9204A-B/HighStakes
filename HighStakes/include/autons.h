@@ -27,18 +27,6 @@ namespace Autons
         test
     };
 
-    class LeftSide
-    {
-    public:
-        static void run(Autons::Color Color);
-    };
-
-    class RightSide
-    {
-    public:
-        static void run(Autons::Color Color);
-    };
-
     class RedAlliance
     {
     public:
