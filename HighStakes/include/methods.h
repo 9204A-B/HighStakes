@@ -8,3 +8,4 @@ void warning(void);
 void selector(void);
 void startTimer(void);
 void ladybrown(void);
+void doink(void);

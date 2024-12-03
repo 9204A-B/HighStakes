@@ -3,11 +3,10 @@ using namespace vex;
 
 void doink()
 {
+    bool down = false;
     while (true)
     {
-        bool down = false;
-
-        while (!Controller.ButtonY.pressing())
+        while (!Controller.ButtonL2.pressing())
         {
             wait(5, msec);
         }
@@ -15,7 +14,7 @@ void doink()
         down = !down;
         Doinker.set(down);
 
-        while (Controller.ButtonY.pressing())
+        while (Controller.ButtonL2.pressing())
         {
             wait(5, msec);
         }
