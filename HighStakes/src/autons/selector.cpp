@@ -33,6 +33,7 @@ void selector(void)
             autonSelect = 0;
         }
 
+        Brain.Screen.clear_screen();
         wait(5, msec);
         if (allianceSelect == 0)
         {
