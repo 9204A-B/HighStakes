@@ -43,22 +43,22 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 10; // tweak this u
             // gets 4 rings onto a mobile goal
             // ends in positive corner
 
-            pidDrivetrain.drive_max_voltage = 8;
-            pidDrivetrain.turn_max_voltage = 8;
+            pidDrivetrain.drive_max_voltage = 8.5;
+            pidDrivetrain.turn_max_voltage = 9;
 
             // back into the mobile goal and drop match load ring
             pidDrivetrain.turn_to_angle(30);
-            pidDrivetrain.drive_distance(-41.6 + 10); // tweak this depending on where the robot starts on the line
+            pidDrivetrain.drive_distance(-41.6 + 0); // tweak this depending on where the robot starts on the line
+            waitUntil(pidDrivetrain.is_settled());
             mobileGoalLock.set(true);
-            //wait(1000, msec);
-            intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(500, msec);
+            wait(1500, msec);
 
             // turn and drive forwards for ring 2
             pidDrivetrain.turn_to_angle(90);
             pidDrivetrain.drive_distance(24);
-            wait(500, msec);
+            waitUntil(pidDrivetrain.is_settled());
+            wait(1000, msec);
 
             // update: i've decided to just turn and drive towards the ring from the previous ring's position.
             // it's painfully slow, but that's the best i can do without access to the robot
@@ -66,7 +66,7 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 10; // tweak this u
             // turn and drive into ring 3 on the line
             pidDrivetrain.turn_to_angle(180 + clusterAngle);
             pidDrivetrain.drive_distance(clusterDist);
-            wait(500, msec);
+            wait(1000, msec);
 
             // turn and drive into ring 4
             pidDrivetrain.drive_distance(-1 * clusterDist);
