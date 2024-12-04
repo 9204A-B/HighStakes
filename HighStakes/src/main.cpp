@@ -31,7 +31,9 @@ int main()
 
     Controller.ButtonR1.pressed(R1Press);
     Controller.ButtonR2.pressed(R2Press);
+    button.high(autonUpdate);
+    Brain.Screen.pressed(allianceUpdate);
     thread tempThread = thread(warning);
-    thread selectThread = thread(selector);
+    selector();
     wait(15, msec);
 }

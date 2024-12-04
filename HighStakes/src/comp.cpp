@@ -25,11 +25,11 @@ void drive(void)
 void auton(void)
 {
     if (allianceSelect == 0)
-    {
+    {        
         switch (autonSelect)
-        {    
+        {        
             case 1:
-            {
+            {                                
                 Autons::RedAlliance::run(Autons::Route::fourRingMogo_Corner);
                 break;
             }

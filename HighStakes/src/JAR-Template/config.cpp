@@ -10,6 +10,8 @@
 
 void default_constants(){
   // Each constant set is in the form of (maxVoltage, kP, kI, kD, startI).
+  // TESTED
+  // Constants are not causing the PID issue
   pidDrivetrain.set_drive_constants(12, 1.6, 0, 0, 0);
   pidDrivetrain.set_heading_constants(6, .4, 0, 1, 0);
   pidDrivetrain.set_turn_constants(12, .4, .03, 3, 15);

@@ -311,6 +311,8 @@ void Drive::drive_distance(float distance, float heading, float drive_max_voltag
   while(drivePID.is_settled() == false){
     average_position = (get_left_position_in()+get_right_position_in())/2.0;
     float drive_error = distance+start_average_position-average_position;
+    printf("pos: %f", average_position);
+    printf("\n");
     float heading_error = reduce_negative_180_to_180(heading - get_absolute_heading());
     float drive_output = drivePID.compute(drive_error);
     float heading_output = headingPID.compute(heading_error);
@@ -319,7 +321,7 @@ void Drive::drive_distance(float distance, float heading, float drive_max_voltag
     heading_output = clamp(heading_output, -heading_max_voltage, heading_max_voltage);
 
     drive_with_voltage(drive_output+heading_output, drive_output-heading_output);
-    task::sleep(10);
+    wait(10, msec);
   }
 }
 
