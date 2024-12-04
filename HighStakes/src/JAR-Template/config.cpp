@@ -17,8 +17,8 @@ void default_constants(){
 
   // Each exit condition set is in the form of (settle_error, settle_time, timeout).
   pidDrivetrain.set_drive_exit_conditions(1, 300, 950);
-  pidDrivetrain.set_turn_exit_conditions(1, 300, 800);
-  pidDrivetrain.set_swing_exit_conditions(1, 300, 800);
+  pidDrivetrain.set_turn_exit_conditions(5, 300, 800);
+  pidDrivetrain.set_swing_exit_conditions(5, 300, 800);
 }
 
 /**
