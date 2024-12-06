@@ -49,13 +49,12 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 10; // tweak this u
 
             // back into the mobile goal and drop match load ring
             pidDrivetrain.turn_to_angle(30);
-            pidDrivetrain.drive_distance(-21.6);
-            pidDrivetrain.drive_distance(-20); // tweak this depending on where the robot starts on the line
-            //waitUntil(pidDrivetrain.is_settled());
+            pidDrivetrain.drive_distance(-41.6); // tweak this depending on where the robot starts on the line
             mobileGoalLock.set(true);
+            wait(500, msec);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(1500, msec);
+            wait(1000, msec);
 
             // turn and drive forwards for ring 2
             pidDrivetrain.turn_to_angle(90);
@@ -69,21 +68,19 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 10; // tweak this u
             // turn and drive into ring 3 on the line
             pidDrivetrain.turn_to_angle(180 + clusterAngle);
             pidDrivetrain.drive_distance(clusterDist);
-            wait(1000, msec);
+            wait(750, msec);
 
             // turn and drive into ring 4
             pidDrivetrain.drive_distance(-1 * clusterDist);
             pidDrivetrain.turn_to_angle(180 - clusterAngle);
             pidDrivetrain.drive_distance(clusterDist);
-            wait(500, msec);
+            wait(750, msec);
             pidDrivetrain.drive_distance(-1 * clusterDist);
             intakeMotors.stop();
 
             // turning and driving into the corner
             pidDrivetrain.turn_to_angle(291.8);
-            pidDrivetrain.drive_distance(30);
-            pidDrivetrain.drive_distance(30);
-            //pidDrivetrain.drive_distance(129.2 - 60); // tweak this until the robot doesn't completely ram into the corner
+            pidDrivetrain.drive_distance(129.2 - 60); // tweak this until the robot doesn't completely ram into the corner
             // this auton ends with the intake facing the corner. can be easily changed.
 
             break;
