@@ -36,6 +36,7 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 10; // tweak this u
             pidDrivetrain.drive_distance(1);
             pidDrivetrain.turn_to_angle(0);
             pidDrivetrain.drive_distance(12);
+            break;
         }
         case Autons::Route::fourRingMogo_Corner:
         {

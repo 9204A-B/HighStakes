@@ -28,6 +28,7 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 0; // tweak this un
         case Autons::Route::test:
         {
             // blue testing slot
+            break;
         }
         case Autons::Route::fourRingMogo_Corner:
         {
@@ -109,6 +110,7 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 0; // tweak this un
             // turn and drive into the ladder
             pidDrivetrain.turn_to_angle(360 - 270);
             pidDrivetrain.drive_distance(24 - 5); // tweak until the robot doesn't break itself on the ladder
+            break;
         }
         case Autons::Route::mogoSide_Corner:
         {
