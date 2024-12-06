@@ -49,9 +49,11 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 10; // tweak this u
 
             // back into the mobile goal and drop match load ring
             pidDrivetrain.turn_to_angle(30);
-            pidDrivetrain.drive_distance(-41.6 + 0); // tweak this depending on where the robot starts on the line
+            pidDrivetrain.drive_distance(-21.6);
+            pidDrivetrain.drive_distance(-20); // tweak this depending on where the robot starts on the line
             //waitUntil(pidDrivetrain.is_settled());
             mobileGoalLock.set(true);
+            intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
             wait(1500, msec);
 
@@ -79,7 +81,9 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 10; // tweak this u
 
             // turning and driving into the corner
             pidDrivetrain.turn_to_angle(291.8);
-            pidDrivetrain.drive_distance(129.2 - 60); // tweak this until the robot doesn't completely ram into the corner
+            pidDrivetrain.drive_distance(30);
+            pidDrivetrain.drive_distance(30);
+            //pidDrivetrain.drive_distance(129.2 - 60); // tweak this until the robot doesn't completely ram into the corner
             // this auton ends with the intake facing the corner. can be easily changed.
 
             break;
