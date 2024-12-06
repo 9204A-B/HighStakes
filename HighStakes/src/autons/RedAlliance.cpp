@@ -11,13 +11,13 @@ namespace Autons
 // i might just do that after changing out all the turning functions, its a pretty easy fix.
 
 // these are values for grabbing the two rings on the auton line.
-float clusterTarget = 3.5; // this is currently aimed right at the center of the ring. increase to make it further from where the two rings touch.
+float clusterTarget = 3.2; // this is currently aimed right at the center of the ring. increase to make it further from where the two rings touch.
 // 3.5 aims for dead-center on the ring. tweak this until the other ring doesn't get knocked too badly
 
 float clusterAngleRad = atan(clusterTarget / 24);
 float clusterAngle = clusterAngleRad * (360 / 3.141); // this is in degrees now
 
-float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 10; // tweak this until the robot doesn't go over the auton line
+float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 11; // tweak this until the robot doesn't go over the auton line
 // you should only be tweaking clusterTarget and clusterDist
         default_constants();
         switch (route)
@@ -49,8 +49,10 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 10; // tweak this u
 
             // back into the mobile goal and drop match load ring
             pidDrivetrain.turn_to_angle(30);
+            pidDrivetrain.drive_max_voltage = 8;
             pidDrivetrain.drive_distance(-41.6); // tweak this depending on where the robot starts on the line
             mobileGoalLock.set(true);
+            pidDrivetrain.drive_max_voltage = 12;
             wait(500, msec);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
@@ -58,7 +60,7 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 10; // tweak this u
 
             // turn and drive forwards for ring 2
             pidDrivetrain.turn_to_angle(90);
-            pidDrivetrain.drive_distance(24);
+            pidDrivetrain.drive_distance(27);
             //waitUntil(pidDrivetrain.is_settled());
             wait(1000, msec);
 
@@ -74,13 +76,13 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 10; // tweak this u
             pidDrivetrain.drive_distance(-1 * clusterDist);
             pidDrivetrain.turn_to_angle(180 - clusterAngle);
             pidDrivetrain.drive_distance(clusterDist);
-            wait(750, msec);
+            wait(1500, msec);
             pidDrivetrain.drive_distance(-1 * clusterDist);
             intakeMotors.stop();
 
             // turning and driving into the corner
             pidDrivetrain.turn_to_angle(291.8);
-            pidDrivetrain.drive_distance(129.2 - 60); // tweak this until the robot doesn't completely ram into the corner
+            pidDrivetrain.drive_distance(129.2 - 75); // tweak this until the robot doesn't completely ram into the corner
             // this auton ends with the intake facing the corner. can be easily changed.
 
             break;
@@ -122,7 +124,7 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 10; // tweak this u
 
             // turning and driving into the ladder
             pidDrivetrain.turn_to_angle(270);
-            pidDrivetrain.drive_distance(24 - 5); // tweak until the robot doesn't break itself on the ladder
+            pidDrivetrain.drive_distance(48 - 5); // tweak until the robot doesn't break itself on the ladder
 
             break;
         }
