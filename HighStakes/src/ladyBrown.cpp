@@ -9,8 +9,8 @@ void ladybrown()
     float timeout = 500;
     float kp = .375;
     float ki = .03;
-    float kd = 2.4;
-    float starti = 1.5;
+    float kd = .4;
+    float starti = 0;
 
     while (true)
     {
@@ -55,7 +55,7 @@ void ladybrown()
             wait(5, msec);
         }
 
-        Drive::MotorTurn(lb, -230, max_voltage, settle_error, settle_time, timeout, kp, ki, kd, starti);
+        Drive::MotorTurn(lb, -233.5, max_voltage, settle_error, settle_time, timeout, kp, ki, kd, starti);
         lb.setBrake(coast);
         // Wait until release
         while (Controller.ButtonRight.pressing())
