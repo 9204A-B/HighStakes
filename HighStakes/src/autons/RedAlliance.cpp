@@ -17,7 +17,7 @@ float clusterTarget = 3.2; // this is currently aimed right at the center of the
 float clusterAngleRad = atan(clusterTarget / 24);
 float clusterAngle = clusterAngleRad * (360 / 3.141); // this is in degrees now
 
-float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 11; // tweak this until the robot doesn't go over the auton line
+float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 11.5; // tweak this until the robot doesn't go over the auton line
 // you should only be tweaking clusterTarget and clusterDist
         default_constants();
         switch (route)
@@ -60,15 +60,15 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 11; // tweak this u
 
             // turn and drive forwards for ring 2
             pidDrivetrain.turn_to_angle(90);
-            pidDrivetrain.drive_distance(27);
+            pidDrivetrain.drive_distance(28);
             //waitUntil(pidDrivetrain.is_settled());
-            wait(1000, msec);
+            wait(1500, msec);
 
             // update: i've decided to just turn and drive towards the ring from the previous ring's position.
             // it's painfully slow, but that's the best i can do without access to the robot
 
             // turn and drive into ring 3 on the line
-            pidDrivetrain.turn_to_angle(180 + clusterAngle);
+            pidDrivetrain.turn_to_angle(180 + clusterAngle - 10);
             pidDrivetrain.drive_distance(clusterDist);
             wait(750, msec);
 
@@ -135,18 +135,21 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 11; // tweak this u
             // finishes in the corner
 
             // get mogo and drop match load
-            pidDrivetrain.drive_distance(-36);
-            pidDrivetrain.turn_to_angle(270);
-            pidDrivetrain.drive_distance(-12);
+            pidDrivetrain.turn_to_angle(330);
+            pidDrivetrain.drive_distance(-41.6);
             mobileGoalLock.set(true);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(500, msec);
+            wait(1000, msec);
+            pidDrivetrain.turn_to_angle(270);
+            pidDrivetrain.drive_distance(24);
+            wait(2000, msec);
+            intakeMotors.stop();
 
             // intake ring 2 and driving into the corner
-            pidDrivetrain.drive_distance(36);
+            pidDrivetrain.drive_distance(12);
             pidDrivetrain.turn_to_angle(0);
-            pidDrivetrain.drive_distance(24);
+            pidDrivetrain.drive_distance(12);
 
             break;
         }
