@@ -96,8 +96,4 @@ void auton(void)
             }
         }
     }
-    else
-    {
-        Autons::Skills::run();
-    }
 }
