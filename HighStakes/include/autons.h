@@ -38,11 +38,5 @@ namespace Autons
     public:
         static void run(Autons::Route Route);
     };
-
-    class Skills
-    {
-    public:
-        static void run();
-    };
 }
 #endif

@@ -75,17 +75,11 @@ void selector(void)
                 Brain.Screen.print("Blue test slot");
             }
         }
-        else if (allianceSelect == 2)
-        {
-            Brain.Screen.setPenColor(vex::color::purple);
-            Brain.Screen.clearLine(2);
-            Brain.Screen.print("Programming Skills");
-        }
 }
 
 void allianceUpdate(void)
 {
-    if (allianceSelect == 2)
+    if (allianceSelect == 1)
     {
         allianceSelect = 0;
         return;
