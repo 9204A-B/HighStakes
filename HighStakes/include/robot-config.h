@@ -29,6 +29,7 @@ extern bool intakeForward;
 extern bool intakeReverse;
 
 extern motor lb;
+extern distance lbDistance;
 
 extern digital_out Doinker;
 

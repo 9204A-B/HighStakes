@@ -16,76 +16,62 @@ void ladybrown()
     {
 
         lb.setMaxTorque(100, percent);
-        lb.setBrake(coast);
+        lb.setStopping(coast);
 
-        while (true)
+        lb.setVelocity(80, percent);
+
+        while (!Controller.ButtonRight.pressing())
         {
-            lb.setVelocity(60, percent);
-
-            if (Controller.ButtonUp.pressing())
-            {
-                lb.spin(forward);
-                lb.setBrake(hold);                
-            }
-            else if (Controller.ButtonDown.pressing())
-            {
-                lb.spin(reverse);
-                lb.setBrake(coast);
-            }
-            else{
-                lb.stop();
-            }
             wait(5, msec);
         }
 
-        // lb.setVelocity(80, percent);
+        while (lbDistance.objectDistance(mm) < 70)
+        {
+            lb.setVelocity(25, percent);
+            lb.spin(forward);
+            wait(5, msec);
+        }       
+        lb.stop(hold);    
 
-        // while (!Controller.ButtonRight.pressing())
-        // {
-        //     wait(5, msec);
-        // }
+        while (Controller.ButtonRight.pressing())
+        {
+            wait(5, msec);
+        }
 
-        // lb.setBrake(hold);        
-        // Drive::MotorTurn(lb, 43.5, max_voltage, settle_error, settle_time, timeout, kp, ki, kd, starti);
-        // lb.setBrake(hold);        
-        // //Braking is still being set to brake and not hold after adding PID
-
-        // // Wait until button is let go
-        // while (Controller.ButtonRight.pressing())
-        // {
-        //     wait(5, msec);
-        // }
-
-        // // Wait until button is pressed again
-        // while (!Controller.ButtonRight.pressing())
-        // {
-        //     wait(5, msec);
-        // }
-
-        // Drive::MotorTurn(lb, 190, max_voltage, settle_error, settle_time, timeout, kp, ki, kd, starti);
-        // wait(.5, sec);
-
-        // lb.stop(coast);
+        // Wait until button is pressed again
+        while (!Controller.ButtonRight.pressing())
+        {
+            wait(5, msec);
+        }
         
-        // // Wait until button is released
-        // while (Controller.ButtonRight.pressing())
-        // {
-        //     wait(5, msec);
-        // }
+        lb.setVelocity(80, percent);
+        lb.spinFor(.5, sec);
+        wait(.5, sec);
 
-        // // Wait until button is pressed again
-        // while (!Controller.ButtonRight.pressing())
-        // {
-        //     wait(5, msec);
-        // }
+        lb.setStopping(coast);
+        
+        // Wait until button is released
+        while (Controller.ButtonRight.pressing())
+        {
+            wait(5, msec);
+        }
 
-        // Drive::MotorTurn(lb, -233.5, max_voltage, settle_error, settle_time, timeout, kp, ki, kd, starti);
-        // lb.setBrake(coast);
-        // // Wait until release
-        // while (Controller.ButtonRight.pressing())
-        // {
-        //     wait(5, msec);
-        // }
-        // lb.resetPosition();   
+        // Wait until button is pressed again
+        while (!Controller.ButtonRight.pressing())
+        {
+            wait(5, msec);
+        }
+
+        lb.setStopping(coast);
+        while (lbDistance.objectDistance(mm) > 40)
+        {
+            lb.spin(reverse);
+        }
+        lb.stop();
+        // Wait until release
+        while (Controller.ButtonRight.pressing())
+        {
+            wait(5, msec);
+        } 
     }
 }
