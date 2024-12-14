@@ -7,18 +7,6 @@ namespace Autons
     void RedAlliance::run(Autons::Route route)
     {
         // in JAR template, positive angles -> clockwise, negative -> counter-clockwise
-        // if we want the robot to start with the clamp already pointed at the goal, **ADD** 30 from all .turn_to_angle() functions.
-        // i might just do that after changing out all the turning functions, its a pretty easy fix.
-
-        // these are values for grabbing the two rings on the auton line.
-        float clusterTarget = 3.2; // this is currently aimed right at the center of the ring. increase to make it further from where the two rings touch.
-        // 3.5 aims for dead-center on the ring. tweak this until the other ring doesn't get knocked too badly
-
-        float clusterAngleRad = atan(clusterTarget / 24);
-        float clusterAngle = clusterAngleRad * (360 / 3.141); // this is in degrees now
-
-        float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 11.5; // tweak this until the robot doesn't go over the auton line
-        // you should only be tweaking clusterTarget and clusterDist
         default_constants();
         switch (route)
         {
@@ -28,22 +16,26 @@ namespace Autons
         }
         case Autons::Route::red_ClusterStart:
         {
+            pidDrivetrain.drive_max_voltage = 12;
+            pidDrivetrain.turn_max_voltage = 12;
+
             // ladybrown to score preload onto alliance
             pidDrivetrain.set_heading(-30);
             // [ladybrown scoring position]
 
             // clamp mobile goal
             pidDrivetrain.turn_to_angle(0);
-            pidDrivetrain.drive_distance(36 - 20.78);
+            pidDrivetrain.drive_distance(36 - 20.8);
             pidDrivetrain.turn_to_angle(30);
             // [ladybrown resting position]
+            pidDrivetrain.drive_max_voltage = 8;
             pidDrivetrain.drive_distance(-24);
             mobileGoalLock.set(true);
 
             // turn and drive forwards for ring 2
+            pidDrivetrain.drive_max_voltage = 12;
             pidDrivetrain.turn_to_angle(90);
             pidDrivetrain.drive_distance(24 + 3.5);
-            // waitUntil(pidDrivetrain.is_settled());
             wait(1500, msec);
 
             // getting ring 3
@@ -64,9 +56,6 @@ namespace Autons
             // starting on the left
             // gets 4 rings onto a mobile goal
             // SOLO AWP :D
-
-            pidDrivetrain.drive_max_voltage = 12;
-            pidDrivetrain.turn_max_voltage = 9;
 
             RedAlliance::run(Autons::Route::red_ClusterStart);
 
