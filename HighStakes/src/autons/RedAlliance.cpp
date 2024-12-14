@@ -26,15 +26,8 @@ namespace Autons
         {
             // red alliance test slot
         }
-        case Autons::Route::soloAWP:
+        case Autons::Route::red_ClusterStart:
         {
-            // starting on the left
-            // gets 4 rings onto a mobile goal
-            // ends in positive corner
-
-            pidDrivetrain.drive_max_voltage = 12;
-            pidDrivetrain.turn_max_voltage = 9;
-
             // ladybrown to score preload onto alliance
             pidDrivetrain.set_heading(-30);
             // [ladybrown scoring position]
@@ -62,9 +55,20 @@ namespace Autons
             // getting ring 4
             pidDrivetrain.turn_to_angle(30);
             float clusterTrim2 = 5;
-            pidDrivetrain.drive_distance(13.89 - clusterTrim2);
-            pidDrivetrain.drive_distance(-1 * (13.89 - clusterTrim2));
+            pidDrivetrain.drive_distance(13.9 - clusterTrim2);
+            pidDrivetrain.drive_distance(-1 * (13.9 - clusterTrim2));
             intakeMotors.stop();
+        }
+        case Autons::Route::soloAWP:
+        {
+            // starting on the left
+            // gets 4 rings onto a mobile goal
+            // SOLO AWP :D
+
+            pidDrivetrain.drive_max_voltage = 12;
+            pidDrivetrain.turn_max_voltage = 9;
+
+            RedAlliance::run(Autons::Route::red_ClusterStart);
 
             // ladder touch
             // [ladybrown scoring position]
@@ -72,44 +76,20 @@ namespace Autons
 
             break;
         }
-        case Autons::Route::fourRingMogo_Ladder:
+        case Autons::Route::fourRing_Corner:
         {
             // starting on the left
             // gets 4 rings onto a mobile goal
-            // ends touching ladder
+            // nearer to positive corner
 
-            // back into the mobile goal and drop match load ring
-            pidDrivetrain.turn_to_angle(30);
-            pidDrivetrain.drive_distance(-41.6 + 0); // tweak this depending on where the robot starts on the line
-            mobileGoalLock.set(true);
-            intakeMotors.setVelocity(intakeSpeed, percent);
-            intakeMotors.spin(forward);
-            wait(500, msec);
+            pidDrivetrain.drive_max_voltage = 12;
+            pidDrivetrain.turn_max_voltage = 9;
 
-            // turn and drive forwards for ring 2
-            pidDrivetrain.turn_to_angle(90);
-            pidDrivetrain.drive_distance(24);
-            wait(500, msec);
+            RedAlliance::run(Autons::Route::red_ClusterStart);
 
-            // update: i've decided to just turn and drive towards the ring from the previous ring's position.
-            // it's painfully slow, but that's the best i can do without access to the robot
-
-            // turn and drive into ring 3 on the line
-            pidDrivetrain.turn_to_angle(180 + clusterAngle);
-            pidDrivetrain.drive_distance(clusterDist);
-            wait(500, msec);
-
-            // turn and drive into ring 4
-            pidDrivetrain.drive_distance(-1 * clusterDist);
-            pidDrivetrain.turn_to_angle(180 - clusterAngle);
-            pidDrivetrain.drive_distance(clusterDist);
-            wait(500, msec);
-            pidDrivetrain.drive_distance(-1 * clusterDist);
-            intakeMotors.stop();
-
-            // turning and driving into the ladder
-            pidDrivetrain.turn_to_angle(270);
-            pidDrivetrain.drive_distance(48 - 5); // tweak until the robot doesn't break itself on the ladder
+            // drive to corner
+            pidDrivetrain.turn_to_angle(270 + 26.6);
+            pidDrivetrain.drive_distance(53.7);
 
             break;
         }
