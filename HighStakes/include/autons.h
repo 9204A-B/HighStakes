@@ -18,8 +18,8 @@ namespace Autons
 
     enum Route
     {
-        fourRingMogo_Corner,
-        fourRingMogo_Ladder,
+        soloAWP,
+        fourRing_Corner,
         mogoSide_Corner,
         mogoSide_Ladder,
         mogoSide_GoalRush_Corner,
