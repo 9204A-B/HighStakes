@@ -13,6 +13,37 @@ namespace Autons
         case Autons::Route::test:
         {
             // red alliance test slot
+
+            // PID drift testing
+
+            // change max voltage here
+            pidDrivetrain.drive_max_voltage = 12;
+            pidDrivetrain.turn_max_voltage = 12;
+
+            // and timeouts
+            pidDrivetrain.drive_timeout = 3000;
+            pidDrivetrain.turn_timeout = 3000;
+
+            // does 2 laps around the ladder
+            pidDrivetrain.drive_distance(96);
+            pidDrivetrain.turn_to_angle(90);
+            pidDrivetrain.drive_distance(96);
+            pidDrivetrain.turn_to_angle(180);
+            pidDrivetrain.drive_distance(96);
+            pidDrivetrain.turn_to_angle(270);
+            pidDrivetrain.drive_distance(96);
+            pidDrivetrain.turn_to_angle(0);
+
+            pidDrivetrain.drive_distance(96);
+            pidDrivetrain.turn_to_angle(90);
+            pidDrivetrain.drive_distance(96);
+            pidDrivetrain.turn_to_angle(180);
+            pidDrivetrain.drive_distance(96);
+            pidDrivetrain.turn_to_angle(270);
+            pidDrivetrain.drive_distance(96);
+            pidDrivetrain.turn_to_angle(0);
+
+            // complete 2 laps, and then measure distance from original location
         }
         case Autons::Route::red_ClusterStart:
         {
