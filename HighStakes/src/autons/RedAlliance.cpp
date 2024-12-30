@@ -47,20 +47,38 @@ namespace Autons
         }
         case Autons::Route::red_ClusterStart:
         {
+            // starting position variables
+            // only tweak startX, startY, startRot, and goalPoint please and thank you
+            // startX and Y are measured from the center of the robot, so add 7.5" as needed when measuring
+            // startX is number of inches to the LEFT of the center line / alliance stake
+            // startY is number of inches from the wall
+            // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
+            float startX = 12;
+            float startY = 12;
+            float startRot = -30;
+
+            // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
+            float goalPoint = 12;
+
+            float goalNodeHeading = -1 * atan((24 - goalPoint - startX) / (48 - goalPoint * 1.73 - startY)) * (180 / 3.14);
+            float goalNodeDist = sqrt(pow(24 - goalPoint - startX, 2) + pow(48 - goalPoint * 1.73 - startY, 2));
+            float nodeToGoal = 0.5 / goalPoint;
+
             pidDrivetrain.drive_max_voltage = 12;
             pidDrivetrain.turn_max_voltage = 12;
 
             // ladybrown to score preload onto alliance
-            pidDrivetrain.set_heading(-30);
+            pidDrivetrain.set_heading(startRot);
             // [ladybrown scoring position]
 
-            // clamp mobile goal
-            pidDrivetrain.turn_to_angle(0);
-            pidDrivetrain.drive_distance(36 - 20.8);
-            pidDrivetrain.turn_to_angle(30);
+            // drive to goal node
+            pidDrivetrain.turn_to_angle(goalNodeHeading);
+            pidDrivetrain.drive_distance(-1 * goalNodeDist);
+
+            // drive to goal and clamp
+            pidDrivetrain.drive_distance(-1 * nodeToGoal);
+            mobileGoalLock.set(true);
             // [ladybrown resting position]
-            pidDrivetrain.drive_max_voltage = 8;
-            pidDrivetrain.drive_distance(-24);
             mobileGoalLock.set(true);
 
             // turn and drive forwards for ring 2
