@@ -76,6 +76,7 @@ namespace Autons
             pidDrivetrain.drive_distance(-1 * goalNodeDist);
 
             // drive to goal and clamp
+            pidDrivetrain.turn_to_angle(-60);
             pidDrivetrain.drive_distance(-1 * nodeToGoal);
             mobileGoalLock.set(true);
             // [ladybrown resting position]
