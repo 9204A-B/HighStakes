@@ -116,8 +116,21 @@ namespace Autons
         pidDrivetrain.drive_distance(-24);
         mobileGoalLock.set(true);
 
-        // 2 rings on the left on far half
-        pidDrivetrain.turn_to_angle(45);
+        // 1 ring + 3 from top left corner
+        pidDrivetrain.turn_to_angle(90 + 45);
         intakeMotors.spin(forward);
+        pidDrivetrain.drive_distance(33.9);
+        pidDrivetrain.turn_to_angle(180);
+        pidDrivetrain.drive_distance(12);
+        pidDrivetrain.drive_distance(-12);
+        pidDrivetrain.turn_to_angle(90);
+        pidDrivetrain.drive_distance(12);
+        pidDrivetarin.drive_distance(-12);
+
+        // final ring
+        pidDrivetrain.turn_to_angle(0);
+        pidDrivetrain.drive_distance(24);
+
+        // drop final goal
     }
 }
