@@ -15,6 +15,7 @@ namespace Autons
 
         intakeMotors.spin(reverse);
         wait(500, msec);
+        intakeMotors.stop();
         pidDrivetrain.drive_distance(12); // tweak this number until the robot is perfectly centered on the start line
     }
 }

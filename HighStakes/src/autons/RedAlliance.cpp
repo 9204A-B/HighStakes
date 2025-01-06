@@ -66,10 +66,12 @@ namespace Autons
 
             pidDrivetrain.drive_max_voltage = 12;
             pidDrivetrain.turn_max_voltage = 12;
+            intakeMotors.setVelocity(intakeSpeed, percent);
 
             // ladybrown to score preload onto alliance
             pidDrivetrain.set_heading(startRot);
             // [ladybrown scoring position]
+            // [ladybrown resting position]
 
             // drive to goal node
             pidDrivetrain.turn_to_angle(goalNodeHeading);
@@ -77,13 +79,13 @@ namespace Autons
 
             // drive to goal and clamp
             pidDrivetrain.turn_to_angle(-60);
+            pidDrivetrain.drive_max_voltage(6);
             pidDrivetrain.drive_distance(-1 * nodeToGoal);
-            mobileGoalLock.set(true);
-            // [ladybrown resting position]
             mobileGoalLock.set(true);
 
             // turn and drive forwards for ring 2
             pidDrivetrain.drive_max_voltage = 12;
+            intakeMotors.spin(forward);
             pidDrivetrain.turn_to_angle(90);
             pidDrivetrain.drive_distance(24 + 3.5);
             wait(1500, msec);
