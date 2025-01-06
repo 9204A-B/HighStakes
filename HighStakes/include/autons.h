@@ -20,11 +20,8 @@ namespace Autons
     {
         red_ClusterStart,
         soloAWP,
-        fourRing_Corner,
         mogoSide_Corner,
         mogoSide_Ladder,
-        mogoSide_GoalRush_Corner,
-        mogoSide_GoalRush_Ladder,
         test
     };
 
@@ -38,6 +35,12 @@ namespace Autons
     {
     public:
         static void run(Autons::Route Route);
+    };
+
+    class Skills
+    {
+    public:
+        static void run();
     };
 }
 #endif

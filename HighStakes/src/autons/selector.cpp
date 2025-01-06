@@ -79,7 +79,7 @@ void allianceUpdate(void)
 
 void autonUpdate(void)
 {
-    if (autonSelect == 6)
+    if (autonSelect == 4)
     {
         autonSelect = 0;
         return;
