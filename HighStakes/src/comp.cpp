@@ -25,75 +25,73 @@ void drive(void)
 void auton(void)
 {
     if (allianceSelect == 0)
-    {        
-        switch (autonSelect)
-        {        
-            case 1:
-            {
-                Autons::RedAlliance::run(Autons::Route::fourRingMogo_Corner);
-                break;
-            }
-            case 2:
-            {
-                Autons::RedAlliance::run(Autons::Route::fourRingMogo_Ladder);
-                break;
-            }
-            case 3:
-            {
-                Autons::RedAlliance::run(Autons::Route::mogoSide_Corner);
-                break;
-            }
-            case 4:
-            {
-                Autons::RedAlliance::run(Autons::Route::mogoSide_Ladder);
-                break;
-            }
-            case 5:
-            {
-                Autons::RedAlliance::run(Autons::Route::mogoSide_GoalRush_Corner);
-                break;
-            }
-            case 6:
-            {
-                Autons::RedAlliance::run(Autons::Route::mogoSide_GoalRush_Ladder);
-                break;
-            }
-        }   
+    {
+        Autons::Skills::run();
     }
     else if (allianceSelect == 1)
     {
         switch (autonSelect)
         {
-            case 1:
-            {
-                Autons::BlueAlliance::run(Autons::Route::fourRingMogo_Corner);
-                break;
-            }
-            case 2:
-            {
-                Autons::BlueAlliance::run(Autons::Route::fourRingMogo_Ladder);
-                break;
-            }
-            case 3:
-            {
-                Autons::BlueAlliance::run(Autons::Route::mogoSide_Corner);
-                break;
-            }
-            case 4:
-            {
-                Autons::BlueAlliance::run(Autons::Route::mogoSide_Ladder);
-                break;
-            }
-            case 5:
-            {
-                Autons::BlueAlliance::run(Autons::Route::mogoSide_GoalRush_Corner);
-                break;
-            }
-            case 6:
-            {
-                Autons::BlueAlliance::run(Autons::Route::mogoSide_GoalRush_Ladder);
-                break;
-            }
+        case 0:
+        {
+            Autons::RedAlliance::run(Autons::Route::test);
+        }
+        case 1:
+        {
+            Autons::RedAlliance::run(Autons::Route::soloAWP);
+            break;
+        }
+        case 2:
+        {
+            Autons::RedAlliance::run(Autons::Route::fourRing_Corner);
+            break;
+        }
+        case 3:
+        {
+            Autons::RedAlliance::run(Autons::Route::mogoSide_Corner);
+            break;
+        }
+        case 4:
+        {
+            Autons::RedAlliance::run(Autons::Route::mogoSide_Ladder);
+            break;
+        }
+        }
+    }
+    else if (allianceSelect == 2)
+    {
+        switch (autonSelect)
+        {
+        case 1:
+        {
+            Autons::BlueAlliance::run(Autons::Route::fourRingMogo_Corner);
+            break;
+        }
+        case 2:
+        {
+            Autons::BlueAlliance::run(Autons::Route::fourRingMogo_Ladder);
+            break;
+        }
+        case 3:
+        {
+            Autons::BlueAlliance::run(Autons::Route::mogoSide_Corner);
+            break;
+        }
+        case 4:
+        {
+            Autons::BlueAlliance::run(Autons::Route::mogoSide_Ladder);
+            break;
+        }
+        case 5:
+        {
+            Autons::BlueAlliance::run(Autons::Route::mogoSide_GoalRush_Corner);
+            break;
+        }
+        case 6:
+        {
+            Autons::BlueAlliance::run(Autons::Route::mogoSide_GoalRush_Ladder);
+            break;
+        }
         }
     }
 }

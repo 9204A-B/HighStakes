@@ -20,6 +20,7 @@ namespace Autons
     {
         red_ClusterStart,
         soloAWP,
+        fourRing_Corner,
         mogoSide_Corner,
         mogoSide_Ladder,
         test
