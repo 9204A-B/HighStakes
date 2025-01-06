@@ -56,7 +56,7 @@ namespace Autons
         pidDrivetrain.drive_max_voltage = 12;
         pidDrivetrain.turn_max_voltage = 12;
 
-        float goalDropDist1 = (33.9 - 7.5 - 10 - 3); // 7.5 is half the lenth of the robot, 10 is the length of the goal. tweak more if needed.
+        float goalDropDist1 = 33.9 - 7.5 - 10 - 3; // 7.5 is half the lenth of the robot, 10 is the length of the goal. tweak more if needed.
         pidDrivetrain.turn_to_angle(180 + 45);
         pidDrivetrain.drive_distance(-1 * goalDropDist1);
         mobileGoalLock.set(false);
@@ -132,5 +132,11 @@ namespace Autons
         pidDrivetrain.drive_distance(24);
 
         // drop final goal
+        pidDrivetrain.turn_to_angle(-26.6);
+        float goalDropDist2 = goalDropDist1 + 26.8; // 7.5 is half the lenth of the robot, 10 is the length of the goal. tweak more if needed.
+        pidDrivetrain.drive_distance(-1 * goalDropDist2);
+        pidDrdivetrain.drive_distance(goalDropDist1);
+
+        // clamp final goal
     }
 }
