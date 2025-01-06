@@ -7,20 +7,20 @@ namespace Autons
     void BlueAlliance::run(Autons::Route route)
     {
         // in JAR template, positive angles -> clockwise, negative -> counter-clockwise
-// if we want the robot to start with the clamp already pointed at the goal, **ADD** 30 from all .turn_to_angle() functions.
-// i might just do that after changing out all the turning functions, its a pretty easy fix.
+        // if we want the robot to start with the clamp already pointed at the goal, **ADD** 30 from all .turn_to_angle() functions.
+        // i might just do that after changing out all the turning functions, its a pretty easy fix.
 
-// these are values for grabbing the two rings on the auton line.
-float clusterTarget = 3.5; // this is currently aimed right at the center of the ring. increase to make it further from where the two rings touch.
-// 3.5 aims for dead-center on the ring. tweak this until the other ring doesn't get knocked too badly
+        // these are values for grabbing the two rings on the auton line.
+        float clusterTarget = 3.5; // this is currently aimed right at the center of the ring. increase to make it further from where the two rings touch.
+        // 3.5 aims for dead-center on the ring. tweak this until the other ring doesn't get knocked too badly
 
-float clusterAngleRad = atan(clusterTarget / 24);
-float clusterAngle = clusterAngleRad * (360 / 3.141); // this is in degrees now
+        float clusterAngleRad = atan(clusterTarget / 24);
+        float clusterAngle = clusterAngleRad * (360 / 3.141); // this is in degrees now
 
-float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 12.5; // tweak this until the robot doesn't go over the auton line
-// you should only be tweaking clusterTarget and clusterDist
+        float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 12.5; // tweak this until the robot doesn't go over the auton line
+                                                                           // you should only be tweaking clusterTarget and clusterDist
 
-// this is literally just the red alliance auton except its 360 - (the angle)
+        // this is literally just the red alliance auton except its 360 - (the angle)
 
         default_constants();
         switch (route)
@@ -29,6 +29,64 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 12.5; // tweak this
         {
             // blue testing slot
             break;
+        }
+        case Autons::Route::blue_ClusterStart:
+        {
+            // starting position variables
+            // only tweak startX, startY, startRot, and goalPoint please and thank you
+            // startX and Y are measured from the center of the robot, so add 7.5" as needed when measuring
+            // startX is number of inches to the LEFT of the center line / alliance stake
+            // startY is number of inches from the wall
+            // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
+            float startX = 12;
+            float startY = 12;
+            float startRot = 30;
+
+            // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
+            float goalPoint = 12;
+
+            float goalNodeHeading = atan((24 - goalPoint - startX) / (48 - goalPoint * 1.73 - startY)) * (180 / 3.14);
+            float goalNodeDist = sqrt(pow(24 - goalPoint - startX, 2) + pow(48 - goalPoint * 1.73 - startY, 2));
+            float nodeToGoal = 0.5 / goalPoint;
+
+            pidDrivetrain.drive_max_voltage = 12;
+            pidDrivetrain.turn_max_voltage = 12;
+            intakeMotors.setVelocity(intakeSpeed, percent);
+
+            // ladybrown to score preload onto alliance
+            pidDrivetrain.set_heading(startRot);
+            // [ladybrown scoring position]
+            // [ladybrown resting position]
+
+            // drive to goal node
+            pidDrivetrain.turn_to_angle(goalNodeHeading);
+            pidDrivetrain.drive_distance(-1 * goalNodeDist);
+
+            // drive to goal and clamp
+            pidDrivetrain.turn_to_angle(30);
+            pidDrivetrain.drive_max_voltage(6);
+            pidDrivetrain.drive_distance(-1 * nodeToGoal);
+            mobileGoalLock.set(true);
+
+            // turn and drive forwards for ring 2
+            pidDrivetrain.drive_max_voltage = 12;
+            intakeMotors.spin(forward);
+            pidDrivetrain.turn_to_angle(-90);
+            pidDrivetrain.drive_distance(24 + 3.5);
+            wait(1500, msec);
+
+            // getting ring 3
+            pidDrivetrain.turn_to_angle(180);
+            float clusterTrim1 = 7.5;
+            pidDrivetrain.drive_distance(24 - clusterTrim1);
+            pidDrivetrain.drive_distance(-1 * (12 - clusterTrim1));
+
+            // getting ring 4
+            pidDrivetrain.turn_to_angle(-30);
+            float clusterTrim2 = 5;
+            pidDrivetrain.drive_distance(13.9 - clusterTrim2);
+            pidDrivetrain.drive_distance(-1 * (13.9 - clusterTrim2));
+            intakeMotors.stop();
         }
         case Autons::Route::fourRingMogo_Corner:
         {
@@ -53,7 +111,7 @@ float clusterDist = (clusterTarget / sin(clusterAngleRad)) - 12.5; // tweak this
             // turn and drive forwards for ring 2
             pidDrivetrain.turn_to_angle(360 - 90);
             pidDrivetrain.drive_distance(26);
-            //waitUntil(pidDrivetrain.is_settled());
+            // waitUntil(pidDrivetrain.is_settled());
             wait(1500, msec);
 
             // update: i've decided to just turn and drive towards the ring from the previous ring's position.
