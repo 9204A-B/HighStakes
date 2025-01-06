@@ -130,13 +130,32 @@ namespace Autons
         // final ring
         pidDrivetrain.turn_to_angle(0);
         pidDrivetrain.drive_distance(24);
+        wait(1000, msec);
 
         // drop final goal
-        pidDrivetrain.turn_to_angle(-26.6);
-        float goalDropDist2 = goalDropDist1 + 26.8; // 7.5 is half the lenth of the robot, 10 is the length of the goal. tweak more if needed.
-        pidDrivetrain.drive_distance(-1 * goalDropDist2);
-        pidDrdivetrain.drive_distance(goalDropDist1);
+        pidDrivetrain.drive_distance(-24);
+        pidDrivetrain.turn_to_angle(-45);
+        pidDrivetrain.drive_distance(-1 * goalDropDist1);
+        mobileGoalLock.set(false);
+        wait(500, msec);
+        pidDrivetrain.drive_distance(goalDropDist1);
 
         // clamp final goal
+        pidDrivetrain.drive_distance(48 + (24 - 6.9));
+        pidDrivetrain.turn_to_angle(30);
+
+        pidDrivetrain.drive_max_voltage = 6;
+
+        pidDrivetrain.drive_distance(-13.9);
+        mobileGoalLock.set(true);
+
+        // drop final goal in corner
+        pidDrivetrain.drive_max_voltage = 12;
+
+        pidDrivetrain.turn_to_angle(90);
+        pidDrivetrain.drive_distance(-1 * (24 - 10)); // tweak this value so that the robot isnt completely shoved into the wall
+        mobileGoalLock.set(false);
+        wait(500, msec);
+        pidDrivetrain.drive_distance(24);
     }
 }
