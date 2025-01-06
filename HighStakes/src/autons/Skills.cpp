@@ -105,5 +105,19 @@ namespace Autons
         mobileGoalLock.set(false);
         wait(500);
         pidDrivetrain.drive_distance(goalDropDist1);
+
+        // clamp third goal
+        pidDrivetrain.turn_to_angle(180 - 14);
+        pidDrivetrain.drive_distance(99);
+        pidDrivetrain.turn_to_angle(-90);
+
+        pidDrivetrain.drive_max_voltage = 6;
+
+        pidDrivetrain.drive_distance(-24);
+        mobileGoalLock.set(true);
+
+        // 2 rings on the left on far half
+        pidDrivetrain.turn_to_angle(45);
+        intakeMotors.spin(forward);
     }
 }
