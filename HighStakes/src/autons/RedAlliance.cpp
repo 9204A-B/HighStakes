@@ -12,7 +12,7 @@ namespace Autons
         {
         case Autons::Route::test:
         {
-            // red alliance test slot
+                // red alliance test slot
 
             // PID drift testing
 
@@ -78,8 +78,8 @@ namespace Autons
             pidDrivetrain.drive_distance(-1 * goalNodeDist);
 
             // drive to goal and clamp
-            pidDrivetrain.turn_to_angle(-30);
-            pidDrivetrain.drive_max_voltage(6);
+            pidDrivetrain.turn_to_angle(-30);            
+            pidDrivetrain.drive_max_voltage = 6;
             pidDrivetrain.drive_distance(-1 * nodeToGoal);
             mobileGoalLock.set(true);
 
@@ -180,3 +180,4 @@ namespace Autons
         }
         }
     }
+}

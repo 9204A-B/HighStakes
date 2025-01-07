@@ -53,7 +53,7 @@ namespace Autons
 
             // drive to goal and clamp
             pidDrivetrain.turn_to_angle(30);
-            pidDrivetrain.drive_max_voltage(6);
+            pidDrivetrain.drive_max_voltage = 6;
             pidDrivetrain.drive_distance(-1 * nodeToGoal);
             mobileGoalLock.set(true);
 
@@ -97,7 +97,7 @@ namespace Autons
             // gets 3 rings onto a mobile goal + alliance
             // nearer to positive corner
 
-            BlueeAlliance::run(Autons::Route::ClusterStart);
+            BlueAlliance::run(Autons::Route::ClusterStart);
 
             // drive to corner
             pidDrivetrain.turn_to_angle(-1 * (270 + 26.6));
@@ -150,3 +150,4 @@ namespace Autons
         }
         }
     }
+}
