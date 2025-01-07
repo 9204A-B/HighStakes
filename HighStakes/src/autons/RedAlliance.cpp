@@ -45,7 +45,7 @@ namespace Autons
 
             // complete 2 laps, and then measure distance from original location
         }
-        case Autons::Route::red_ClusterStart:
+        case Autons::Route::ClusterStart:
         {
             // starting position variables
             // only tweak startX, startY, startRot, and goalPoint please and thank you
@@ -106,10 +106,10 @@ namespace Autons
         case Autons::Route::soloAWP:
         {
             // starting on the left
-            // gets 4 rings onto a mobile goal
+            // gets 3 rings onto a mobile goal + 1 alliance
             // SOLO AWP :D
 
-            RedAlliance::run(Autons::Route::red_ClusterStart);
+            RedAlliance::run(Autons::Route::ClusterStart);
 
             // ladder touch
             // [ladybrown scoring position]
@@ -120,13 +120,10 @@ namespace Autons
         case Autons::Route::fourRing_Corner:
         {
             // starting on the left
-            // gets 4 rings onto a mobile goal
+            // gets 3 rings onto a mobile goal + alliance
             // nearer to positive corner
 
-            pidDrivetrain.drive_max_voltage = 12;
-            pidDrivetrain.turn_max_voltage = 9;
-
-            RedAlliance::run(Autons::Route::red_ClusterStart);
+            RedAlliance::run(Autons::Route::ClusterStart);
 
             // drive to corner
             pidDrivetrain.turn_to_angle(270 + 26.6);
