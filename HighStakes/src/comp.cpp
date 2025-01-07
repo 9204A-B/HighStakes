@@ -62,14 +62,19 @@ void auton(void)
     {
         switch (autonSelect)
         {
+        case 0:
+        {
+            Autons::BlueAlliance::run(Autons::Route::test);
+            break;
+        }
         case 1:
         {
-            Autons::BlueAlliance::run(Autons::Route::fourRingMogo_Corner);
+            Autons::BlueAlliance::run(Autons::Route::soloAWP);
             break;
         }
         case 2:
         {
-            Autons::BlueAlliance::run(Autons::Route::fourRingMogo_Ladder);
+            Autons::BlueAlliance::run(Autons::Route::fourRing_Corner);
             break;
         }
         case 3:
@@ -80,16 +85,6 @@ void auton(void)
         case 4:
         {
             Autons::BlueAlliance::run(Autons::Route::mogoSide_Ladder);
-            break;
-        }
-        case 5:
-        {
-            Autons::BlueAlliance::run(Autons::Route::mogoSide_GoalRush_Corner);
-            break;
-        }
-        case 6:
-        {
-            Autons::BlueAlliance::run(Autons::Route::mogoSide_GoalRush_Ladder);
             break;
         }
         }
