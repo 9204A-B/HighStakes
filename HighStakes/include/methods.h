@@ -10,4 +10,7 @@ void allianceUpdate(void);
 void autonUpdate(void);
 void startTimer(void);
 void ladybrown(void);
+void ladybrownLoading(void);
+void ladybrownScoring(void);
+void ladybrownReset(void);
 void doink(void);

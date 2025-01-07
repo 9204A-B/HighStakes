@@ -7,7 +7,6 @@ void drive(void)
 {
     thread lockThread = thread(lock);
     thread intakeThread = thread(intake);
-    thread lbThread = thread(ladybrown);
     thread timeThread = thread(startTimer);
     thread doinkerThread = thread(doink);
     Drivetrain.setDriveVelocity(100, percent);
