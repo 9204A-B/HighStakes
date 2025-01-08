@@ -53,14 +53,14 @@ namespace Autons
             // startX is number of inches to the LEFT of the center line / alliance stake
             // startY is number of inches from the wall
             // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
-            float startX = 12;
-            float startY = 12;
-            float startRot = -30;
+            float startX = 9;
+            float startY = 11.5;
+            float startRot = -70.5;
 
             // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
             float goalPoint = 12;
-
-            float goalNodeHeading = -1 * atan((24 - goalPoint - startX) / (48 - goalPoint * 1.73 - startY)) * (180 / 3.14);
+            float stupid = (24 - goalPoint - startX) / (48 - goalPoint * 1.73 - startY) * (180 / 3.14);        
+            float goalNodeHeading = -1 * atan2(stupid, 1);
             float goalNodeDist = sqrt(pow(24 - goalPoint - startX, 2) + pow(48 - goalPoint * 1.73 - startY, 2));
             float nodeToGoal = 0.5 / goalPoint;
 
@@ -70,8 +70,9 @@ namespace Autons
 
             // ladybrown to score preload onto alliance
             pidDrivetrain.set_heading(startRot);
-            // [ladybrown scoring position]
-            // [ladybrown resting position]
+            ladybrownScoring();
+            wait(100, msec);
+            ladybrownReset();
 
             // drive to goal node
             pidDrivetrain.turn_to_angle(goalNodeHeading);
