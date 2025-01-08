@@ -1,5 +1,6 @@
 #include "vex.h"
 #include <math.h>
+
 using namespace vex;
 
 namespace Autons
@@ -58,9 +59,8 @@ namespace Autons
             float startRot = -70.5;
 
             // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
-            float goalPoint = 12;
-            float stupid = (24 - goalPoint - startX) / (48 - goalPoint * 1.73 - startY) * (180 / 3.14);        
-            float goalNodeHeading = -1 * atan2(stupid, 1);
+            float goalPoint = 12;                   
+            float goalNodeHeading = -1 * atan((24 - goalPoint - startX) / (48 - goalPoint * 1.73 - startY) * (180 / 3.14));        
             float goalNodeDist = sqrt(pow(24 - goalPoint - startX, 2) + pow(48 - goalPoint * 1.73 - startY, 2));
             float nodeToGoal = 0.5 / goalPoint;
 
