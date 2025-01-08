@@ -62,7 +62,7 @@ namespace Autons
             float goalPoint = 12;                   
             float goalNodeHeading = -1 * atan((24 - goalPoint - startX) / (48 - goalPoint * 1.73 - startY) * (180 / 3.14));        
             float goalNodeDist = sqrt(pow(24 - goalPoint - startX, 2) + pow(48 - goalPoint * 1.73 - startY, 2));
-            float nodeToGoal = 0.5 / goalPoint;
+            float nodeToGoal = 2 * goalPoint;
 
             pidDrivetrain.drive_max_voltage = 12;
             pidDrivetrain.turn_max_voltage = 12;
