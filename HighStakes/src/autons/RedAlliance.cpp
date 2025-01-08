@@ -113,7 +113,7 @@ namespace Autons
             RedAlliance::run(Autons::Route::ClusterStart);
 
             // ladder touch
-            // [ladybrown scoring position]
+            ladybrownScoring();
             pidDrivetrain.drive_distance(36);
 
             break;

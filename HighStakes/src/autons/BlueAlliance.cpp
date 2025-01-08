@@ -44,8 +44,8 @@ namespace Autons
 
             // ladybrown to score preload onto alliance
             pidDrivetrain.set_heading(startRot);
-            // [ladybrown scoring position]
-            // [ladybrown resting position]
+            ladybrownScoring();
+            ladybrownReset();
 
             // drive to goal node
             pidDrivetrain.turn_to_angle(goalNodeHeading);
@@ -86,7 +86,7 @@ namespace Autons
             BlueAlliance::run(Autons::Route::ClusterStart);
 
             // ladder touch
-            // [ladybrown scoring position]
+            ladybrownScoring();
             pidDrivetrain.drive_distance(36);
 
             break;
