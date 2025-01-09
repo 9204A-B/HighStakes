@@ -12,23 +12,24 @@ namespace Autons
         float lowSpeed = 8;
         float goalSpeed = 6;
 
-        pidDrivetrain.drive_max_voltage = maxSpeed;
-        pidDrivetrain.turn_max_voltage = maxSpeed;
+        pidDrivetrain.drive_max_voltage = 12;
+        pidDrivetrain.turn_max_voltage = 12;
         intakeMotors.setVelocity(intakeSpeed, percent);
 
         // score alliance stake and align for first goal
         pidDrivetrain.set_heading(180);
         intakeMotors.spin(forward);
-        wait(1000, msec);
-
+        wait(500, msec);
+        intakeMotors.stop();
         intakeMotors.spin(reverse);
         wait(500, msec);
+
         intakeMotors.stop();
         pidDrivetrain.drive_distance(12); // tweak this number until the robot is perfectly centered on the start line
 
         // clamp goal 1
         pidDrivetrain.turn_to_angle(-90);
-        pidDrivetrain.drive_max_voltage = goalSpeed;
+        pidDrivetrain.drive_max_voltage = 6;
         pidDrivetrain.drive_distance(-24);
         mobileGoalLock.set(true);
 
