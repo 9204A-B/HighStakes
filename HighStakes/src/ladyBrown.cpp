@@ -1,8 +1,10 @@
 #include "vex.h"
 using namespace vex;
 
+int select = 0;
 void ladybrownLoading()
 {
+    select++;
     lb.setMaxTorque(100, percent);
     lb.setVelocity(80, percent);
         
@@ -19,6 +21,7 @@ void ladybrownScoring()
 {    
     if (lbDistance.isObjectDetected())
     {
+        select++;
         lb.setStopping(hold);
         lb.setVelocity(80, percent);
         lb.spinFor(.5, sec);
@@ -28,6 +31,7 @@ void ladybrownScoring()
 
 void ladybrownReset()
 {
+    select = 0;
     while (lbDistance.objectDistance(mm) > 40)
     {
         lb.spin(reverse);
@@ -35,26 +39,22 @@ void ladybrownReset()
     lb.stop(coast);
 }
 
-int select = 0;
 void ladybrown()
 {
     switch (select)
     {
         case 0:
         {
-            select++;
             ladybrownLoading();
             break;
         }
         case 1:
         {
-            select++;
             ladybrownScoring();
             break;
         }
         case 2:
         {
-            select = 0;
             ladybrownReset();
             break;
         }
