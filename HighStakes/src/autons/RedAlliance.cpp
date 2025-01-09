@@ -54,7 +54,7 @@ namespace Autons
             // startX is number of inches to the LEFT of the center line / alliance stake
             // startY is number of inches from the wall
             // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
-            float startX = 9;
+            float startX = 8;
             float startY = 9.5;
             float startRot = -70.5;
 
@@ -71,7 +71,7 @@ namespace Autons
             // ladybrown to score preload onto alliance
             pidDrivetrain.set_heading(startRot);
             ladybrownScoring();
-            wait(100, msec);
+            // wait(100, msec);
             ladybrownReset();
 
             // drive to goal node
@@ -80,7 +80,7 @@ namespace Autons
 
             // drive to goal and clamp
             pidDrivetrain.turn_to_angle(-30);            
-            pidDrivetrain.drive_max_voltage = 6;
+            pidDrivetrain.drive_max_voltage = 8;
             pidDrivetrain.drive_distance(-1 * nodeToGoal);
             mobileGoalLock.set(true);
 
@@ -89,16 +89,16 @@ namespace Autons
             intakeMotors.spin(forward);
             pidDrivetrain.turn_to_angle(90);
             pidDrivetrain.drive_distance(24 + 3.5);
-            wait(1500, msec);
+            // wait(500, msec);
 
             // getting ring 3
             pidDrivetrain.turn_to_angle(180);
-            float clusterTrim1 = 7.5;
+            float clusterTrim1 = 10;
             pidDrivetrain.drive_distance(24 - clusterTrim1);
             pidDrivetrain.drive_distance(-1 * (12 - clusterTrim1));
 
             // getting ring 4
-            pidDrivetrain.turn_to_angle(30);
+            pidDrivetrain.turn_to_angle(180 + 30);
             float clusterTrim2 = 5;
             pidDrivetrain.drive_distance(13.9 - clusterTrim2);
             pidDrivetrain.drive_distance(-1 * (13.9 - clusterTrim2));
