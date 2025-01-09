@@ -76,6 +76,7 @@ namespace Autons
             pidDrivetrain.drive_distance(13.9 - clusterTrim2);
             pidDrivetrain.drive_distance(-1 * (13.9 - clusterTrim2));
             intakeMotors.stop();
+            break;
         }
         case Autons::Route::soloAWP:
         {
