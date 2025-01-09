@@ -19,7 +19,7 @@ void ladybrownScoring()
 {    
     if (lbDistance.isObjectDetected())
     {
-        lb.setStopping(coast);
+        lb.setStopping(hold);
         lb.setVelocity(80, percent);
         lb.spinFor(.5, sec);
         wait(.5, sec);
@@ -28,11 +28,11 @@ void ladybrownScoring()
 
 void ladybrownReset()
 {
-    lb.setStopping(coast);
     while (lbDistance.objectDistance(mm) > 40)
     {
         lb.spin(reverse);
     }
+    lb.stop(coast);
 }
 
 int select = 0;
