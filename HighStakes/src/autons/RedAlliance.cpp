@@ -56,7 +56,7 @@ namespace Autons
             // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
             float startX = 8;
             float startY = 11;
-            float startRot = -89;
+            float startRot = -79;
 
             // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
             float goalPoint = 12;                   
