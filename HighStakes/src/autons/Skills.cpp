@@ -22,9 +22,11 @@ namespace Autons
         wait(500, msec);
         intakeMotors.stop();
         intakeMotors.spin(reverse);
+        printf("intake reversing");
         wait(500, msec);
-
+        printf("before intake stop");
         intakeMotors.stop();
+        printf("intake stop");
         pidDrivetrain.drive_distance(12); // tweak this number until the robot is perfectly centered on the start line
 
         // clamp goal 1
