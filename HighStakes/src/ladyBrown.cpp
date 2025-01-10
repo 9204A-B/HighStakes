@@ -4,7 +4,7 @@ using namespace vex;
 int select = 0;
 void ladybrownLoading()
 {
-    select++;
+    select = 1;
     lb.setMaxTorque(100, percent);
     lb.setVelocity(80, percent);
         
@@ -21,7 +21,7 @@ void ladybrownScoring()
 {    
     if (lbDistance.isObjectDetected())
     {
-        select++;
+        select = 2;
         lb.setStopping(hold);
         lb.setVelocity(80, percent);
         lb.spinFor(.5, sec);

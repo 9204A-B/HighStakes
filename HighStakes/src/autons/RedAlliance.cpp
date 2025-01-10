@@ -56,7 +56,7 @@ namespace Autons
             // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
             float startX = 8;
             float startY = 11;
-            float startRot = -79;
+            float startRot = -73;
 
             // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
             float goalPoint = 12;                   
@@ -66,7 +66,6 @@ namespace Autons
 
             pidDrivetrain.drive_max_voltage = 12;
             pidDrivetrain.turn_max_voltage = 12;
-            intakeMotors.setVelocity(intakeSpeed, percent);
 
             // ladybrown to score preload onto alliance
             pidDrivetrain.set_heading(startRot);
@@ -86,23 +85,23 @@ namespace Autons
 
             // turn and drive forwards for ring 2
             pidDrivetrain.drive_max_voltage = 12;
+            intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
             pidDrivetrain.turn_to_angle(90);
-            pidDrivetrain.drive_distance(24 + 3.5);
+            pidDrivetrain.drive_distance(23 + 3.5);
             // wait(500, msec);
 
             // getting ring 3
             pidDrivetrain.turn_to_angle(180);
             float clusterTrim1 = 10;
             pidDrivetrain.drive_distance(24 - clusterTrim1);
-            pidDrivetrain.drive_distance(-1 * (12 - clusterTrim1));
+            pidDrivetrain.drive_distance(-1 * (14 - clusterTrim1));
 
             // getting ring 4
             pidDrivetrain.turn_to_angle(180 + 30);
-            float clusterTrim2 = 5;
+            float clusterTrim2 = 8.5;
             pidDrivetrain.drive_distance(13.9 - clusterTrim2);
             pidDrivetrain.drive_distance(-1 * (13.9 - clusterTrim2));
-            intakeMotors.stop();
 
             break;
         }
@@ -115,8 +114,11 @@ namespace Autons
             RedAlliance::run(Autons::Route::ClusterStart);
 
             // ladder touch
+            pidDrivetrain.turn_to_angle(-90);
+            intakeMotors.stop();
+            pidDrivetrain.drive_max_voltage = 12;
+            pidDrivetrain.drive_distance(31);
             ladybrownScoring();
-            pidDrivetrain.drive_distance(36);
 
             break;
         }
