@@ -6,11 +6,9 @@ namespace Autons
 {
     void Skills::run()
     {
+        default_constants();
+        
         // start in a position where running the intake scores onto the alliance stake
-
-        float maxSpeed = 12;
-        float lowSpeed = 8;
-        float goalSpeed = 6;
 
         pidDrivetrain.drive_max_voltage = 12;
         pidDrivetrain.turn_max_voltage = 12;
@@ -22,12 +20,9 @@ namespace Autons
         wait(500, msec);
         intakeMotors.stop();
         intakeMotors.spin(reverse);
-        printf("intake reversing");
         wait(500, msec);
-        printf("before intake stop");
         intakeMotors.stop();
-        printf("intake stop");
-        pidDrivetrain.drive_distance(12); // tweak this number until the robot is perfectly centered on the start line
+        pidDrivetrain.drive_distance(12);
 
         // clamp goal 1
         pidDrivetrain.turn_to_angle(-90);
@@ -36,7 +31,7 @@ namespace Autons
         mobileGoalLock.set(true);
 
         // 3 rings further away on the left
-        pidDrivetrain.drive_max_voltage = maxSpeed;
+        pidDrivetrain.drive_max_voltage = 12;
         pidDrivetrain.turn_to_angle(180);
         intakeMotors.spin(forward);
         pidDrivetrain.drive_distance(24);
@@ -49,8 +44,8 @@ namespace Autons
         pidDrivetrain.turn_to_angle(0);
         pidDrivetrain.drive_distance(48);
 
-        pidDrivetrain.drive_max_voltage = lowSpeed;
-        pidDrivetrain.turn_max_voltage = lowSpeed;
+        pidDrivetrain.drive_max_voltage = 8;
+        pidDrivetrain.turn_max_voltage = 8;
 
         pidDrivetrain.turn_to_angle(-45);
         pidDrivetrain.drive_distance(17);
@@ -60,8 +55,8 @@ namespace Autons
         intakeMotors.stop();
 
         // drop first goal
-        pidDrivetrain.drive_max_voltage = maxSpeed;
-        pidDrivetrain.turn_max_voltage = maxSpeed;
+        pidDrivetrain.drive_max_voltage = 12;
+        pidDrivetrain.turn_max_voltage = 12;
 
         float goalDropDist1 = 33.9 - 7.5 - 10 - 3; // 7.5 is half the length of the robot, 10 is the length of the goal. tweak more if needed.
         pidDrivetrain.turn_to_angle(180 + 45);
@@ -74,13 +69,13 @@ namespace Autons
         pidDrivetrain.turn_to_angle(90);
         pidDrivetrain.drive_distance(-60);
 
-        pidDrivetrain.drive_max_voltage = goalSpeed; // dropping the speed so that the goal doesn't get knocked away
+        pidDrivetrain.drive_max_voltage = 6; // dropping the speed so that the goal doesn't get knocked away
 
         pidDrivetrain.drive_distance(-12);
         mobileGoalLock.set(true);
 
         // 3 rings further away on the right
-        pidDrivetrain.drive_max_voltage = maxSpeed;
+        pidDrivetrain.drive_max_voltage = 12;
 
         pidDrivetrain.turn_to_angle(180);
         pidDrivetrain.drive_distance(24);
@@ -93,8 +88,8 @@ namespace Autons
         pidDrivetrain.turn_to_angle(0);
         pidDrivetrain.drive_distance(48);
 
-        pidDrivetrain.drive_max_voltage = lowSpeed;
-        pidDrivetrain.turn_max_voltage = lowSpeed;
+        pidDrivetrain.drive_max_voltage = 8;
+        pidDrivetrain.turn_max_voltage = 8;
 
         pidDrivetrain.turn_to_angle(45);
         pidDrivetrain.drive_distance(17);
@@ -118,13 +113,13 @@ namespace Autons
         pidDrivetrain.drive_distance(99);
         pidDrivetrain.turn_to_angle(-90);
 
-        pidDrivetrain.drive_max_voltage = goalSpeed;
+        pidDrivetrain.drive_max_voltage = 6;
 
         pidDrivetrain.drive_distance(-24);
         mobileGoalLock.set(true);
 
         // 1 ring + 3 from top left corner
-        pidDrivetrain.drive_max_voltage = maxSpeed;
+        pidDrivetrain.drive_max_voltage = 12;
 
         pidDrivetrain.turn_to_angle(90 + 45);
         intakeMotors.spin(forward);
@@ -153,13 +148,13 @@ namespace Autons
         pidDrivetrain.drive_distance(48 + (24 - 6.9));
         pidDrivetrain.turn_to_angle(30);
 
-        pidDrivetrain.drive_max_voltage = goalSpeed;
+        pidDrivetrain.drive_max_voltage = 6;
 
         pidDrivetrain.drive_distance(-13.9);
         mobileGoalLock.set(true);
 
         // drop final goal in corner
-        pidDrivetrain.drive_max_voltage = maxSpeed;
+        pidDrivetrain.drive_max_voltage = 12;
 
         pidDrivetrain.turn_to_angle(90);
         pidDrivetrain.drive_distance(-1 * (24 - 10)); // tweak this value so that the robot isnt completely shoved into the wall
