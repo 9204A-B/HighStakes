@@ -13,7 +13,7 @@ namespace Autons
         {
         case Autons::Route::test:
         {
-                // red alliance test slot
+            // red alliance test slot
 
             // PID drift testing
 
@@ -59,8 +59,8 @@ namespace Autons
             float startRot = -73;
 
             // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
-            float goalPoint = 12;                   
-            float goalNodeHeading = -1 * atan((24 - goalPoint - startX) / (48 - goalPoint * 1.73 - startY) * (180 / 3.14));        
+            float goalPoint = 12;
+            float goalNodeHeading = -1 * atan((24 - goalPoint - startX) / (48 - goalPoint * 1.73 - startY) * (180 / 3.14));
             float goalNodeDist = sqrt(pow(24 - goalPoint - startX, 2) + pow(48 - goalPoint * 1.73 - startY, 2));
             float nodeToGoal = 2 * goalPoint;
 
@@ -78,7 +78,7 @@ namespace Autons
             pidDrivetrain.drive_distance(-1 * goalNodeDist);
 
             // drive to goal and clamp
-            pidDrivetrain.turn_to_angle(-30);            
+            pidDrivetrain.turn_to_angle(-30);
             pidDrivetrain.drive_max_voltage = 8;
             pidDrivetrain.drive_distance(-1 * nodeToGoal);
             mobileGoalLock.set(true);
@@ -118,7 +118,6 @@ namespace Autons
             intakeMotors.stop();
             pidDrivetrain.drive_max_voltage = 12;
             pidDrivetrain.drive_distance(31);
-            ladybrownScoring();
 
             break;
         }
