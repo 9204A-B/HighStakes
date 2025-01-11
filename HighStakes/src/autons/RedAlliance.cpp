@@ -54,7 +54,7 @@ namespace Autons
             // startX is number of inches to the LEFT of the center line / alliance stake
             // startY is number of inches from the wall
             // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
-            float startX = 8;
+            float startX = 10;
             float startY = 11;
             float startRot = -73;
 
