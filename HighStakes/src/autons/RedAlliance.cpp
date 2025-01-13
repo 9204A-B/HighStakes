@@ -79,7 +79,7 @@ namespace Autons
 
             // drive to goal and clamp
             pidDrivetrain.turn_to_angle(-30);
-            pidDrivetrain.drive_max_voltage = 8;
+            pidDrivetrain.drive_max_voltage = 10;
             pidDrivetrain.drive_distance(-1 * nodeToGoal);
             mobileGoalLock.set(true);
 
@@ -93,7 +93,7 @@ namespace Autons
 
             // getting ring 3
             pidDrivetrain.turn_to_angle(180);
-            float clusterTrim1 = 10;
+            float clusterTrim1 = 11;
             pidDrivetrain.drive_distance(24 - clusterTrim1);
             pidDrivetrain.drive_distance(-1 * (14 - clusterTrim1));
 
@@ -117,7 +117,7 @@ namespace Autons
             pidDrivetrain.turn_to_angle(-90);
             intakeMotors.stop();
             pidDrivetrain.drive_max_voltage = 12;
-            pidDrivetrain.drive_distance(31);
+            pidDrivetrain.drive_distance(32);
 
             break;
         }
