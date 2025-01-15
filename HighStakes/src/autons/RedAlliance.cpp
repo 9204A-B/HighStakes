@@ -13,38 +13,7 @@ namespace Autons
         {
         case Autons::Route::test:
         {
-            // red alliance test slot
-
-            // PID drift testing
-
-            // change max voltage here
-            pidDrivetrain.drive_max_voltage = 12;
-            pidDrivetrain.turn_max_voltage = 12;
-
-            // and timeouts
-            pidDrivetrain.drive_timeout = 3000;
-            pidDrivetrain.turn_timeout = 3000;
-
-            // does 2 laps around the ladder
-            pidDrivetrain.drive_distance(96);
-            pidDrivetrain.turn_to_angle(90);
-            pidDrivetrain.drive_distance(96);
-            pidDrivetrain.turn_to_angle(180);
-            pidDrivetrain.drive_distance(96);
-            pidDrivetrain.turn_to_angle(270);
-            pidDrivetrain.drive_distance(96);
-            pidDrivetrain.turn_to_angle(0);
-
-            pidDrivetrain.drive_distance(96);
-            pidDrivetrain.turn_to_angle(90);
-            pidDrivetrain.drive_distance(96);
-            pidDrivetrain.turn_to_angle(180);
-            pidDrivetrain.drive_distance(96);
-            pidDrivetrain.turn_to_angle(270);
-            pidDrivetrain.drive_distance(96);
-            pidDrivetrain.turn_to_angle(0);
-
-            // complete 2 laps, and then measure distance from original location
+            // red test slot
         }
         case Autons::Route::ClusterStart:
         {
@@ -59,12 +28,10 @@ namespace Autons
             float startRot = -73;
 
             // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
-            float goalPoint = 12;
-            float goalNodeHeading = -1 * atan((24 - goalPoint - startX) / (48 - goalPoint * 1.73 - startY) * (180 / 3.14));
-            float goalNodeDist = sqrt(pow(24 - goalPoint - startX, 2) + pow(48 - goalPoint * 1.73 - startY, 2));
-            float nodeToGoal = 2 * goalPoint;
+            float goalHeading = 180 - atan((24 - startX) / (48 - startY));
+            float goalDist = sqrt(pow(24 - startX, 2) + pow(48 - startY, 2));
 
-            pidDrivetrain.drive_max_voltage = 12;
+            pidDrivetrain.drive_max_voltage = 9;
             pidDrivetrain.turn_max_voltage = 12;
 
             // ladybrown to score preload onto alliance
@@ -73,14 +40,9 @@ namespace Autons
             // wait(100, msec);
             ladybrownReset();
 
-            // drive to goal node
-            pidDrivetrain.turn_to_angle(goalNodeHeading);
-            pidDrivetrain.drive_distance(-1 * goalNodeDist);
-
             // drive to goal and clamp
-            pidDrivetrain.turn_to_angle(-30);
-            pidDrivetrain.drive_max_voltage = 10;
-            pidDrivetrain.drive_distance(-1 * nodeToGoal);
+            pidDrivetrain.turn_to_angle(goalHeading);
+            pidDrivetrain.drive_distance(goalDist);
             mobileGoalLock.set(true);
 
             // turn and drive forwards for ring 2
