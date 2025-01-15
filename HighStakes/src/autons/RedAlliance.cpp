@@ -37,7 +37,6 @@ namespace Autons
             // ladybrown to score preload onto alliance
             pidDrivetrain.set_heading(startRot);
             ladybrownScoring();
-            // wait(100, msec);
             ladybrownReset();
 
             // drive to goal and clamp
@@ -50,17 +49,16 @@ namespace Autons
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
             pidDrivetrain.turn_to_angle(90);
-            pidDrivetrain.drive_distance(23 + 3.5);
-            // wait(500, msec);
+            pidDrivetrain.drive_distance(24 - 3.5);
 
             // getting ring 3
             pidDrivetrain.turn_to_angle(180);
             float clusterTrim1 = 11;
             pidDrivetrain.drive_distance(24 - clusterTrim1);
-            pidDrivetrain.drive_distance(-1 * (14 - clusterTrim1));
+            pidDrivetrain.drive_distance(-1 * (12 - clusterTrim1));
 
             // getting ring 4
-            pidDrivetrain.turn_to_angle(180 + 30);
+            pidDrivetrain.turn_to_angle(180 - 30);
             float clusterTrim2 = 8.5;
             pidDrivetrain.drive_distance(13.9 - clusterTrim2);
             pidDrivetrain.drive_distance(-1 * (13.9 - clusterTrim2));
