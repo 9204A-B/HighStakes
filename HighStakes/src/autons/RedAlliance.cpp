@@ -47,21 +47,24 @@ namespace Autons
             // turn and drive forwards for ring 2
             pidDrivetrain.drive_max_voltage = 12;
             intakeMotors.setVelocity(intakeSpeed, percent);
-            intakeMotors.spin(forward);
             pidDrivetrain.turn_to_angle(90);
-            pidDrivetrain.drive_distance(24 - 3.5);
 
-            // getting ring 3
-            pidDrivetrain.turn_to_angle(180);
-            float clusterTrim1 = 11;
-            pidDrivetrain.drive_distance(24 - clusterTrim1);
-            pidDrivetrain.drive_distance(-1 * (12 - clusterTrim1));
+            // make sure the robot is perfectly aligned before running anything after this
 
-            // getting ring 4
-            pidDrivetrain.turn_to_angle(180 - 30);
-            float clusterTrim2 = 8.5;
-            pidDrivetrain.drive_distance(13.9 - clusterTrim2);
-            pidDrivetrain.drive_distance(-1 * (13.9 - clusterTrim2));
+            // intakeMotors.spin(forward);
+            // pidDrivetrain.drive_distance(24 - 3.5);
+
+            // // getting ring 3
+            // pidDrivetrain.turn_to_angle(180);
+            // float clusterTrim1 = 11;
+            // pidDrivetrain.drive_distance(24 - clusterTrim1);
+            // pidDrivetrain.drive_distance(-1 * (12 - clusterTrim1));
+
+            // // getting ring 4
+            // pidDrivetrain.turn_to_angle(180 - 30);
+            // float clusterTrim2 = 8.5;
+            // pidDrivetrain.drive_distance(13.9 - clusterTrim2);
+            // pidDrivetrain.drive_distance(-1 * (13.9 - clusterTrim2));
 
             break;
         }
