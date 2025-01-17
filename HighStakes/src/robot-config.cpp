@@ -21,7 +21,7 @@ Drive pidDrivetrain(ZERO_TRACKER_NO_ODOM, leftMotors, rightMotors, PORT1, 3.25, 
 digital_out mobileGoalLock = digital_out(Brain.ThreeWirePort.A);
 distance goalDetect = distance(PORT2);
 bool locked = false;
-int clampDistance = 75;
+int clampDistance = 30;
 
 motor intakeMotors = motor(PORT4, ratio6_1, true);
 int intakeSpeed = 93;
