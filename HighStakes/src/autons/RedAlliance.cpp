@@ -54,20 +54,18 @@ namespace Autons
 
             intakeMotors.spin(forward);
             pidDrivetrain.drive_distance(24 - 3.5);
+            wait(250, msec);
 
             // getting ring 3
             pidDrivetrain.turn_to_angle(180);
             pidDrivetrain.drive_distance(16);
-            wait(100, msec);
+            wait(250, msec);
+
+            // getting ring 4
             pidDrivetrain.drive_distance(-6);
             pidDrivetrain.turn_to_angle(90 + 45);
             pidDrivetrain.drive_distance(5);
-
-            // // getting ring 4
-            // pidDrivetrain.turn_to_angle(180 - 30);
-            // float clusterTrim2 = 8.5;
-            // pidDrivetrain.drive_distance(13.9 - clusterTrim2);
-            // pidDrivetrain.drive_distance(-1 * (13.9 - clusterTrim2));
+            wait(250, msec);
 
             break;
         }
