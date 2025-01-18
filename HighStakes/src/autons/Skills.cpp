@@ -22,37 +22,37 @@ namespace Autons
         intakeMotors.spin(reverse);
         wait(500, msec);
         intakeMotors.stop();
-        pidDrivetrain.drive_distance(13.5);
+        pidDrivetrain.drive_distance(13.25);
 
         // clamp goal 1
         pidDrivetrain.turn_to_angle(-90);
         // check here for proper alignment :)
 
-        // pidDrivetrain.drive_max_voltage = 6;
-        // pidDrivetrain.drive_distance(-24);
-        // mobileGoalLock.set(true);
-        // wait(500, msec);
+        pidDrivetrain.drive_max_voltage = 6;
+        pidDrivetrain.drive_distance(-24);
+        mobileGoalLock.set(true);
+        wait(500, msec);
 
-        // // 2 rings further away on the left
-        // pidDrivetrain.drive_max_voltage = 12;
-        // pidDrivetrain.turn_to_angle(180);
-        // intakeMotors.spin(forward);
-        // pidDrivetrain.drive_distance(24);
-        // pidDrivetrain.turn_to_angle(90);
-        // pidDrivetrain.drive_distance(24);
+        // 2 rings further away on the left
+        pidDrivetrain.drive_max_voltage = 12;
+        pidDrivetrain.turn_to_angle(180);
+        intakeMotors.spin(forward);
+        pidDrivetrain.drive_distance(24);
+        pidDrivetrain.turn_to_angle(90);
+        pidDrivetrain.drive_distance(24);
 
-        // // 2 rings on left corner
-        // pidDrivetrain.turn_to_angle(0);
-        // pidDrivetrain.drive_distance(24);
+        // 2 rings on left corner
+        pidDrivetrain.turn_to_angle(0);
+        pidDrivetrain.drive_distance(24);
 
-        // pidDrivetrain.drive_max_voltage = 8;
-        // pidDrivetrain.turn_max_voltage = 8;
+        pidDrivetrain.drive_max_voltage = 8;
+        pidDrivetrain.turn_max_voltage = 8;
 
-        // pidDrivetrain.drive_distance(12);
-        // wait(500, msec);
-        // pidDrivetrain.drive_distance(-12);
-        // pidDrivetrain.turn_to_angle(180 + 45);
-        // intakeMotors.stop();
+        pidDrivetrain.drive_distance(12);
+        wait(500, msec);
+        pidDrivetrain.drive_distance(-12);
+        pidDrivetrain.turn_to_angle(180 + 45);
+        intakeMotors.stop();
 
         // // drop first goal
         // pidDrivetrain.drive_max_voltage = 12;
