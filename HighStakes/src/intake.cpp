@@ -54,7 +54,7 @@ void intake()
                 intakeMotors.spinFor(reverse, 150, msec);
                 intakeMotors.spin(forward);
             }
-            elif (intakeMotors.direction() == reverse)
+            else if (intakeMotors.direction() == reverse)
             {
                 intakeMotors.spinFor(forward, 150, msec);
                 intakeMotors.spin(reverse);
