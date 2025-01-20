@@ -27,9 +27,11 @@ motor intakeMotors = motor(PORT4, ratio6_1, true);
 int intakeSpeed = 93;
 bool intakeForward = false;
 bool intakeReverse = false;
+bool antiJamEnable = true;
 
 motor lb = motor(PORT3, ratio36_1, true);
 distance lbDistance = distance(PORT5);
+int lbSelect = 0;
 
 digital_out Doinker = digital_out(Brain.ThreeWirePort.C);
 

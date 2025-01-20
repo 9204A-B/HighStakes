@@ -27,9 +27,11 @@ extern motor intakeMotors;
 extern int intakeSpeed;
 extern bool intakeForward;
 extern bool intakeReverse;
+extern bool antiJamEnable;
 
 extern motor lb;
 extern distance lbDistance;
+extern int lbSelect;
 
 extern digital_out Doinker;
 
