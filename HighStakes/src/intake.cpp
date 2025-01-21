@@ -64,3 +64,23 @@ void intake()
         wait(15, msec);
     }
 }
+
+void antiJam()
+{
+    while (true)
+    {
+        if ((intakeMotors.power() > 6) && (abs(intakeMotors.velocity()) < 20) && (lbSelect != 2) && antiJamEnable)
+        {
+            if (intakeMotors.direction() == forward)
+            {
+                intakeMotors.spinFor(reverse, 150, msec);
+                intakeMotors.spin(forward);
+            }
+            else if (intakeMotors.direction() == reverse)
+            {
+                intakeMotors.spinFor(forward, 150, msec);
+                intakeMotors.spin(reverse);
+            }
+        }
+    }
+}
