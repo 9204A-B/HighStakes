@@ -4,6 +4,7 @@ using namespace vex;
 void selector(void)
 {
     Brain.Screen.clearScreen();
+    Brain.Screen.setCursor(1, 3);
     wait(5, msec);
     if (allianceSelect == 0)
     {
@@ -14,7 +15,7 @@ void selector(void)
     {
         Brain.Screen.setPenColor(vex::color::red);
         Brain.Screen.print("Red Alliance selected");
-        Brain.Screen.setCursor(2, 1);
+        Brain.Screen.setCursor(1, 5);
 
         if (autonSelect == 1)
         {
