@@ -112,7 +112,7 @@ namespace Autons
 
         // drive to right blue goal
         pidDrivetrain.turn_to_angle(12.5);
-        pidDrivetrain.drive_distance(110.6 + 5); // tweak
+        pidDrivetrain.drive_distance(110.6 + 5); // robot should be as close to the wall as possible WHILE STILL BEING ABLE TO TURN
         mobileGoalLock.set(true);
         wait(250, msec);
 
