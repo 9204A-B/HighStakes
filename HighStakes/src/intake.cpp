@@ -20,15 +20,20 @@ void intake()
     intakeMotors.setVelocity(0, percent);
     while (true)
     {
+        antiJamEnable = false;
         if (intakeForward)
         {
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
+            wait(100, msec);
+            antiJamEnable = true;
         }
         else if (intakeReverse)
         {
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(reverse);
+            wait(100, msec);
+            antiJamEnable = true;
         }
         else if (Controller.ButtonY.pressing())
         {
@@ -42,13 +47,13 @@ void intake()
         }
 
         // intake is jammed if:
-        // wattage is high
+        // voltage is high
         // |rpm| is close to zero
         // ladybrown select = 1 (ladybrown is loading)
         // antiJam is disabled
-
+    
         float intakeRPM = intakeMotors.velocity(rpm);
-        if ((intakeMotors.power() > 6) && (abs(intakeRPM) < 20) && (lbSelect != 2) && antiJamEnable)
+        if ((intakeMotors.voltage() > 0) && (fabs(intakeRPM) < 60) && (lbSelect != 2) && antiJamEnable)
         {
             if (intakeMotors.direction() == forward)
             {
