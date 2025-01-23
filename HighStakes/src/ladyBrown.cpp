@@ -40,7 +40,7 @@ void ladybrownReset()
 
 void ladybrown()
 {
-    switch (select)
+    switch (lbSelect)
     {
     case 0:
     {

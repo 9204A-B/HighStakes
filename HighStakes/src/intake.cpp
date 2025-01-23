@@ -47,7 +47,8 @@ void intake()
         // ladybrown select = 1 (ladybrown is loading)
         // antiJam is disabled
 
-        if ((intakeMotors.power() > 6) && (abs(intakeMotors.velocity()) < 20) && (lbSelect != 2) && antiJamEnable)
+        float intakeRPM = intakeMotors.velocity(rpm);
+        if ((intakeMotors.power() > 6) && (abs(intakeRPM) < 20) && (lbSelect != 2) && antiJamEnable)
         {
             if (intakeMotors.direction() == forward)
             {
@@ -69,7 +70,7 @@ void antiJam()
 {
     while (true)
     {
-        if ((intakeMotors.power() > 6) && (abs(intakeMotors.velocity()) < 20) && (lbSelect != 2) && antiJamEnable)
+        if ((intakeMotors.power() > 6) && (abs(intakeMotors.velocity(rpm)) < 20) && (lbSelect != 2) && antiJamEnable)
         {
             if (intakeMotors.direction() == forward)
             {
