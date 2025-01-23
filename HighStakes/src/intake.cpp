@@ -20,9 +20,9 @@ void intake()
     intakeMotors.setVelocity(0, percent);
     while (true)
     {
-        antiJamEnable = false;
         if (intakeForward)
         {
+            antiJamEnable = false;
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
             wait(100, msec);
@@ -30,6 +30,7 @@ void intake()
         }
         else if (intakeReverse)
         {
+            antiJamEnable = false;
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(reverse);
             wait(100, msec);
@@ -53,7 +54,7 @@ void intake()
         // antiJam is disabled
     
         float intakeRPM = intakeMotors.velocity(rpm);
-        if ((intakeMotors.voltage() > 0) && (fabs(intakeRPM) < 60) && (lbSelect != 2) && antiJamEnable)
+        if ((intakeMotors.voltage() > 0) && (fabs(intakeRPM) < 70) && (lbSelect != 1) && antiJamEnable)
         {
             if (intakeMotors.direction() == forward)
             {
@@ -68,25 +69,5 @@ void intake()
         }
 
         wait(15, msec);
-    }
-}
-
-void antiJam()
-{
-    while (true)
-    {
-        if ((intakeMotors.power() > 6) && (abs(intakeMotors.velocity(rpm)) < 20) && (lbSelect != 2) && antiJamEnable)
-        {
-            if (intakeMotors.direction() == forward)
-            {
-                intakeMotors.spinFor(reverse, 150, msec);
-                intakeMotors.spin(forward);
-            }
-            else if (intakeMotors.direction() == reverse)
-            {
-                intakeMotors.spinFor(forward, 150, msec);
-                intakeMotors.spin(reverse);
-            }
-        }
     }
 }

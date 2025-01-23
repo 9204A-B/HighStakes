@@ -25,14 +25,14 @@ namespace Autons
             // startY is number of inches from the wall
             // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
             float startX = 11;
-            float startY = 11.25;
-            float scoreRot = -65;
+            float startY = 10.25;
+            float scoreRot = -70;
 
             // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
             float goalHeading = (-90 + (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
             float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
 
-            pidDrivetrain.drive_max_voltage = 8;
+            pidDrivetrain.drive_max_voltage = 6;
             pidDrivetrain.turn_max_voltage = 12;
 
             // ladybrown to score preload onto alliance
@@ -53,7 +53,8 @@ namespace Autons
             // make sure the robot is perfectly aligned before running anything after this
 
             intakeMotors.spin(forward);
-            pidDrivetrain.drive_distance(24 - 1.5);
+            pidDrivetrain.drive_max_voltage = 8;
+            pidDrivetrain.drive_distance(24 - 3);
             wait(250, msec);
 
             // getting ring 3
@@ -63,7 +64,7 @@ namespace Autons
 
             // getting ring 4
             pidDrivetrain.drive_distance(-6);
-            pidDrivetrain.turn_to_angle(90 + 45);
+            pidDrivetrain.turn_to_angle(180 - 30);
             pidDrivetrain.drive_distance(6);
             wait(250, msec);
             pidDrivetrain.drive_distance(-6);

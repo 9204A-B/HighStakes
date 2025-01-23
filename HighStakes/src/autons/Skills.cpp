@@ -27,7 +27,7 @@ namespace Autons
         intakeMotors.spin(reverse);
         wait(500, msec);
         intakeMotors.stop();
-        pidDrivetrain.drive_distance(13.25);
+        pidDrivetrain.drive_distance(12.5);
         antiJamEnable = true;
 
         // clamp goal 1
@@ -40,10 +40,10 @@ namespace Autons
         wait(500, msec);
 
         // 2 rings further away on the left
-        pidDrivetrain.drive_max_voltage = 12;
+        pidDrivetrain.drive_max_voltage = medSpeed;
         pidDrivetrain.turn_to_angle(180);
         intakeMotors.spin(forward);
-        pidDrivetrain.drive_distance(24);
+        pidDrivetrain.drive_distance(18);
         pidDrivetrain.turn_to_angle(90);
         pidDrivetrain.drive_distance(24);
 
@@ -55,8 +55,8 @@ namespace Autons
         pidDrivetrain.turn_max_voltage = lowSpeed;
 
         wait(500, msec);
-        pidDrivetrain.drive_distance(12);
-        pidDrivetrain.drive_distance(-12);
+        pidDrivetrain.drive_distance(6);
+        pidDrivetrain.drive_distance(-6);
         pidDrivetrain.turn_to_angle(180 + 45);
         intakeMotors.stop();
 
@@ -64,19 +64,16 @@ namespace Autons
         pidDrivetrain.drive_max_voltage = medSpeed;
         pidDrivetrain.turn_max_voltage = medSpeed;
 
-        float goalDropDist1 = 33.9 - 7.5 - 10 - 0; // 7.5 is half the length of the robot, 10 is the length of the goal. tweak more if needed.
+        float goalDropDist1 = 33.9 - 7.5 - 10 - 3; // 7.5 is half the length of the robot, 10 is the length of the goal. tweak more if needed.
         pidDrivetrain.drive_distance(-1 * goalDropDist1);
         mobileGoalLock.set(false);
-        wait(250, msec);
+        wait(100, msec);
         pidDrivetrain.drive_distance(goalDropDist1);
 
         // // clamp second goal
         pidDrivetrain.turn_to_angle(90);
         pidDrivetrain.drive_distance(-60);
-
-        pidDrivetrain.drive_max_voltage = lowSpeed; // dropping the speed so that the goal doesn't get knocked away
-
-        pidDrivetrain.drive_distance(-12);
+        wait(250, msec);
         mobileGoalLock.set(true);
 
         // 2 rings further away on the right
@@ -95,8 +92,8 @@ namespace Autons
         pidDrivetrain.turn_max_voltage = lowSpeed;
 
         wait(500, msec);
-        pidDrivetrain.drive_distance(12);
-        pidDrivetrain.drive_distance(-12);
+        pidDrivetrain.drive_distance(6);
+        pidDrivetrain.drive_distance(-6);
         pidDrivetrain.turn_to_angle(180 + 45);
         intakeMotors.stop();
 
