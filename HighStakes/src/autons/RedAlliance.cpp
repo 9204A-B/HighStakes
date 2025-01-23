@@ -14,6 +14,7 @@ namespace Autons
         case Autons::Route::test:
         {
             // red test slot
+            break;
         }
         case Autons::Route::ClusterStart:
         {
@@ -45,7 +46,6 @@ namespace Autons
             pidDrivetrain.drive_distance(goalDist + 7);
             mobileGoalLock.set(true);
             // turn and drive forwards for ring 2
-            pidDrivetrain.drive_max_voltage = 8;
             intakeMotors.setVelocity(intakeSpeed, percent);
             wait(100, msec);
             pidDrivetrain.turn_to_angle(90);
