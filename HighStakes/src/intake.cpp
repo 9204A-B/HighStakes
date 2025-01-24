@@ -23,23 +23,24 @@ void antiJam()
         if (fabs(intakeRPM) < 70)
         {
             wait(50, msec);
-        }
 
-        intakeRPM = intakeMotors.velocity(rpm);
+            intakeRPM = intakeMotors.velocity(rpm);
 
-        if ((intakeMotors.power() > 0) && (fabs(intakeRPM) < 70) && (lbSelect != 1) && antiJamEnable)
-        {
-            if (intakeMotors.direction() == forward)
+            if ((intakeMotors.power() > 0) && (fabs(intakeRPM) < 70) && (lbSelect != 1) && antiJamEnable)
             {
-                intakeMotors.spinFor(reverse, 150, msec);
-                intakeMotors.spin(forward);
-            }
-            else if (intakeMotors.direction() == reverse)
-            {
-                intakeMotors.spinFor(forward, 150, msec);
-                intakeMotors.spin(reverse);
+                if (intakeMotors.direction() == forward)
+                {
+                    intakeMotors.spinFor(reverse, 150, msec);
+                    intakeMotors.spin(forward);
+                }
+                else if (intakeMotors.direction() == reverse)
+                {
+                    intakeMotors.spinFor(forward, 150, msec);
+                    intakeMotors.spin(reverse);
+                }
             }
         }
+        wait(15, msec);
     }
 }
 
