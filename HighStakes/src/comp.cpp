@@ -5,10 +5,6 @@ using namespace Autons;
 
 void drive(void)
 {
-    thread lockThread = thread(lock);
-    thread intakeThread = thread(intake);
-    thread timeThread = thread(startTimer);
-    thread doinkerThread = thread(doink);
     Drivetrain.setDriveVelocity(100, percent);
     Drivetrain.setStopping(brake);
     while (true)
