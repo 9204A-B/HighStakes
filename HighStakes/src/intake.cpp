@@ -17,18 +17,28 @@ void R2Press()
 
 void antiJam()
 {
-    float intakeRPM = intakeMotors.velocity(rpm);
-    if ((intakeMotors.power() > 0) && (fabs(intakeRPM) < 70) && (lbSelect != 1) && antiJamEnable)
+    while (true)
     {
-        if (intakeMotors.direction() == forward)
+        float intakeRPM = intakeMotors.velocity(rpm);
+        if (fabs(intakeRPM) < 70)
         {
-            intakeMotors.spinFor(reverse, 150, msec);
-            intakeMotors.spin(forward);
+            wait(50, msec);
         }
-        else if (intakeMotors.direction() == reverse)
+
+        intakeRPM = intakeMotors.velocity(rpm);
+
+        if ((intakeMotors.power() > 0) && (fabs(intakeRPM) < 70) && (lbSelect != 1) && antiJamEnable)
         {
-            intakeMotors.spinFor(forward, 150, msec);
-            intakeMotors.spin(reverse);
+            if (intakeMotors.direction() == forward)
+            {
+                intakeMotors.spinFor(reverse, 150, msec);
+                intakeMotors.spin(forward);
+            }
+            else if (intakeMotors.direction() == reverse)
+            {
+                intakeMotors.spinFor(forward, 150, msec);
+                intakeMotors.spin(reverse);
+            }
         }
     }
 }
