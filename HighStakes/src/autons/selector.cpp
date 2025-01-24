@@ -15,7 +15,7 @@ void selector(void)
     {
         Brain.Screen.setPenColor(vex::color::red);
         Brain.Screen.print("Red Alliance selected");
-        Brain.Screen.setCursor(1, 5);
+        Brain.Screen.newLine();
 
         if (autonSelect == 1)
         {
@@ -42,7 +42,7 @@ void selector(void)
     {
         Brain.Screen.setPenColor(vex::color::cyan);
         Brain.Screen.print("Blue Alliance selected");
-        Brain.Screen.setCursor(2, 1);
+        Brain.Screen.newLine();
 
         if (autonSelect == 1)
         {
