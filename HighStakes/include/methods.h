@@ -14,3 +14,4 @@ void ladybrownLoading(void);
 void ladybrownScoring(void);
 void ladybrownReset(void);
 void doink(void);
+void antiJam(void);

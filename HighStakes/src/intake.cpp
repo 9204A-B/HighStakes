@@ -20,13 +20,22 @@ void antiJam()
     while (true)
     {
         float intakeRPM = intakeMotors.velocity(rpm);
-        if (fabs(intakeRPM) < 70)
+        if (intakeRPM < 0)
+        {
+            intakeRPM *= -1;
+        }
+
+        if (intakeRPM < 70)
         {
             wait(50, msec);
 
             intakeRPM = intakeMotors.velocity(rpm);
+            if (intakeRPM < 0)
+            {
+                intakeRPM *= -1;
+            }
 
-            if ((intakeMotors.power() > 0) && (fabs(intakeRPM) < 70) && (lbSelect != 1) && antiJamEnable)
+            if ((intakeMotors.power() > 0) && (intakeRPM < 70) && (lbSelect != 1) && antiJamEnable)
             {
                 if (intakeMotors.direction() == forward)
                 {
