@@ -34,6 +34,8 @@ int main()
     Controller.ButtonRight.pressed(ladybrown);
     button.high(autonUpdate);
     Brain.Screen.pressed(allianceUpdate);
+
+    thread antiJamThread = thread(antiJam);
     thread tempThread = thread(warning);
     selector();
     wait(15, msec);

@@ -15,6 +15,25 @@ void R2Press()
     wait(5, msec);
 }
 
+void antiJam()
+{
+    float intakeRPM = intakeMotors.velocity(rpm);
+    if ((intakeMotors.power() > 0) && (fabs(intakeRPM) < 70) && (lbSelect != 1) && antiJamEnable)
+    {
+        if (intakeMotors.direction() == forward)
+        {
+            intakeMotors.spinFor(reverse, 150, msec);
+            intakeMotors.spin(forward);
+        }
+        else if (intakeMotors.direction() == reverse)
+        {
+            intakeMotors.spinFor(forward, 150, msec);
+            intakeMotors.spin(reverse);
+        }
+    }
+}
+
+// driver control loop
 void intake()
 {
     intakeMotors.setVelocity(0, percent);
@@ -52,21 +71,6 @@ void intake()
         // |rpm| is close to zero
         // ladybrown select = 1 (ladybrown is loading)
         // antiJam is disabled
-
-        float intakeRPM = intakeMotors.velocity(rpm);
-        if ((intakeMotors.power() > 0) && (fabs(intakeRPM) < 70) && (lbSelect != 1) && antiJamEnable)
-        {
-            if (intakeMotors.direction() == forward)
-            {
-                intakeMotors.spinFor(reverse, 150, msec);
-                intakeMotors.spin(forward);
-            }
-            else if (intakeMotors.direction() == reverse)
-            {
-                intakeMotors.spinFor(forward, 150, msec);
-                intakeMotors.spin(reverse);
-            }
-        }
 
         wait(15, msec);
     }
