@@ -34,10 +34,6 @@ int main()
     Controller.ButtonRight.pressed(ladybrown);
     button.high(autonUpdate);
     Brain.Screen.pressed(allianceUpdate);
-    thread lockThread = thread(lock);
-    thread intakeThread = thread(intake);
-    thread timeThread = thread(startTimer);
-    thread doinkerThread = thread(doink);
     thread tempThread = thread(warning);
     selector();
     wait(15, msec);
