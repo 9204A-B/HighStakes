@@ -3,16 +3,40 @@ using namespace vex;
 
 void R1Press()
 {
+    intakeMotors.stop();
     intakeForward = !intakeForward;
     intakeReverse = false;
+
+    if (intakeForward)
+    {
+        intakeMotors.setVelocity(intakeSpeed, percent);
+        intakeMotors.spin(forward);
+    }
+
     wait(5, msec);
 }
 
 void R2Press()
 {
+    intakeMotors.stop();
     intakeForward = false;
     intakeReverse = !intakeReverse;
+
+    if (intakeReverse)
+    {
+        intakeMotors.setVelocity(intakeSpeed, percent);
+        intakeMotors.spin(forward);
+    }
+
     wait(5, msec);
+}
+
+void YPress()
+{
+    intakeMotors.stop();
+    intakeMotors.setVelocity(50, percent);
+    intakeMotors.spinFor(reverse, 150, msec);
+    intakeMotors.setVelocity(intakeSpeed, percent);
 }
 
 void antiJam()
@@ -54,19 +78,13 @@ void intake()
     {
         if (intakeForward)
         {
-            antiJamEnable = false;
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(100, msec);
-            antiJamEnable = true;
         }
         else if (intakeReverse)
         {
-            antiJamEnable = false;
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(reverse);
-            wait(100, msec);
-            antiJamEnable = true;
         }
         else if (Controller.ButtonY.pressing())
         {
@@ -76,14 +94,8 @@ void intake()
         }
         else
         {
-            intakeMotors.setVelocity(0, percent);
+            intakeMotors.stop();
         }
-
-        // intake is jammed if:
-        // voltage is high
-        // |rpm| is close to zero
-        // ladybrown select = 1 (ladybrown is loading)
-        // antiJam is disabled
 
         wait(15, msec);
     }
