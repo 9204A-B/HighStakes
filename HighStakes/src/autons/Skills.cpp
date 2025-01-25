@@ -48,15 +48,12 @@ namespace Autons
         pidDrivetrain.drive_distance(24);
 
         // 2 rings on left corner
+        pidDrivetrain.drive_max_voltage = lowSpeed;
+
         pidDrivetrain.turn_to_angle(0);
         pidDrivetrain.drive_distance(24);
 
-        pidDrivetrain.drive_max_voltage = lowSpeed;
-        pidDrivetrain.turn_max_voltage = lowSpeed;
-
         wait(500, msec);
-        pidDrivetrain.drive_distance(6);
-        pidDrivetrain.drive_distance(-6);
         pidDrivetrain.turn_to_angle(180 + 45);
         intakeMotors.stop();
 
@@ -85,15 +82,12 @@ namespace Autons
         pidDrivetrain.drive_distance(24);
 
         // 2 rings on right corner
+        pidDrivetrain.drive_max_voltage = lowSpeed;
+
         pidDrivetrain.turn_to_angle(0);
         pidDrivetrain.drive_distance(24);
 
-        pidDrivetrain.drive_max_voltage = lowSpeed;
-        pidDrivetrain.turn_max_voltage = lowSpeed;
-
         wait(500, msec);
-        pidDrivetrain.drive_distance(6);
-        pidDrivetrain.drive_distance(-6);
         pidDrivetrain.turn_to_angle(180 + 45);
         intakeMotors.stop();
 
