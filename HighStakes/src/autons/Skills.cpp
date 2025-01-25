@@ -79,7 +79,7 @@ namespace Autons
         pidDrivetrain.turn_to_angle(180);
         pidDrivetrain.drive_distance(24);
         pidDrivetrain.turn_to_angle(-90);
-        pidDrivetrain.drive_distance(24);
+        pidDrivetrain.drive_distance(18);
 
         // 2 rings on right corner
         pidDrivetrain.drive_max_voltage = lowSpeed;
