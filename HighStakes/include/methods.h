@@ -4,6 +4,7 @@ void lock(void);
 void intake(void);
 void R1Press(void);
 void R2Press(void);
+void YPress(void);
 void warning(void);
 void selector(void);
 void allianceUpdate(void);
