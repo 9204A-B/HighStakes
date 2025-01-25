@@ -25,7 +25,7 @@ namespace Autons
             // startY is number of inches from the wall
             // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
             float startX = 11;
-            float startY = 10.25;
+            float startY = 10;
             float scoreRot = -70;
 
             // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
@@ -54,7 +54,7 @@ namespace Autons
 
             intakeMotors.spin(forward);
             pidDrivetrain.drive_max_voltage = 8;
-            pidDrivetrain.drive_distance(24 - 3);
+            pidDrivetrain.drive_distance(24 - 2);
             wait(250, msec);
 
             // getting ring 3

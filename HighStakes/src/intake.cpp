@@ -35,18 +35,11 @@ void antiJam()
                 intakeRPM *= -1;
             }
 
-            if ((intakeMotors.power() > 0) && (intakeRPM < 70) && (lbSelect != 1) && antiJamEnable)
+            if ((intakeMotors.voltage() > 3) && (intakeRPM < 70) && (lbSelect != 1) && antiJamEnable)
             {
-                if (intakeMotors.direction() == forward)
-                {
-                    intakeMotors.spinFor(reverse, 150, msec);
-                    intakeMotors.spin(forward);
-                }
-                else if (intakeMotors.direction() == reverse)
-                {
-                    intakeMotors.spinFor(forward, 150, msec);
-                    intakeMotors.spin(reverse);
-                }
+                intakeMotors.stop();
+                intakeMotors.spinFor(reverse, 150, msec);
+                intakeMotors.spin(forward);
             }
         }
         wait(15, msec);
