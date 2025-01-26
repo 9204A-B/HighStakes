@@ -26,7 +26,7 @@ namespace Autons
             // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
             float startX = 11;
             float startY = 10;
-            float scoreRot = -65;
+            float scoreRot = -72.5;
 
             // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
             float goalHeading = (-90 + (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
@@ -35,7 +35,7 @@ namespace Autons
             pidDrivetrain.drive_max_voltage = 6;
             pidDrivetrain.turn_max_voltage = 12;
 
-            // ladybrown to score preload onto alliance
+            //ladybrown to score preload onto alliance
             pidDrivetrain.set_heading(-90);
             pidDrivetrain.turn_to_angle(scoreRot);
             ladybrownScoring();
@@ -47,7 +47,7 @@ namespace Autons
             mobileGoalLock.set(true);
             // turn and drive forwards for ring 2
             intakeMotors.setVelocity(intakeSpeed, percent);
-            wait(100, msec);
+            wait(500, msec);
             pidDrivetrain.turn_to_angle(90);
 
             // make sure the robot is perfectly aligned before running anything after this

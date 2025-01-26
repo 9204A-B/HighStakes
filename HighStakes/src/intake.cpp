@@ -25,7 +25,7 @@ void R2Press()
     if (intakeReverse)
     {
         intakeMotors.setVelocity(intakeSpeed, percent);
-        intakeMotors.spin(forward);
+        intakeMotors.spin(reverse);
     }
 
     wait(5, msec);
@@ -59,7 +59,7 @@ void antiJam()
                 intakeRPM *= -1;
             }
 
-            if ((intakeMotors.voltage() > 3) && (intakeRPM < 70) && (lbSelect != 1) && antiJamEnable)
+            if ((intakeMotors.voltage() > 3) && (intakeRPM < 50) && (lbSelect != 1) && antiJamEnable)
             {
                 intakeMotors.stop();
                 intakeMotors.spinFor(reverse, 150, msec);

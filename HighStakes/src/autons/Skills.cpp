@@ -11,7 +11,7 @@ namespace Autons
         // start in a position where running the intake scores onto the alliance stake
 
         float maxSpeed = 10;
-        float medSpeed = 8;
+        float medSpeed = 7;
         float lowSpeed = 6;
 
         pidDrivetrain.drive_max_voltage = medSpeed;
@@ -22,12 +22,12 @@ namespace Autons
         // score alliance stake and align for first goal
         antiJamEnable = false;
         intakeMotors.spin(forward);
-        wait(750, msec);
+        wait(500, msec);
         intakeMotors.stop();
         intakeMotors.spin(reverse);
         wait(500, msec);
         intakeMotors.stop();
-        pidDrivetrain.drive_distance(12.5);
+        pidDrivetrain.drive_distance(13.5);
         antiJamEnable = true;
 
         // clamp goal 1
@@ -43,15 +43,16 @@ namespace Autons
         pidDrivetrain.drive_max_voltage = medSpeed;
         pidDrivetrain.turn_to_angle(180);
         intakeMotors.spin(forward);
-        pidDrivetrain.drive_distance(18);
+        pidDrivetrain.drive_distance(22);
         pidDrivetrain.turn_to_angle(90);
-        pidDrivetrain.drive_distance(24);
+        pidDrivetrain.drive_distance(20);
 
         // 2 rings on left corner
         pidDrivetrain.drive_max_voltage = lowSpeed;
 
         pidDrivetrain.turn_to_angle(0);
-        pidDrivetrain.drive_distance(24);
+        pidDrivetrain.drive_distance(28);
+        pidDrivetrain.drive_distance(-7);
 
         wait(500, msec);
         pidDrivetrain.turn_to_angle(180 + 45);
@@ -61,35 +62,35 @@ namespace Autons
         pidDrivetrain.drive_max_voltage = medSpeed;
         pidDrivetrain.turn_max_voltage = medSpeed;
 
-        float goalDropDist1 = 33.9 - 7.5 - 10 - 3; // 7.5 is half the length of the robot, 10 is the length of the goal. tweak more if needed.
+        float goalDropDist1 = 33.9 - 7.5 - 10 - 2; // 7.5 is half the length of the robot, 10 is the length of the goal. tweak more if needed.
         pidDrivetrain.drive_distance(-1 * goalDropDist1);
         mobileGoalLock.set(false);
-        wait(100, msec);
-        pidDrivetrain.drive_distance(goalDropDist1);
+        wait(750, msec);
+        pidDrivetrain.drive_distance(goalDropDist1 - 6);
 
         // // clamp second goal
         pidDrivetrain.turn_to_angle(90);
-        pidDrivetrain.drive_distance(-60);
-        wait(250, msec);
+        pidDrivetrain.drive_distance(-62);
         mobileGoalLock.set(true);
+        wait(500, msec);
 
         // 2 rings further away on the right
         pidDrivetrain.drive_max_voltage = medSpeed;
+        intakeMotors.spin(forward);
 
         pidDrivetrain.turn_to_angle(180);
-        pidDrivetrain.drive_distance(24);
+        pidDrivetrain.drive_distance(22);
         pidDrivetrain.turn_to_angle(-90);
-        pidDrivetrain.drive_distance(18);
+        pidDrivetrain.drive_distance(22);
 
         // 2 rings on right corner
         pidDrivetrain.drive_max_voltage = lowSpeed;
 
         pidDrivetrain.turn_to_angle(0);
-        pidDrivetrain.drive_distance(24);
+        pidDrivetrain.drive_distance(28);
+        pidDrivetrain.drive_distance(-7);
 
         wait(500, msec);
-        pidDrivetrain.turn_to_angle(180 + 45);
-        intakeMotors.stop();
 
         // drop second goal
         pidDrivetrain.drive_max_voltage = medSpeed;
@@ -97,13 +98,15 @@ namespace Autons
 
         pidDrivetrain.turn_to_angle(90 + 45);
         pidDrivetrain.drive_distance(-1 * goalDropDist1);
+        intakeMotors.stop();
         mobileGoalLock.set(false);
-        wait(250, msec);
-        pidDrivetrain.drive_distance(goalDropDist1);
+        wait(750, msec);
+        pidDrivetrain.drive_distance(goalDropDist1 - 6);
 
         // drive to right blue goal
-        pidDrivetrain.turn_to_angle(12.5);
-        pidDrivetrain.drive_distance(110.6 + 5); // robot should be as close to the wall as possible WHILE STILL BEING ABLE TO TURN
+        pidDrivetrain.turn_to_angle(-12.5);
+        pidDrivetrain.drive_distance(-1 * (110.6 + 5)); // robot should be as close to the wall as possible WHILE STILL BEING ABLE TO TURN
+        wait(250, msec);
         mobileGoalLock.set(true);
         wait(250, msec);
 
