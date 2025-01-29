@@ -54,6 +54,9 @@ namespace Autons
         pidDrivetrain.drive_distance(28);
         pidDrivetrain.drive_distance(-7);
 
+        //Require higher turning accuracy to get 2nd goal
+        pidDrivetrain.turn_settle_error = 1;
+
         wait(500, msec);
         pidDrivetrain.turn_to_angle(180 + 45);
         intakeMotors.stop();
@@ -69,38 +72,42 @@ namespace Autons
         pidDrivetrain.drive_distance(goalDropDist1 - 6);
 
         // // clamp second goal
-        pidDrivetrain.turn_to_angle(90);
-        pidDrivetrain.drive_distance(-62);
+        pidDrivetrain.turn_to_angle(92);
+        pidDrivetrain.drive_distance(-64);
         mobileGoalLock.set(true);
-        wait(500, msec);
+        wait(250, msec);
 
         // 2 rings further away on the right
         pidDrivetrain.drive_max_voltage = medSpeed;
         intakeMotors.spin(forward);
 
         pidDrivetrain.turn_to_angle(180);
-        pidDrivetrain.drive_distance(22);
-        pidDrivetrain.turn_to_angle(-90);
-        pidDrivetrain.drive_distance(22);
+        pidDrivetrain.drive_distance(24);
+        pidDrivetrain.turn_to_angle(270);
+        pidDrivetrain.drive_distance(24);
 
         // 2 rings on right corner
         pidDrivetrain.drive_max_voltage = lowSpeed;
 
         pidDrivetrain.turn_to_angle(0);
-        pidDrivetrain.drive_distance(28);
-        pidDrivetrain.drive_distance(-7);
+        pidDrivetrain.drive_distance(30);
+        pidDrivetrain.drive_distance(-20);
+        pidDrivetrain.turn_to_angle(180);
+        pidDrivetrain.drive_distance(20);
+        pidDrivetrain.drive_distance(-12);
+        pidDrivetrain.turn_to_angle(115);
+        pidDrivetrain.drive_max_voltage = medSpeed;
+        pidDrivetrain.drive_distance(-20);
 
-        wait(500, msec);
+        wait(250, msec);
 
         // drop second goal
         pidDrivetrain.drive_max_voltage = medSpeed;
         pidDrivetrain.turn_max_voltage = medSpeed;
 
-        pidDrivetrain.turn_to_angle(90 + 45);
-        pidDrivetrain.drive_distance(-1 * goalDropDist1);
         intakeMotors.stop();
         mobileGoalLock.set(false);
-        wait(750, msec);
+        wait(250, msec);
         pidDrivetrain.drive_distance(goalDropDist1 - 6);
 
         // drive to right blue goal
