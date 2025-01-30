@@ -16,6 +16,7 @@ extern inertial Inertial;
 extern motor_group leftMotors;
 extern motor_group rightMotors;
 extern smartdrive Drivetrain;
+extern float turnExp;
 
 extern digital_out mobileGoalLock;
 extern distance goalDetect;

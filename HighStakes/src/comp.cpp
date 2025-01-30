@@ -13,8 +13,8 @@ void drive(void)
     thread doinkerThread = thread(doink);
     while (true)
     {
-        leftMotors.setVelocity(Controller.Axis3.position() + Controller.Axis1.position() * .8, percent);
-        rightMotors.setVelocity(Controller.Axis3.position() - Controller.Axis1.position() * .8, percent);
+        leftMotors.setVelocity(Controller.Axis3.position() + (pow(Controller.Axis1.position() / 100, turnExp) * 100), percent);
+        rightMotors.setVelocity(Controller.Axis3.position() - (pow(Controller.Axis1.position() / 100, turnExp) * 100), percent);
         leftMotors.spin(forward);
         rightMotors.spin(forward);
         wait(10, msec);
