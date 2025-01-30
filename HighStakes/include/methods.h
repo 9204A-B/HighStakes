@@ -11,6 +11,8 @@ void allianceUpdate(void);
 void autonUpdate(void);
 void startTimer(void);
 void ladybrown(void);
+void lbLoadButton(void);
+void lbScoreButton(void);
 void ladybrownLoading(void);
 void ladybrownScoring(void);
 void ladybrownReset(void);
