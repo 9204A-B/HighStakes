@@ -1,6 +1,30 @@
 #include "vex.h"
 using namespace vex;
 
+void lbLoadButton()
+{
+    if (lbSelect = 1)
+    {
+        ladyBrownReset();
+    }
+    else
+    {
+        ladyBrownLoading();
+    }
+}
+
+void lbScoreButton()
+{
+    if (lbSelect = 2)
+    {
+        ladyBrownReset();
+    }
+    else
+    {
+        ladyBrownScoring();
+    }
+}
+
 void ladybrownLoading()
 {
     lbSelect = 1;
