@@ -3,40 +3,53 @@ using namespace vex;
 
 void lbLoadButton()
 {
-    if (lbSelect = 1)
+    if (lbSelect == 1)
     {
-        ladyBrownReset();
+        ladybrownReset();
     }
     else
     {
-        ladyBrownLoading();
+        ladybrownLoading();
     }
 }
 
 void lbScoreButton()
 {
-    if (lbSelect = 2)
+    if (lbSelect == 2)
     {
-        ladyBrownReset();
+        ladybrownReset();
     }
     else
     {
-        ladyBrownScoring();
+        ladybrownScoring();
     }
 }
 
 void ladybrownLoading()
 {
-    lbSelect = 1;
     lb.setMaxTorque(100, percent);
     lb.setVelocity(80, percent);
 
-    while (lbDistance.objectDistance(mm) < 70)
+    if (lbSelect == 0)
     {
-        lb.setVelocity(25, percent);
-        lb.spin(forward);
-        wait(5, msec);
+        while (lbDistance.objectDistance(mm) < 70)
+        {
+            lb.setVelocity(25, percent);
+            lb.spin(forward);
+            wait(5, msec);
+        }
     }
+    else if (lbSelect == 2)
+    {
+        while (lbDistance.objectDistance(mm) > 70)
+        {
+            lb.setVelocity(50, percent);
+            lb.spin(reverse);
+            wait(5, msec);
+        }
+    }
+    lbSelect = 1;
+    
     lb.stop(hold);
 }
 
@@ -47,7 +60,7 @@ void ladybrownScoring()
         lbSelect = 2;
         lb.setStopping(hold);
         lb.setVelocity(80, percent);
-        lb.spinFor(.5, sec);
+        lb.spinFor(.6, sec);
         wait(.5, sec);
     }
 }
