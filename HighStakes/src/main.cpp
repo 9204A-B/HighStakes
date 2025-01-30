@@ -31,8 +31,9 @@ int main()
 
     Controller.ButtonR1.pressed(R1Press);
     Controller.ButtonR2.pressed(R2Press);
-    Controller.ButtonRight.pressed(ladybrown);
-    Controller.ButtonY.pressed(YPress);
+    Controller.ButtonRight.pressed(lbLoadButton);
+    Controller.ButtonY.pressed(lbScoreButton);
+    Controller.ButtonB.pressed(YPress);
     button.high(autonUpdate);
     Brain.Screen.pressed(allianceUpdate);
 
