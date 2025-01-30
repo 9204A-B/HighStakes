@@ -68,12 +68,13 @@ namespace Autons
         float goalDropDist1 = 33.9 - 7.5 - 10 - 2; // 7.5 is half the length of the robot, 10 is the length of the goal. tweak more if needed.
         pidDrivetrain.drive_distance(-1 * goalDropDist1);
         mobileGoalLock.set(false);
-        wait(750, msec);
+        wait(250, msec);
         pidDrivetrain.drive_distance(goalDropDist1 - 6);
+        pidDrivetrain.drive_ki = .03;
 
         // // clamp second goal
-        pidDrivetrain.turn_to_angle(92);
-        pidDrivetrain.drive_distance(-64);
+        pidDrivetrain.turn_to_angle(90);
+        pidDrivetrain.drive_distance(-64.5);
         mobileGoalLock.set(true);
         wait(250, msec);
 
