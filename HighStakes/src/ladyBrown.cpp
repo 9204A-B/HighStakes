@@ -43,13 +43,13 @@ void ladybrownLoading()
     {
         while (lbDistance.objectDistance(mm) > 70)
         {
-            lb.setVelocity(50, percent);
+            lb.setVelocity(25, percent);
             lb.spin(reverse);
             wait(5, msec);
         }
     }
     lbSelect = 1;
-    
+
     lb.stop(hold);
 }
 
