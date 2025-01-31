@@ -13,13 +13,8 @@ void drive(void)
     thread doinkerThread = thread(doink);
     while (true)
     {
-<<<<<<< Updated upstream
-        leftMotors.setVelocity(Controller.Axis3.position() + (pow(Controller.Axis1.position() / 100, turnExp) * 100 * turnScale), percent);
-        rightMotors.setVelocity(Controller.Axis3.position() - (pow(Controller.Axis1.position() / 100, turnExp) * 100 * turnScale), percent);
-=======
         leftMotors.setVelocity(Controller.Axis3.position() + Controller.Axis1.position() * 0.80, percent);
         rightMotors.setVelocity(Controller.Axis3.position() - Controller.Axis1.position() * 0.80, percent);
->>>>>>> Stashed changes
         leftMotors.spin(forward);
         rightMotors.spin(forward);
         wait(10, msec);
