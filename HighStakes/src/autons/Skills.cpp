@@ -27,7 +27,7 @@ namespace Autons
         intakeMotors.spin(reverse);
         wait(500, msec);
         intakeMotors.stop();
-        pidDrivetrain.drive_distance(13.5);
+        pidDrivetrain.drive_distance(13.25);
         antiJamEnable = true;
 
         // clamp goal 1
@@ -44,6 +44,7 @@ namespace Autons
         pidDrivetrain.turn_to_angle(180);
         intakeMotors.spin(forward);
         pidDrivetrain.drive_distance(22);
+        wait(750, msec);
         pidDrivetrain.turn_to_angle(90);
         pidDrivetrain.drive_distance(20);
 
@@ -51,8 +52,9 @@ namespace Autons
         pidDrivetrain.drive_max_voltage = lowSpeed;
 
         pidDrivetrain.turn_to_angle(0);
-        pidDrivetrain.drive_distance(28);
-        pidDrivetrain.drive_distance(-7);
+        pidDrivetrain.drive_distance(29);
+        wait(750, msec);
+        pidDrivetrain.drive_distance(-8);
 
         //Require higher turning accuracy to get 2nd goal
         pidDrivetrain.turn_settle_error = 1;
