@@ -67,12 +67,18 @@ void ladybrownScoring()
 
 void ladybrownReset()
 {
-    lbSelect = 0;
-    while (lbDistance.objectDistance(mm) > 40)
+    if (lbSelect == 2)
     {
-        lb.spin(reverse);
+        lb.spinFor(reverse, 0.5, sec);
+        lb.stop(coast);
     }
-    lb.stop(coast);
+    else if (lbSelect == 1)
+    {
+        lb.spinFor(reverse, 0.1, sec);
+        lb.stop(coast);
+    }
+
+    lbSelect = 0;
 }
 
 void ladybrown()
