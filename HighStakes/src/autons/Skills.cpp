@@ -48,18 +48,18 @@ namespace Autons
         pidDrivetrain.turn_to_angle(90);
         pidDrivetrain.drive_distance(20);
 
-        // 2 rings on left corner
+        // 3 rings on left corner
         pidDrivetrain.drive_max_voltage = lowSpeed;
 
         pidDrivetrain.turn_to_angle(0);
         pidDrivetrain.drive_distance(29);
         wait(750, msec);
         pidDrivetrain.drive_distance(-8);
+        pidDrivetrain.turn_to_angle(90);
+        pidDrivetrain.drive_distance(5);
+        wait(750, msec);
+        pidDrivetrain.drive_distance(-5);
 
-        //Require higher turning accuracy to get 2nd goal
-        pidDrivetrain.turn_settle_error = 1;
-
-        wait(500, msec);
         pidDrivetrain.turn_to_angle(180 + 45);
         intakeMotors.stop();
 
@@ -72,6 +72,9 @@ namespace Autons
         mobileGoalLock.set(false);
         wait(250, msec);
         pidDrivetrain.drive_distance(goalDropDist1 - 6);
+
+        //Require higher turning accuracy to get 2nd goal
+        pidDrivetrain.turn_settle_error = 1;
         pidDrivetrain.drive_ki = .03;
 
         // // clamp second goal
