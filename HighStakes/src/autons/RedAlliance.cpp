@@ -43,6 +43,7 @@ float startX = 11;
             
             pidDrivetrain.turn_to_angle(90 + 40.5);
             pidDrivetrain.drive_distance(31.6 - 8); // tweak until the robot picks up ring and doesn't cross
+            wait(500, msec);
 
             // SERIOUSLY TEST THE FOLLOWING ROUTE
             pidDrivetrain.turn_to_angle(90);
