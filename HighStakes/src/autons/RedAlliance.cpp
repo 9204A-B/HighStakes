@@ -14,6 +14,45 @@ namespace Autons
         case Autons::Route::test:
         {
             // red test slot
+
+float startX = 11;
+            float startY = 10;
+            float scoreRot = -72.5;
+
+            // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
+            float goalHeading = (-90 + (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
+            float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
+
+            pidDrivetrain.drive_max_voltage = 6;
+            pidDrivetrain.turn_max_voltage = 12;
+
+            //ladybrown to score preload onto alliance
+            pidDrivetrain.set_heading(-90);
+            pidDrivetrain.turn_to_angle(scoreRot);
+            ladybrownScoring();
+            ladybrownReset();
+
+            // drive to goal and clamp
+            pidDrivetrain.turn_to_angle(goalHeading);
+            pidDrivetrain.drive_distance(goalDist + 7);
+            mobileGoalLock.set(true);
+
+            // turn and drive for rings 2 and 3
+            intakeMotors.setVelocity(intakeSpeed, percent);
+            wait(500, msec);
+            
+            pidDrivetrain.turn_to_angle(90 + 40.5);
+            pidDrivetrain.drive_distance(31.6 - 8); // tweak until the robot picks up ring and doesn't cross
+
+            // SERIOUSLY TEST THE FOLLOWING ROUTE
+            pidDrivetrain.turn_to_angle(90);
+            pidDrivetrain.drive_distance(7);
+            wait(500, msec);
+            pidDrivetrain.drive_distance(-3.5);
+
+            pidDrivetrain.turn_to_angle(0);
+            pidDrivetrain.drive_distance(24);
+
             break;
         }
         case Autons::Route::ClusterStart:
