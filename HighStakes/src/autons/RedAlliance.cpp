@@ -15,7 +15,7 @@ namespace Autons
         {
             // red test slot
 
-float startX = 11;
+            float startX = 11;
             float startY = 10;
             float scoreRot = -72.5;
 
