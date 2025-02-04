@@ -11,8 +11,11 @@ namespace Autons
         // start in a position where running the intake scores onto the alliance stake
 
         float maxSpeed = 10;
-        float medSpeed = 7;
+        float medSpeed = 8;
         float lowSpeed = 6;
+
+        pidDrivetrain.turn_settle_error = 1;
+        pidDrivetrain.drive_ki = .03;
 
         pidDrivetrain.drive_max_voltage = medSpeed;
         pidDrivetrain.turn_max_voltage = medSpeed;
@@ -27,7 +30,7 @@ namespace Autons
         intakeMotors.spin(reverse);
         wait(500, msec);
         intakeMotors.stop();
-        pidDrivetrain.drive_distance(13);
+        pidDrivetrain.drive_distance(12.75);
         antiJamEnable = true;
 
         // clamp goal 1
@@ -72,11 +75,9 @@ namespace Autons
         pidDrivetrain.drive_distance(-1 * goalDropDist1);
         mobileGoalLock.set(false);
         wait(250, msec);
-        pidDrivetrain.drive_distance(goalDropDist1 - 6);
+        pidDrivetrain.drive_distance(goalDropDist1 - 7);
 
         //Require higher turning accuracy to get 2nd goal
-        pidDrivetrain.turn_settle_error = 1;
-        pidDrivetrain.drive_ki = .03;
 
         // // clamp second goal
         pidDrivetrain.turn_to_angle(90);
@@ -108,7 +109,7 @@ namespace Autons
         pidDrivetrain.turn_to_angle(270);
         pidDrivetrain.drive_distance(10);
         wait(750, msec);
-        pidDrivetrain.drive_distance(-10);
+        pidDrivetrain.drive_distance(-12);
 
         pidDrivetrain.turn_to_angle(90 + 45);
         intakeMotors.stop();
@@ -123,35 +124,40 @@ namespace Autons
         pidDrivetrain.drive_distance(-1 * goalDropDist1 + 2);
         mobileGoalLock.set(false);
         wait(250, msec);
-        pidDrivetrain.drive_distance(goalDropDist1);
+        pidDrivetrain.drive_distance(goalDropDist1 + 16);
 
         // drive to right blue goal
         pidDrivetrain.turn_to_angle(180);
-        pidDrivetrain.drive_distance(48);
-        pidDrivetrain.turn_to_angle(180 - 26.6);
-        intakeMotors.spin(forward);
-        pidDrivetrain.drive_distance(53.7);
-        pidDrivetrain.turn_to_angle(0);
-        intakeMotors.stop();
+
+        pidDrivetrain.drive_timeout = 5000;
+
+        pidDrivetrain.drive_distance(60);
+        pidDrivetrain.drive_timeout = 3000;
+        pidDrivetrain.turn_to_angle(-18.4);
 
         pidDrivetrain.drive_max_voltage = lowSpeed;
 
-        pidDrivetrain.drive_distance(-1 * (12 + 0)); // tweak this until the robot is as close to the wall as possible
+        pidDrivetrain.drive_distance(-37.9 + 7);
+        wait(250, msec);
+        mobileGoalLock.set(true);
 
         pidDrivetrain.drive_max_voltage = medSpeed;
 
         // shove right blue goal into corner
-        pidDrivetrain.turn_to_angle(90);
-        float goalDropDist2 = 48 - 7.5 - 10 - 0;
+        pidDrivetrain.turn_to_angle(80);
+        mobileGoalLock.set(false);
+        wait(500, msec);
+        float goalDropDist2 = 48 - 7.5 - 10 - 7;
         pidDrivetrain.drive_max_voltage = maxSpeed;
         pidDrivetrain.drive_timeout = 5000;
         pidDrivetrain.drive_distance(-1 * goalDropDist2);
-        mobileGoalLock.set(false);
         wait(250, msec);
 
         // shove left blue goal into corner
         pidDrivetrain.drive_distance(goalDropDist2 + 48 + goalDropDist2);
         pidDrivetrain.drive_timeout = 3000;
+        pidDrivetrain.turn_to_angle(180 - 30);
+        pidDrivetrain.drive_distance(48);
         pidDrivetrain.drive_distance(-48);
     }
 }
