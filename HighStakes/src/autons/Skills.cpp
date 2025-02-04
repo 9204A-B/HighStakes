@@ -123,22 +123,28 @@ namespace Autons
         pidDrivetrain.drive_distance(goalDropDist1);
 
         // drive to right blue goal
-        pidDrivetrain.turn_to_angle(-12.5);
-        pidDrivetrain.drive_distance(-1 * (110.6 + 5)); // robot should be as close to the wall as possible WHILE STILL BEING ABLE TO TURN
-        wait(250, msec);
-        mobileGoalLock.set(true);
-        wait(250, msec);
+        pidDrivetrain.turn_to_angle(0);
+        pidDrivetrain.drive_distance(-48);
+        pidDrivetrain.turn_to_angle(-26.6);
+        pidDrivetrain.drive_distance(-53.7);
+        pidDrivetrain.turn_to_angle(0);
+
+        pidDrivetrain.drive_max_voltage = lowSpeed;
+
+        pidDrivetrain.drive_distance(-1 * (12 + 0)); // tweak this until the robot is as close to the wall as possible
+
+        pidDrivetrain.drive_max_voltage = medSpeed;
 
         // shove right blue goal into corner
         pidDrivetrain.turn_to_angle(90);
         float goalDropDist2 = 48 - 7.5 - 10 - 0;
         pidDrivetrain.drive_max_voltage = maxSpeed;
+        pidDrivetrain.drive_timeout = 5000;
         pidDrivetrain.drive_distance(-1 * goalDropDist2);
         mobileGoalLock.set(false);
         wait(250, msec);
 
         // shove left blue goal into corner
-        pidDrivetrain.drive_timeout = 5000;
         pidDrivetrain.drive_distance(goalDropDist2 + 48 + goalDropDist2);
         pidDrivetrain.drive_timeout = 3000;
         pidDrivetrain.drive_distance(-48);
