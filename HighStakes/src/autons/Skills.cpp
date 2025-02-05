@@ -121,7 +121,7 @@ namespace Autons
         pidDrivetrain.turn_max_voltage = medSpeed;
 
         intakeMotors.stop();
-        pidDrivetrain.drive_distance(-1 * goalDropDist1 + 2);
+        pidDrivetrain.drive_distance(-1 * goalDropDist1);
         mobileGoalLock.set(false);
         wait(250, msec);
         pidDrivetrain.drive_distance(goalDropDist1 + 16);
