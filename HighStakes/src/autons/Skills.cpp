@@ -133,18 +133,20 @@ namespace Autons
 
         pidDrivetrain.drive_distance(60);
         pidDrivetrain.drive_timeout = 3000;
-        pidDrivetrain.turn_to_angle(-18.4);
+        pidDrivetrain.turn_to_angle(90 + 45);
+        pidDrivetrain.drive_distance(17);
 
         pidDrivetrain.drive_max_voltage = lowSpeed;
 
-        pidDrivetrain.drive_distance(-37.9 + 7);
+        pidDrivetrain.turn_to_angle(0);
+        pidDrivetrain.drive_distance(-24);
         wait(250, msec);
         mobileGoalLock.set(true);
 
         pidDrivetrain.drive_max_voltage = medSpeed;
 
         // shove right blue goal into corner
-        pidDrivetrain.turn_to_angle(80);
+        pidDrivetrain.turn_to_angle(90);
         mobileGoalLock.set(false);
         wait(500, msec);
         float goalDropDist2 = 48 - 7.5 - 10 - 7;
@@ -156,8 +158,8 @@ namespace Autons
         // shove left blue goal into corner
         pidDrivetrain.drive_distance(goalDropDist2 + 48 + goalDropDist2);
         pidDrivetrain.drive_timeout = 3000;
-        pidDrivetrain.turn_to_angle(180 - 30);
-        pidDrivetrain.drive_distance(48);
+        // pidDrivetrain.turn_to_angle(180 - 30);
+        // pidDrivetrain.drive_distance(48);
         pidDrivetrain.drive_distance(-48);
     }
 }
