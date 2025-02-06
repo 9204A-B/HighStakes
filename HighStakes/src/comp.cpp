@@ -34,6 +34,7 @@ void auton(void)
         case 0:
         {
             Autons::RedAlliance::run(Autons::Route::test);
+            break;
         }
         case 1:
         {

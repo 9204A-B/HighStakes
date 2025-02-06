@@ -16,7 +16,7 @@ namespace Autons
             // red test slot
 
             float startX = 11;
-            float startY = 10;
+            float startY = 9.5;
             float scoreRot = -72.5;
 
             // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
@@ -24,13 +24,16 @@ namespace Autons
             float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
 
             pidDrivetrain.drive_max_voltage = 6;
-            pidDrivetrain.turn_max_voltage = 12;
+            pidDrivetrain.turn_max_voltage = 8;
 
             //ladybrown to score preload onto alliance
             pidDrivetrain.set_heading(-90);
             pidDrivetrain.turn_to_angle(scoreRot);
             ladybrownScoring();
             ladybrownReset();
+            wait(250, msec);
+
+            pidDrivetrain.turn_max_voltage = 12;
 
             // drive to goal and clamp
             pidDrivetrain.turn_to_angle(goalHeading);
@@ -39,20 +42,22 @@ namespace Autons
 
             // turn and drive for rings 2 and 3
             intakeMotors.setVelocity(intakeSpeed, percent);
-            wait(500, msec);
+            pidDrivetrain.drive_max_voltage = 8;
+            wait(250, msec);
             
-            pidDrivetrain.turn_to_angle(90 + 40.5);
-            pidDrivetrain.drive_distance(31.6 - 8); // tweak until the robot picks up ring and doesn't cross
+            pidDrivetrain.turn_to_angle(90 + 45);
+            intakeMotors.spin(forward);
+            pidDrivetrain.drive_distance(31.6 - 5); // tweak until the robot picks up ring and doesn't cross
             wait(500, msec);
 
             // SERIOUSLY TEST THE FOLLOWING ROUTE
-            pidDrivetrain.turn_to_angle(90);
-            pidDrivetrain.drive_distance(7);
+            pidDrivetrain.right_swing_to_angle(90);
+            pidDrivetrain.drive_distance(8);
             wait(500, msec);
-            pidDrivetrain.drive_distance(-3.5);
+            pidDrivetrain.drive_distance(-3);
 
             pidDrivetrain.turn_to_angle(0);
-            pidDrivetrain.drive_distance(24);
+            pidDrivetrain.drive_distance(15);
 
             break;
         }
@@ -65,7 +70,7 @@ namespace Autons
             // startY is number of inches from the wall
             // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
             float startX = 11;
-            float startY = 10;
+            float startY = 9.5;
             float scoreRot = -72.5;
 
             // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
@@ -77,11 +82,15 @@ namespace Autons
 
             //ladybrown to score preload onto alliance
             pidDrivetrain.set_heading(-90);
+            pidDrivetrain.turn_ki = 0;
+            pidDrivetrain.turn_kd = 0;
             pidDrivetrain.turn_to_angle(scoreRot);
             ladybrownScoring();
             ladybrownReset();
 
             // drive to goal and clamp
+            pidDrivetrain.turn_ki = 0.03;
+            pidDrivetrain.turn_kd = 3;
             pidDrivetrain.turn_to_angle(goalHeading);
             pidDrivetrain.drive_distance(goalDist + 7);
             mobileGoalLock.set(true);
