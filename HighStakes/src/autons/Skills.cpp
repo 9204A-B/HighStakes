@@ -60,11 +60,11 @@ namespace Autons
         pidDrivetrain.drive_distance(21);
         pidDrivetrain.drive_distance(8);
         wait(500, msec);
-        pidDrivetrain.drive_distance(-8);
+        pidDrivetrain.drive_distance(-9);
         pidDrivetrain.turn_to_angle(90);
         pidDrivetrain.drive_distance(10);
         wait(500, msec);
-        pidDrivetrain.drive_distance(-10);
+        pidDrivetrain.drive_distance(-12);
 
         pidDrivetrain.turn_to_angle(180 + 45);
         intakeMotors.stop();
@@ -109,7 +109,7 @@ namespace Autons
         pidDrivetrain.drive_distance(21);
         pidDrivetrain.drive_distance(8);
         wait(500, msec);
-        pidDrivetrain.drive_distance(-8);
+        pidDrivetrain.drive_distance(-9);
         pidDrivetrain.turn_to_angle(270);
         pidDrivetrain.drive_distance(10);
         wait(500, msec);
@@ -159,11 +159,10 @@ namespace Autons
         wait(250, msec);
 
         // shove left blue goal into corner
-        pidDrivetrain.drive_timeout = 5000;
-        pidDrivetrain.drive_distance(goalDropDist2);
-        pidDrivetrain.turn_to_angle(180 + 80);
-        pidDrivetrain.drive_distance(-1 * (goalDropDist2 + 38));
         pidDrivetrain.drive_timeout = 3000;
+        pidDrivetrain.drive_distance(goalDropDist2 + 10);
+        pidDrivetrain.turn_to_angle(180 + 80);
+        pidDrivetrain.drive_distance(-1 * (goalDropDist2 + 28));
         mobileGoalLock.set(true);
         pidDrivetrain.turn_to_angle(-30);
         mobileGoalLock.set(false);
