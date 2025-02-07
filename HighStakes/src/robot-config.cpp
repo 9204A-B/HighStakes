@@ -42,6 +42,8 @@ digital_in button = digital_in(Brain.ThreeWirePort.B);
 int allianceSelect = 0;
 int autonSelect = 0;
 
+optical colorSensor = optical(PORT8);
+
 void vexcodeInit(void)
 {
     // Vex requires this to compile

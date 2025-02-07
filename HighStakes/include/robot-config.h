@@ -41,6 +41,7 @@ extern competition Competition;
 extern digital_in button;
 extern int allianceSelect;
 extern int autonSelect;
+extern optical colorSensor;
 
 void vexcodeInit(void);
 #endif
