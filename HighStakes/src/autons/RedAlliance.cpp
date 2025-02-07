@@ -27,6 +27,9 @@ namespace Autons
             pidDrivetrain.turn_max_voltage = 8;
 
             //ladybrown to score preload onto alliance
+            pidDrivetrain.turn_ki = 0;
+            pidDrivetrain.turn_kd = 0;
+            pidDrivetrain.turn_settle_error = 3;
             pidDrivetrain.set_heading(-90);
             pidDrivetrain.turn_to_angle(scoreRot);
             ladybrownScoring();
@@ -36,6 +39,9 @@ namespace Autons
             pidDrivetrain.turn_max_voltage = 12;
 
             // drive to goal and clamp
+            pidDrivetrain.turn_ki = 0.03;
+            pidDrivetrain.turn_kd = 3;
+            pidDrivetrain.turn_settle_error = 1;
             pidDrivetrain.turn_to_angle(goalHeading);
             pidDrivetrain.drive_distance(goalDist + 7);
             mobileGoalLock.set(true);
@@ -52,12 +58,11 @@ namespace Autons
 
             // SERIOUSLY TEST THE FOLLOWING ROUTE
             pidDrivetrain.right_swing_to_angle(90);
-            pidDrivetrain.drive_distance(8);
             wait(500, msec);
-            pidDrivetrain.drive_distance(-3);
+            pidDrivetrain.drive_distance(3);
 
-            pidDrivetrain.turn_to_angle(0);
-            pidDrivetrain.drive_distance(15);
+            pidDrivetrain.turn_to_angle(10);
+            pidDrivetrain.drive_distance(16);
 
             break;
         }
@@ -78,45 +83,45 @@ namespace Autons
             float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
 
             pidDrivetrain.drive_max_voltage = 6;
-            pidDrivetrain.turn_max_voltage = 12;
+            pidDrivetrain.turn_max_voltage = 8;
 
             //ladybrown to score preload onto alliance
-            pidDrivetrain.set_heading(-90);
             pidDrivetrain.turn_ki = 0;
             pidDrivetrain.turn_kd = 0;
+            pidDrivetrain.turn_settle_error = 3;
+            pidDrivetrain.set_heading(-90);
             pidDrivetrain.turn_to_angle(scoreRot);
             ladybrownScoring();
             ladybrownReset();
+            wait(250, msec);
+
+            pidDrivetrain.turn_max_voltage = 12;
 
             // drive to goal and clamp
             pidDrivetrain.turn_ki = 0.03;
             pidDrivetrain.turn_kd = 3;
-            pidDrivetrain.turn_to_angle(goalHeading);
+            pidDrivetrain.turn_settle_error = 1;
+            pidDrivetrain.turn_to_angle(goalHeading - 5);
             pidDrivetrain.drive_distance(goalDist + 7);
             mobileGoalLock.set(true);
-            // turn and drive forwards for ring 2
+
+            // turn and drive for rings 2 and 3
             intakeMotors.setVelocity(intakeSpeed, percent);
-            wait(500, msec);
-            pidDrivetrain.turn_to_angle(90);
-
-            // make sure the robot is perfectly aligned before running anything after this
-
-            intakeMotors.spin(forward);
             pidDrivetrain.drive_max_voltage = 8;
-            pidDrivetrain.drive_distance(24 - 2);
             wait(250, msec);
+            
+            pidDrivetrain.turn_to_angle(90 + 45);
+            intakeMotors.spin(forward);
+            pidDrivetrain.drive_distance(31.6 - 5); // tweak until the robot picks up ring and doesn't cross
+            wait(500, msec);
 
-            // getting ring 3
-            pidDrivetrain.turn_to_angle(180);
+            // SERIOUSLY TEST THE FOLLOWING ROUTE
+            pidDrivetrain.right_swing_to_angle(90);
+            wait(500, msec);
+            pidDrivetrain.drive_distance(1);
+
+            pidDrivetrain.turn_to_angle(5);
             pidDrivetrain.drive_distance(16);
-            wait(250, msec);
-
-            // getting ring 4
-            pidDrivetrain.drive_distance(-6);
-            pidDrivetrain.turn_to_angle(180 - 30);
-            pidDrivetrain.drive_distance(6);
-            wait(250, msec);
-            pidDrivetrain.drive_distance(-6);
 
             break;
         }
@@ -129,7 +134,7 @@ namespace Autons
             RedAlliance::run(Autons::Route::ClusterStart);
 
             // ladder touch
-            pidDrivetrain.turn_to_angle(-90);
+            pidDrivetrain.turn_to_angle(-110);
             intakeMotors.stop();
             pidDrivetrain.drive_max_voltage = 12;
             pidDrivetrain.drive_distance(30);
