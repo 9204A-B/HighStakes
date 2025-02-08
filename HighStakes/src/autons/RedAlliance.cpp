@@ -101,7 +101,7 @@ namespace Autons
             pidDrivetrain.turn_ki = 0.03;
             pidDrivetrain.turn_kd = 3;
             pidDrivetrain.turn_settle_error = 1;
-            pidDrivetrain.turn_to_angle(goalHeading - 5);
+            pidDrivetrain.turn_to_angle(goalHeading - 1);
             pidDrivetrain.drive_distance(goalDist + 7);
             mobileGoalLock.set(true);
 
@@ -110,18 +110,19 @@ namespace Autons
             pidDrivetrain.drive_max_voltage = 8;
             wait(250, msec);
             
-            pidDrivetrain.turn_to_angle(90 + 45);
+            pidDrivetrain.turn_to_angle(90 + 50);
             intakeMotors.spin(forward);
-            pidDrivetrain.drive_distance(31.6 - 5); // tweak until the robot picks up ring and doesn't cross
+            pidDrivetrain.drive_distance(31.6 - 7.5); // tweak until the robot picks up ring and doesn't cross
             wait(500, msec);
 
             // SERIOUSLY TEST THE FOLLOWING ROUTE
             pidDrivetrain.right_swing_to_angle(90);
-            wait(500, msec);
-            pidDrivetrain.drive_distance(1);
+            wait(250, msec);
+            pidDrivetrain.drive_distance(2);
 
-            pidDrivetrain.turn_to_angle(5);
-            pidDrivetrain.drive_distance(16);
+            pidDrivetrain.turn_to_angle(10);
+            pidDrivetrain.drive_distance(14);
+            wait(500, msec);
 
             break;
         }
@@ -137,7 +138,7 @@ namespace Autons
             pidDrivetrain.turn_to_angle(-110);
             intakeMotors.stop();
             pidDrivetrain.drive_max_voltage = 12;
-            pidDrivetrain.drive_distance(30);
+            pidDrivetrain.drive_distance(29);
 
             break;
         }
