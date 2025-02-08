@@ -121,7 +121,7 @@ namespace Autons
             wait(250, msec);
             pidDrivetrain.drive_distance(8.5);
 
-            pidDrivetrain.turn_to_angle(10);
+            pidDrivetrain.turn_to_angle(10)
             pidDrivetrain.drive_distance(13);
             wait(500, msec);
 
