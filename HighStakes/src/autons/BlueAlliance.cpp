@@ -27,9 +27,9 @@ namespace Autons
             // startX is number of inches to the RIGHT of the center line / alliance stake
             // startY is number of inches from the wall
             // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
-            float startX = 11;
+            float startX = 10;
             float startY = 9.5;
-            float scoreRot = -72.5;
+            float scoreRot = 70;
 
             // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
             float goalHeading = (90 - (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
@@ -54,7 +54,7 @@ namespace Autons
             pidDrivetrain.turn_ki = 0.03;
             pidDrivetrain.turn_kd = 3;
             pidDrivetrain.turn_settle_error = 1;
-            pidDrivetrain.turn_to_angle(goalHeading + 1);
+            pidDrivetrain.turn_to_angle(goalHeading);
             pidDrivetrain.drive_distance(goalDist + 7);
             mobileGoalLock.set(true);
 
@@ -63,18 +63,19 @@ namespace Autons
             pidDrivetrain.drive_max_voltage = 8;
             wait(250, msec);
             
-            pidDrivetrain.turn_to_angle(-1 * (90 + 50));
+            pidDrivetrain.turn_to_angle(-1 * (90 + 45));
             intakeMotors.spin(forward);
-            pidDrivetrain.drive_distance(31.6 - 7.5); // tweak until the robot picks up ring and doesn't cross
-            wait(500, msec);
+            pidDrivetrain.drive_distance(31.6 - 7); // tweak until the robot picks up ring and doesn't cross
+            pidDrivetrain.drive_distance(-5);
+            wait(250, msec);
 
             // SERIOUSLY TEST THE FOLLOWING ROUTE
-            pidDrivetrain.right_swing_to_angle(-90);
+            pidDrivetrain.turn_to_angle(-115);
             wait(250, msec);
-            pidDrivetrain.drive_distance(2);
+            pidDrivetrain.drive_distance(8.5);
 
             pidDrivetrain.turn_to_angle(-10);
-            pidDrivetrain.drive_distance(14);
+            pidDrivetrain.drive_distance(13);
             wait(500, msec);
 
             break;
@@ -90,8 +91,8 @@ namespace Autons
             // ladder touch
             pidDrivetrain.turn_to_angle(110);
             intakeMotors.stop();
-            pidDrivetrain.drive_max_voltage = 12;
-            pidDrivetrain.drive_distance(29);
+            pidDrivetrain.drive_max_voltage = 11;
+            pidDrivetrain.drive_distance(28);
 
             break;
         }
