@@ -28,49 +28,54 @@ namespace Autons
             // startY is number of inches from the wall
             // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
             float startX = 11;
-            float startY = 10;
-            float scoreRot = 72.5;
+            float startY = 9.5;
+            float scoreRot = -72.5;
 
             // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
             float goalHeading = (90 - (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
             float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
 
             pidDrivetrain.drive_max_voltage = 6;
-            pidDrivetrain.turn_max_voltage = 12;
+            pidDrivetrain.turn_max_voltage = 8;
 
-            // ladybrown to score preload onto alliance
+            //ladybrown to score preload onto alliance
+            pidDrivetrain.turn_ki = 0;
+            pidDrivetrain.turn_kd = 0;
+            pidDrivetrain.turn_settle_error = 3;
             pidDrivetrain.set_heading(90);
             pidDrivetrain.turn_to_angle(scoreRot);
             ladybrownScoring();
             ladybrownReset();
+            wait(250, msec);
+
+            pidDrivetrain.turn_max_voltage = 12;
 
             // drive to goal and clamp
-            pidDrivetrain.turn_to_angle(goalHeading);
+            pidDrivetrain.turn_ki = 0.03;
+            pidDrivetrain.turn_kd = 3;
+            pidDrivetrain.turn_settle_error = 1;
+            pidDrivetrain.turn_to_angle(goalHeading + 1);
             pidDrivetrain.drive_distance(goalDist + 7);
             mobileGoalLock.set(true);
-            // turn and drive forwards for ring 2
+
+            // turn and drive for rings 2 and 3
             intakeMotors.setVelocity(intakeSpeed, percent);
-            wait(100, msec);
-            pidDrivetrain.turn_to_angle(-90);
-
-            // make sure the robot is perfectly aligned before running anything after this
-
-            intakeMotors.spin(forward);
             pidDrivetrain.drive_max_voltage = 8;
-            pidDrivetrain.drive_distance(24 - 2);
             wait(250, msec);
+            
+            pidDrivetrain.turn_to_angle(-1 * (90 + 50));
+            intakeMotors.spin(forward);
+            pidDrivetrain.drive_distance(31.6 - 7.5); // tweak until the robot picks up ring and doesn't cross
+            wait(500, msec);
 
-            // getting ring 3
-            pidDrivetrain.turn_to_angle(-180);
-            pidDrivetrain.drive_distance(16);
+            // SERIOUSLY TEST THE FOLLOWING ROUTE
+            pidDrivetrain.right_swing_to_angle(-90);
             wait(250, msec);
+            pidDrivetrain.drive_distance(2);
 
-            // getting ring 4
-            pidDrivetrain.drive_distance(-6);
-            pidDrivetrain.turn_to_angle((180 - 30) * -1);
-            pidDrivetrain.drive_distance(6);
-            wait(250, msec);
-            pidDrivetrain.drive_distance(-6);
+            pidDrivetrain.turn_to_angle(-10);
+            pidDrivetrain.drive_distance(14);
+            wait(500, msec);
 
             break;
         }
@@ -83,10 +88,10 @@ namespace Autons
             BlueAlliance::run(Autons::Route::ClusterStart);
 
             // ladder touch
-            pidDrivetrain.turn_to_angle(90);
+            pidDrivetrain.turn_to_angle(110);
             intakeMotors.stop();
             pidDrivetrain.drive_max_voltage = 12;
-            pidDrivetrain.drive_distance(30);
+            pidDrivetrain.drive_distance(29);
 
             break;
         }
