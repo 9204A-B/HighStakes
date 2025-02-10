@@ -9,7 +9,6 @@ void drive(void)
     Drivetrain.setDriveVelocity(100, percent);
     Drivetrain.setStopping(brake);
     thread lockThread = thread(lock);
-    // thread intakeThread = thread(intake);
     thread timeThread = thread(startTimer);
     thread doinkerThread = thread(doink);
     while (true)

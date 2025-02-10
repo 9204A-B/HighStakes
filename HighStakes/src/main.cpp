@@ -39,6 +39,7 @@ int main()
 
     // thread antiJamThread = thread(antiJam);
     thread tempThread = thread(warning);
+    thread colorSortThread = thread(Sort);
     selector();
     wait(15, msec);
 }

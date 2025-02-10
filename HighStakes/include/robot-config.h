@@ -42,5 +42,8 @@ extern digital_in button;
 extern int allianceSelect;
 extern int autonSelect;
 
+extern optical colorSensor;
+extern bool colorSortEnable;
+
 void vexcodeInit(void);
 #endif
