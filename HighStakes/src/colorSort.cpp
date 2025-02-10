@@ -16,7 +16,13 @@ void Sort()
             if (colorSortEnable && ((allianceSelect == 1 && abs(colorSensor.hue() - blueHue) < error) || 
                         //blue alliance
                     (allianceSelect == 2 && abs(colorSensor.hue() - redHue) < error)))
-            {           
+            {
+                //wait until ring is near top
+              
+                while ((allianceSelect == 1 && abs(colorSensor.hue() - blueHue) < error) || 
+                //blue alliance
+            (allianceSelect == 2 && abs(colorSensor.hue() - redHue) < error))      
+
                 intakeMotors.stop(brake);
                 wait(150, msec);
                 //intakeMotors.spinFor(250, msec, -100, velocityUnits::pct);

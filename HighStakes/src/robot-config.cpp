@@ -42,7 +42,7 @@ digital_in button = digital_in(Brain.ThreeWirePort.B);
 int allianceSelect = 0;
 int autonSelect = 0;
 
-optical colorSensor = optical(PORT5);
+optical colorSensor = optical(PORT6);
 bool colorSortEnable = true;
 
 void vexcodeInit(void)
