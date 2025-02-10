@@ -74,7 +74,7 @@ namespace Autons
             wait(250, msec);
             pidDrivetrain.drive_distance(8.5);
 
-            pidDrivetrain.turn_to_angle(-0);
+            pidDrivetrain.turn_to_angle(-10);
             pidDrivetrain.drive_distance(13);
             wait(500, msec);
 
@@ -91,7 +91,7 @@ namespace Autons
             // ladder touch
             pidDrivetrain.turn_to_angle(110);
             intakeMotors.stop();
-            pidDrivetrain.drive_max_voltage = 11;
+            pidDrivetrain.drive_max_voltage = 12;
             pidDrivetrain.drive_distance(28);
 
             break;

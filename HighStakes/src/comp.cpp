@@ -5,6 +5,7 @@ using namespace Autons;
 
 void drive(void)
 {
+    antiJamEnable = false;
     Drivetrain.setDriveVelocity(100, percent);
     Drivetrain.setStopping(brake);
     thread lockThread = thread(lock);

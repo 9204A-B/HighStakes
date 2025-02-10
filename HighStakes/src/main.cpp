@@ -19,7 +19,7 @@ int main()
 
     while (Inertial.isCalibrating())
     {
-        Brain.Screen.print("Calibrating inertial ");
+        Brain.Screen.print("Calibrating inertial + TEST ");
         wait(150, msec);
     }
     wait(25, msec);
@@ -37,7 +37,7 @@ int main()
     button.high(autonUpdate);
     Brain.Screen.pressed(allianceUpdate);
 
-    thread antiJamThread = thread(antiJam);
+    // thread antiJamThread = thread(antiJam);
     thread tempThread = thread(warning);
     selector();
     wait(15, msec);

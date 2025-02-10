@@ -121,7 +121,7 @@ namespace Autons
             wait(250, msec);
             pidDrivetrain.drive_distance(8.5);
 
-            pidDrivetrain.turn_to_angle(10)
+            pidDrivetrain.turn_to_angle(10);
             pidDrivetrain.drive_distance(13);
             wait(500, msec);
 
@@ -164,21 +164,23 @@ namespace Autons
             // finishes in the corner
 
             // get mogo and drop match load
-            pidDrivetrain.turn_to_angle(330);
-            pidDrivetrain.drive_distance(-41.6);
+            pidDrivetrain.set_heading(330);
+            pidDrivetrain.drive_max_voltage = 6;
+            pidDrivetrain.drive_distance(-31);
             mobileGoalLock.set(true);
+            pidDrivetrain.drive_max_voltage = 8;
+            wait(250, msec);
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
             wait(1000, msec);
             pidDrivetrain.turn_to_angle(270);
-            pidDrivetrain.drive_distance(24);
+            pidDrivetrain.drive_distance(18);
             wait(2000, msec);
             intakeMotors.stop();
 
             // intake ring 2 and driving into the corner
-            pidDrivetrain.drive_distance(12);
-            pidDrivetrain.turn_to_angle(0);
-            pidDrivetrain.drive_distance(12);
+            pidDrivetrain.turn_to_angle(-30);
+            pidDrivetrain.drive_distance(24);
 
             break;
         }
