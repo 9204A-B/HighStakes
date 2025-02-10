@@ -58,6 +58,8 @@ void ladybrownScoring()
     if (lbDistance.isObjectDetected())
     {
         lbSelect = 2;
+        YPress();
+        wait(100, msec);
         lb.setStopping(hold);
         lb.setVelocity(80, percent);
         lb.spinFor(.6, sec);
