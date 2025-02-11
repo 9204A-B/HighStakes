@@ -38,7 +38,7 @@ int main()
     button.high(autonUpdate);
     Brain.Screen.pressed(allianceUpdate);
 
-    // thread antiJamThread = thread(antiJam);
+    thread antiJamThread = thread(antiJam);
     thread tempThread = thread(warning);
     thread colorSortThread = thread(Sort);
     selector();
