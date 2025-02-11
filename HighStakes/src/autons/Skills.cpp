@@ -11,13 +11,14 @@ namespace Autons
         // start in a position where running the intake scores onto the alliance stake
 
         float maxSpeed = 12;
-        float medSpeed = 8.5;
+        float medSpeed = 10;
         float lowSpeed = 6;
 
         pidDrivetrain.turn_settle_error = 1;
         pidDrivetrain.drive_ki = .03;
         pidDrivetrain.turn_timeout = 2000;
         pidDrivetrain.drive_timeout = 2000;
+        pidDrivetrain.set_coordinates(72, 9.25, 0);
 
         pidDrivetrain.drive_max_voltage = medSpeed;
         pidDrivetrain.turn_max_voltage = medSpeed;
@@ -27,10 +28,10 @@ namespace Autons
         // score alliance stake and align for first goal
         antiJamEnable = false;
         intakeMotors.spin(forward);
-        wait(300, msec);
+        wait(450, msec);
         intakeMotors.stop();
         intakeMotors.spin(reverse);
-        wait(300, msec);
+        wait(450, msec);
         intakeMotors.stop();
         pidDrivetrain.drive_distance(12);
         antiJamEnable = true;
@@ -41,7 +42,7 @@ namespace Autons
 
         pidDrivetrain.drive_max_voltage = lowSpeed;
         pidDrivetrain.drive_timeout = 3000;
-        pidDrivetrain.drive_distance(-24);
+        pidDrivetrain.drive_distance(-23);
         wait(100, msec);
         mobileGoalLock.set(true);
         wait(100, msec);
@@ -84,8 +85,8 @@ namespace Autons
 
         // // clamp second goal
         pidDrivetrain.drive_timeout = 3000;
+        pidDrivetrain.drive_to_point(72, 24);
         pidDrivetrain.turn_to_angle(90);
-        pidDrivetrain.drive_distance(-1 * (72 - 24));
 
         pidDrivetrain.drive_max_voltage = lowSpeed;
         pidDrivetrain.drive_distance(-24);
@@ -129,7 +130,7 @@ namespace Autons
         pidDrivetrain.drive_distance(-1 * (goalDropDist1));
         mobileGoalLock.set(false);
         wait(250, msec);
-        pidDrivetrain.drive_distance(goalDropDist1 + 14);
+        pidDrivetrain.drive_distance(goalDropDist1 + 12);
 
         // drive to right blue goal
         pidDrivetrain.turn_to_angle(180);
@@ -151,7 +152,7 @@ namespace Autons
         pidDrivetrain.drive_max_voltage = medSpeed;
 
         // shove right blue goal into corner
-        pidDrivetrain.turn_to_angle(80);
+        pidDrivetrain.turn_to_angle(70);
         mobileGoalLock.set(false);
         wait(250, msec);
         float goalDropDist2 = 48 - 7.5 - 10 - 2;
@@ -161,10 +162,11 @@ namespace Autons
 
         // shove left blue goal into corner
         pidDrivetrain.drive_distance(goalDropDist2);
-        pidDrivetrain.turn_to_angle(180 + 75);
-        pidDrivetrain.drive_distance(-1 * (goalDropDist2 + 38));
+        pidDrivetrain.drive_max_voltage = medSpeed;
+        pidDrivetrain.drive_to_pose(72, 120, -90);
         mobileGoalLock.set(true);
-        pidDrivetrain.turn_to_angle(-30);
+        pidDrivetrain.drive_max_voltage = maxSpeed;
+        pidDrivetrain.drive_to_pose(24, 96, -150);
         mobileGoalLock.set(false);
         pidDrivetrain.drive_distance(-48);
         pidDrivetrain.drive_distance(48);

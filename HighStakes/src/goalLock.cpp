@@ -2,6 +2,20 @@
 
 using namespace vex;
 
+void driverLock()
+{
+    if (locked == false && goalDetect.objectDistance(mm) <= clampDistance)
+    {
+        locked = !locked;
+        mobileGoalLock.set(locked);
+    }
+    else if (locked == true)
+    {
+        locked = !locked;
+        mobileGoalLock.set(locked);
+    }
+}
+
 void lock()
 {
     while (true)

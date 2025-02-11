@@ -35,6 +35,7 @@ int main()
     Controller.ButtonY.pressed(lbScoreButton);
     Controller.ButtonB.pressed(YPress);
     Controller.ButtonX.pressed(sortToggle);
+    Controller.ButtonL1.pressed(driverLock);
     button.high(autonUpdate);
     Brain.Screen.pressed(allianceUpdate);
 

@@ -8,7 +8,7 @@ void drive(void)
     antiJamEnable = false;
     Drivetrain.setDriveVelocity(100, percent);
     Drivetrain.setStopping(brake);
-    thread lockThread = thread(lock);
+    // thread lockThread = thread(lock);
     thread timeThread = thread(startTimer);
     thread doinkerThread = thread(doink);
     while (true)
