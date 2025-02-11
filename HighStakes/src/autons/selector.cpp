@@ -8,12 +8,12 @@ void selector(void)
     wait(5, msec);
     if (allianceSelect == 0)
     {
-        Brain.Screen.setPenColor(vex::color::purple);
+        Brain.Screen.clearScreen(vex::color::purple);
         Brain.Screen.print("Programming Skills");
     }
     else if (allianceSelect == 1)
     {
-        Brain.Screen.setPenColor(vex::color::red);
+        Brain.Screen.clearScreen(vex::color::red);
         Brain.Screen.print("Red Alliance selected");
         Brain.Screen.newLine();
 
@@ -40,7 +40,7 @@ void selector(void)
     }
     else if (allianceSelect == 2)
     {
-        Brain.Screen.setPenColor(vex::color::cyan);
+        Brain.Screen.clearScreen(vex::color::cyan);
         Brain.Screen.print("Blue Alliance selected");
         Brain.Screen.newLine();
 
