@@ -34,3 +34,8 @@ void Sort()
         }
     }
 }
+
+void sortToggle()
+{
+    colorSortEnable = !colorSortEnable;
+}

@@ -34,6 +34,7 @@ int main()
     Controller.ButtonRight.pressed(lbLoadButton);
     Controller.ButtonY.pressed(lbScoreButton);
     Controller.ButtonB.pressed(YPress);
+    Controller.ButtonX.pressed(sortToggle);
     button.high(autonUpdate);
     Brain.Screen.pressed(allianceUpdate);
 

@@ -19,3 +19,4 @@ void ladybrownReset(void);
 void doink(void);
 void antiJam(void);
 void Sort(void);
+void sortToggle(void);
