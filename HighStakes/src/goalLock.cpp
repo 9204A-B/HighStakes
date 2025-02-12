@@ -21,7 +21,7 @@ void lock()
     while (true)
     {
 
-        while (!(Controller.ButtonL1.pressing() && goalDetect.objectDistance(mm) <= clampDistance))
+        while ((!(Controller.ButtonL1.pressing() && goalDetect.objectDistance(mm) <= clampDistance)) || locked)
         {
             wait(5, msec);
         }
