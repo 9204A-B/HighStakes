@@ -19,6 +19,7 @@ namespace Autons
     enum Route
     {
         ClusterStart,
+        MogoStart,
         soloAWP,
         fourRing_Corner,
         mogoSide_Corner,

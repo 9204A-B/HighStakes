@@ -15,28 +15,6 @@ namespace Autons
         {
             // red test slot
 
-            pidDrivetrain.set_coordinates(72, 9.75, 0);
-            pidDrivetrain.drive_distance(12);
-
-            // clamp goal 1
-            pidDrivetrain.turn_to_angle(90);
-            // check here for proper alignment :)
-
-            pidDrivetrain.drive_max_voltage = 6;
-            pidDrivetrain.drive_timeout = 3000;
-            pidDrivetrain.drive_distance(-24);
-            wait(100, msec);
-            mobileGoalLock.set(true);
-            wait(100, msec);
-
-            pidDrivetrain.drive_max_voltage = 10;
-            intakeMotors.setVelocity(intakeSpeed, percent);
-            intakeMotors.spin(forward);
-
-            pidDrivetrain.drive_to_point(48, 48);
-            pidDrivetrain.drive_to_point(24, 48);
-
-
             break;
         }
         case Autons::Route::ClusterStart:
@@ -130,26 +108,53 @@ namespace Autons
 
             break;
         }
+        case Autons::Route::MogoStart:
+        {
+            float startX = 10;
+            float startY = 9.5;
+            float scoreRot = 70;
+
+            // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
+            float goalHeading = (90 - (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
+            float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
+
+            pidDrivetrain.drive_max_voltage = 6;
+            pidDrivetrain.turn_max_voltage = 8;
+
+            //ladybrown to score preload onto alliance
+            pidDrivetrain.turn_ki = 0;
+            pidDrivetrain.turn_kd = 0;
+            pidDrivetrain.turn_settle_error = 3;
+            pidDrivetrain.set_heading(90);
+            pidDrivetrain.turn_to_angle(scoreRot);
+            ladybrownScoring();
+            ladybrownReset();
+            wait(250, msec);
+
+            pidDrivetrain.turn_max_voltage = 12;
+
+            // drive to goal and clamp
+            pidDrivetrain.turn_ki = 0.03;
+            pidDrivetrain.turn_kd = 3;
+            pidDrivetrain.turn_settle_error = 1;
+            pidDrivetrain.turn_to_angle(goalHeading);
+            pidDrivetrain.drive_distance(goalDist + 7);
+            mobileGoalLock.set(true);
+        }
         case Autons::Route::mogoSide_Corner:
         {
             // starting on the right of the mobile goal
             // scores 2 rings on 1 mobile goal
             // finishes in the corner
 
-            // get mogo and drop match load
-            pidDrivetrain.set_heading(330);
-            pidDrivetrain.drive_max_voltage = 6;
-            pidDrivetrain.drive_distance(-31);
-            mobileGoalLock.set(true);
-            pidDrivetrain.drive_max_voltage = 8;
-            wait(250, msec);
+            RedAlliance::run(Autons::Route::MogoStart);
+            
             intakeMotors.setVelocity(intakeSpeed, percent);
             intakeMotors.spin(forward);
-            wait(1000, msec);
+            wait(250, msec);
             pidDrivetrain.turn_to_angle(270);
             pidDrivetrain.drive_distance(18);
-            wait(2000, msec);
-            intakeMotors.stop();
+            wait(250, msec);
 
             // intake ring 2 and driving into the corner
             pidDrivetrain.turn_to_angle(-30);
