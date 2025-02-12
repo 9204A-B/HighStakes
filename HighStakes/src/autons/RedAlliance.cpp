@@ -36,18 +36,6 @@ namespace Autons
             pidDrivetrain.drive_to_point(48, 48);
             pidDrivetrain.drive_to_point(24, 48);
 
-            pidDrivetrain.drive_max_voltage = 7;
-            pidDrivetrain.turn_to_point(24, 0);
-            pidDrivetrain.drive_to_point(24, 15);
-            wait(500, msec);
-            pidDrivetrain.drive_to_pose(15, 24, 90);
-            wait(500, msec);
-            intakeMotors.stop();
-            pidDrivetrain.drive_to_pose(15, 15, -45);
-            mobileGoalLock.set(false);
-            wait(250, msec);
-
-            pidDrivetrain.drive_to_pose(96, 24, 90);
 
             break;
         }
