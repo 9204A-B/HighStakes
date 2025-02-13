@@ -19,5 +19,5 @@ void ladybrownScoring(void);
 void ladybrownReset(void);
 void doink(void);
 void antiJam(void);
-void Sort(void);
+void colorSort(void);
 void sortToggle(void);
