@@ -20,16 +20,10 @@ namespace Autons
         case Autons::Route::ClusterStart:
         {
             // starting position variables
-            // only tweak startX, startY, startRot, and goalPoint please and thank you
-            // startX and Y are measured from the center of the robot, so add 7.5" as needed when measuring
-            // startX is number of inches to the LEFT of the center line / alliance stake
-            // startY is number of inches from the wall
-            // startRot is the angle it starts at relative to 0 degrees being the intake pointing into the field
             float startX = 10;
             float startY = 9.5;
             float scoreRot = -70;
 
-            // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
             float goalHeading = (-90 + (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
             float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
 
@@ -110,11 +104,11 @@ namespace Autons
         }
         case Autons::Route::MogoStart:
         {
+            // starting position variables
             float startX = 10;
             float startY = 9.5;
             float scoreRot = 70;
 
-            // goal point is the distance to the right of the goal where the robot stops before turning towards the goal
             float goalHeading = (90 - (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
             float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
 
@@ -150,8 +144,7 @@ namespace Autons
         }
         case Autons::Route::mogoSide_Corner:
         {
-            // starting on the right of the mobile goal
-            // scores 2 rings on 1 mobile goal
+            // scores 1 ring onto alliance and 1 onto mobile goal
             // finishes in the corner
 
             RedAlliance::run(Autons::Route::MogoStart);
@@ -165,8 +158,7 @@ namespace Autons
         }
         case Autons::Route::mogoSide_Ladder:
         {
-            // starting on the right of the mobile goal
-            // scores 2 rings on 1 mobile goal
+            // scores 1 ring onto alliance and 1 onto mobile goal
             // finishes touching the ladder
 
             RedAlliance::run(Autons::Route::MogoStart);
