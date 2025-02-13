@@ -35,7 +35,7 @@ void YPress()
 {
     intakeMotors.stop();
     intakeMotors.setVelocity(50, percent);
-    intakeMotors.spinFor(reverse, 150, msec);
+    intakeMotors.spinFor(reverse, 100, msec);
     intakeMotors.setVelocity(intakeSpeed, percent);
 }
 
