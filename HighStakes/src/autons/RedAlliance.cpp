@@ -140,6 +140,13 @@ namespace Autons
             pidDrivetrain.turn_to_angle(goalHeading);
             pidDrivetrain.drive_distance(goalDist + 7);
             mobileGoalLock.set(true);
+
+            // intake ring 2
+            intakeMotors.setVelocity(intakeSpeed, percent);
+            intakeMotors.spin(forward);
+            wait(250, msec);
+            pidDrivetrain.turn_to_angle(270);
+            pidDrivetrain.drive_distance(18);
         }
         case Autons::Route::mogoSide_Corner:
         {
@@ -148,16 +155,10 @@ namespace Autons
             // finishes in the corner
 
             RedAlliance::run(Autons::Route::MogoStart);
-            
-            intakeMotors.setVelocity(intakeSpeed, percent);
-            intakeMotors.spin(forward);
-            wait(250, msec);
-            pidDrivetrain.turn_to_angle(270);
-            pidDrivetrain.drive_distance(18);
-            wait(250, msec);
 
-            // intake ring 2 and driving into the corner
+            // driving into the corner
             pidDrivetrain.turn_to_angle(-30);
+            intakeMotors.stop();
             pidDrivetrain.drive_distance(24);
 
             break;
@@ -168,19 +169,12 @@ namespace Autons
             // scores 2 rings on 1 mobile goal
             // finishes touching the ladder
 
-            // get mogo and drop match load
-            pidDrivetrain.drive_distance(-36);
-            pidDrivetrain.turn_to_angle(270);
-            pidDrivetrain.drive_distance(-12);
-            mobileGoalLock.set(true);
-            intakeMotors.setVelocity(intakeSpeed, percent);
-            intakeMotors.spin(forward);
-            wait(500, msec);
+            RedAlliance::run(Autons::Route::MogoStart);
 
-            // intake ring 2 and driving into the ladder
-            pidDrivetrain.drive_distance(24);
-            pidDrivetrain.turn_to_angle(90);
-            pidDrivetrain.drive_distance(48 - 5); // tweak this until the robot just touches the ladder
+            // driving into the ladder
+            pidDrivetrain.turn_to_angle(90 + 18.4);
+            intakeMotors.stop();
+            pidDrivetrain.drive_distance(37);
 
             break;
         }
