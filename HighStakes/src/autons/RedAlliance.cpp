@@ -27,20 +27,19 @@ namespace Autons
             float goalHeading = (-90 + (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
             float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
 
-            pidDrivetrain.drive_max_voltage = 6;
-            pidDrivetrain.turn_max_voltage = 8;
+            pidDrivetrain.drive_max_voltage = 7;
+            pidDrivetrain.turn_max_voltage = 10;
 
             //ladybrown to score preload onto alliance
             pidDrivetrain.turn_ki = 0;
             pidDrivetrain.turn_kd = 0;
-            pidDrivetrain.turn_settle_error = 3;
+            pidDrivetrain.turn_settle_error = 5;
             pidDrivetrain.set_heading(-90);
             pidDrivetrain.turn_to_angle(scoreRot);
             ladybrownScoring();
             ladybrownReset();
             wait(250, msec);
 
-            pidDrivetrain.turn_max_voltage = 12;
 
             // drive to goal and clamp
             pidDrivetrain.turn_ki = 0.03;
@@ -52,23 +51,22 @@ namespace Autons
 
             // turn and drive for rings 2 and 3
             intakeMotors.setVelocity(intakeSpeed, percent);
-            pidDrivetrain.drive_max_voltage = 8;
+            pidDrivetrain.drive_max_voltage = 12;
             wait(250, msec);
             
             pidDrivetrain.turn_to_angle(90 + 45);
             intakeMotors.spin(forward);
             pidDrivetrain.drive_distance(31.6 - 7); // tweak until the robot picks up ring and doesn't cross
             pidDrivetrain.drive_distance(-5);
-            wait(250, msec);
 
             // SERIOUSLY TEST THE FOLLOWING ROUTE
             pidDrivetrain.turn_to_angle(115);
+            pidDrivetrain.drive_distance(10);
             wait(250, msec);
-            pidDrivetrain.drive_distance(8.5);
 
             pidDrivetrain.turn_to_angle(10);
             pidDrivetrain.drive_distance(13);
-            wait(500, msec);
+            wait(250, msec);
 
             break;
         }
@@ -118,7 +116,7 @@ namespace Autons
             //ladybrown to score preload onto alliance
             pidDrivetrain.turn_ki = 0;
             pidDrivetrain.turn_kd = 0;
-            pidDrivetrain.turn_settle_error = 3;
+            pidDrivetrain.turn_settle_error = 5;
             pidDrivetrain.set_heading(90);
             pidDrivetrain.turn_to_angle(scoreRot);
             ladybrownScoring();
@@ -130,7 +128,7 @@ namespace Autons
             // drive to goal and clamp
             pidDrivetrain.turn_ki = 0.03;
             pidDrivetrain.turn_kd = 3;
-            pidDrivetrain.turn_settle_error = 1;
+            pidDrivetrain.turn_settle_error = 3;
             pidDrivetrain.turn_to_angle(goalHeading);
             pidDrivetrain.drive_distance(goalDist + 7);
             mobileGoalLock.set(true);

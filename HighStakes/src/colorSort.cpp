@@ -21,9 +21,9 @@ void colorSort() // i tried to make this cleaner
             abs(colorSensor.hue() - redHue) < error)
         )
         {
-            wait(50, msec); // delay for the ring to travel further up the intake
+            wait(60, msec); // delay for the ring to travel further up the intake
             intakeMotors.stop(brake);
-            wait(100, msec); // amount of time the intake stops for
+            wait(175, msec); // amount of time the intake stops for
             intakeMotors.spin(forward);
         }
     }

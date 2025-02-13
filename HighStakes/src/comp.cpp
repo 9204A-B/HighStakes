@@ -26,6 +26,7 @@ void auton(void)
     if (allianceSelect == 0)
     {
         Autons::Skills::run();
+        // Autons::RedAlliance::run(Autons::Route::soloAWP);
     }
     else if (allianceSelect == 1)
     {
