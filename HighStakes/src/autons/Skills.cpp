@@ -17,7 +17,7 @@ namespace Autons
         pidDrivetrain.turn_settle_error = 1;
         pidDrivetrain.drive_ki = .03;
         pidDrivetrain.turn_timeout = 1300;
-        pidDrivetrain.drive_timeout = 1000;
+        pidDrivetrain.drive_timeout = 800;
         pidDrivetrain.set_coordinates(72, 9.5, 0);
 
         pidDrivetrain.drive_max_voltage = medSpeed;
@@ -36,8 +36,6 @@ namespace Autons
 
         // clamp goal 1
         pidDrivetrain.turn_to_angle(-90);
-        // check here for proper alignment :)
-
         pidDrivetrain.drive_max_voltage = lowSpeed;
         pidDrivetrain.drive_timeout = 2500;
         pidDrivetrain.drive_distance(-23);
@@ -140,13 +138,13 @@ namespace Autons
         pidDrivetrain.drive_max_voltage = lowSpeed;
 
         pidDrivetrain.turn_to_angle(0);
-        pidDrivetrain.drive_distance(-14);
+        pidDrivetrain.drive_distance(-16);
         wait(100, msec);
         mobileGoalLock.set(true);
         wait(100, msec);
 
         pidDrivetrain.drive_max_voltage = maxSpeed;
-        pidDrivetrain.drive_distance(4.5);
+        pidDrivetrain.drive_distance(6.5);
 
         // shove right blue goal into corner
         pidDrivetrain.turn_to_angle(70);
