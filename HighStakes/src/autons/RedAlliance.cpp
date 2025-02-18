@@ -28,12 +28,13 @@ namespace Autons
             float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
 
             pidDrivetrain.drive_max_voltage = 7;
-            pidDrivetrain.turn_max_voltage = 10;
+            pidDrivetrain.turn_max_voltage = 8;
 
             //ladybrown to score preload onto alliance
             pidDrivetrain.turn_ki = 0;
             pidDrivetrain.turn_kd = 0;
             pidDrivetrain.turn_settle_error = 5;
+            pidDrivetrain.turn_timeout = 900;
             pidDrivetrain.set_heading(-90);
             pidDrivetrain.turn_to_angle(scoreRot);
             ladybrownScoring();
@@ -45,6 +46,7 @@ namespace Autons
             pidDrivetrain.turn_ki = 0.03;
             pidDrivetrain.turn_kd = 3;
             pidDrivetrain.turn_settle_error = 1;
+            pidDrivetrain.turn_timeout = 1000;
             pidDrivetrain.turn_to_angle(goalHeading);
             pidDrivetrain.drive_distance(goalDist + 7);
             mobileGoalLock.set(true);
@@ -57,14 +59,17 @@ namespace Autons
             pidDrivetrain.turn_to_angle(90 + 45);
             intakeMotors.spin(forward);
             pidDrivetrain.drive_distance(31.6 - 7); // tweak until the robot picks up ring and doesn't cross
+            pidDrivetrain.drive_timeout = 800;
             pidDrivetrain.drive_distance(-5);
 
             // SERIOUSLY TEST THE FOLLOWING ROUTE
             pidDrivetrain.turn_to_angle(115);
-            pidDrivetrain.drive_distance(10);
+            pidDrivetrain.drive_distance(11);
+            pidDrivetrain.drive_distance(-5);
             wait(250, msec);
 
-            pidDrivetrain.turn_to_angle(10);
+            pidDrivetrain.turn_to_angle(20);
+            pidDrivetrain.drive_timeout = 1300;
             pidDrivetrain.drive_distance(13);
             wait(250, msec);
 
