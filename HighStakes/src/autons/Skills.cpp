@@ -99,15 +99,15 @@ namespace Autons
         intakeMotors.spin(forward);
         pidDrivetrain.drive_distance(24);
         pidDrivetrain.turn_to_angle(270);
-        pidDrivetrain.drive_distance(23);
+        pidDrivetrain.drive_distance(24);
 
         // 3 rings on right corner
         pidDrivetrain.drive_max_voltage = lowSpeed;
 
         pidDrivetrain.turn_to_angle(0);
-        pidDrivetrain.drive_distance(21);
-        pidDrivetrain.drive_distance(11);
-        pidDrivetrain.drive_distance(-12.5);
+        pidDrivetrain.drive_distance(22);
+        pidDrivetrain.drive_distance(12);
+        pidDrivetrain.drive_distance(-13);
         pidDrivetrain.turn_to_angle(270);
         pidDrivetrain.drive_distance(10);
         pidDrivetrain.drive_distance(-11);
@@ -133,20 +133,20 @@ namespace Autons
         pidDrivetrain.drive_timeout = 3500;
 
         pidDrivetrain.drive_distance(60);
-        pidDrivetrain.drive_timeout = 1500;
+        pidDrivetrain.drive_timeout = 1300;
         pidDrivetrain.turn_to_angle(90 + 45);
         pidDrivetrain.drive_distance(17.25);
 
         pidDrivetrain.drive_max_voltage = lowSpeed;
 
         pidDrivetrain.turn_to_angle(0);
-        pidDrivetrain.drive_distance(-17);
+        pidDrivetrain.drive_distance(-14);
         wait(100, msec);
         mobileGoalLock.set(true);
         wait(100, msec);
 
         pidDrivetrain.drive_max_voltage = maxSpeed;
-        pidDrivetrain.drive_distance(7.5);
+        pidDrivetrain.drive_distance(4.5);
 
         // shove right blue goal into corner
         pidDrivetrain.turn_to_angle(70);
@@ -171,7 +171,7 @@ namespace Autons
         // score empty goal
         pidDrivetrain.turn_to_angle(0);
         intakeMotors.spin(forward);
-        pidDrivetrain.drive_distance(26);
+        pidDrivetrain.drive_distance(24);
         pidDrivetrain.turn_to_angle(-40);
 
         // shove empty goal
