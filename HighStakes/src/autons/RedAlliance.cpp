@@ -28,25 +28,24 @@ namespace Autons
             float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
 
             pidDrivetrain.drive_max_voltage = 7;
-            pidDrivetrain.turn_max_voltage = 8;
+            pidDrivetrain.turn_max_voltage = 10;
 
             //ladybrown to score preload onto alliance
             pidDrivetrain.turn_ki = 0;
             pidDrivetrain.turn_kd = 0;
             pidDrivetrain.turn_settle_error = 5;
-            pidDrivetrain.turn_timeout = 900;
+            pidDrivetrain.turn_timeout = 450;
             pidDrivetrain.set_heading(-90);
             pidDrivetrain.turn_to_angle(scoreRot);
             ladybrownScoring();
             ladybrownReset();
             wait(250, msec);
 
-
             // drive to goal and clamp
             pidDrivetrain.turn_ki = 0.03;
             pidDrivetrain.turn_kd = 3;
             pidDrivetrain.turn_settle_error = 1;
-            pidDrivetrain.turn_timeout = 1000;
+            pidDrivetrain.turn_timeout = 800;
             pidDrivetrain.turn_to_angle(goalHeading);
             pidDrivetrain.drive_distance(goalDist + 7);
             mobileGoalLock.set(true);
@@ -69,7 +68,7 @@ namespace Autons
             wait(250, msec);
 
             pidDrivetrain.turn_to_angle(20);
-            pidDrivetrain.drive_timeout = 1300;
+            pidDrivetrain.drive_timeout = 1200;
             pidDrivetrain.drive_distance(13);
             wait(250, msec);
 
