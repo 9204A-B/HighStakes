@@ -34,6 +34,7 @@ namespace Autons
             pidDrivetrain.turn_ki = 0;
             pidDrivetrain.turn_kd = 0;
             pidDrivetrain.turn_settle_error = 5;
+            pidDrivetrain.turn_timeout = 500;
             pidDrivetrain.set_heading(-90);
             pidDrivetrain.turn_to_angle(scoreRot);
             ladybrownScoring();
@@ -45,6 +46,7 @@ namespace Autons
             pidDrivetrain.turn_ki = 0.03;
             pidDrivetrain.turn_kd = 3;
             pidDrivetrain.turn_settle_error = 1;
+            pidDrivetrain.turn_timeout = 1000;
             pidDrivetrain.turn_to_angle(goalHeading);
             pidDrivetrain.drive_distance(goalDist + 7);
             mobileGoalLock.set(true);

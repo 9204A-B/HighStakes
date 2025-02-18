@@ -36,7 +36,7 @@ namespace Autons
             float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
 
             pidDrivetrain.drive_max_voltage = 6;
-            pidDrivetrain.turn_max_voltage = 8;
+            pidDrivetrain.turn_max_voltage = 12;
 
             //ladybrown to score preload onto alliance
             pidDrivetrain.turn_ki = 0;
