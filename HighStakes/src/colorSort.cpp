@@ -26,6 +26,7 @@ void colorSort() // i tried to make this cleaner
             wait(175, msec); // amount of time the intake stops for
             intakeMotors.spin(forward);
         }
+        wait(25, msec);
     }
 }
 
