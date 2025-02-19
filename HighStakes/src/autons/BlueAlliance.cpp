@@ -136,6 +136,13 @@ namespace Autons
             pidDrivetrain.drive_distance(goalDist + 7);
             mobileGoalLock.set(true);
 
+            // intake ring 2
+            intakeMotors.setVelocity(intakeSpeed, percent);
+            intakeMotors.spin(forward);
+            wait(250, msec);
+            pidDrivetrain.turn_to_angle(90);
+            pidDrivetrain.drive_distance(24);
+
             break;
         }
         case Autons::Route::mogoSide_Corner:
@@ -143,9 +150,14 @@ namespace Autons
             BlueAlliance::run(Autons::Route::MogoStart);
 
             // driving into the corner
-            pidDrivetrain.turn_to_angle(30);
+            pidDrivetrain.turn_to_angle(180 - 30);
             intakeMotors.stop();
+            pidDrivetrain.drive_distance(-24);
+            mobileGoalLock.set(false);
+            wait(250, msec);
+
             pidDrivetrain.drive_distance(24);
+            pidDrivetrain.turn_to_angle(0);
 
             break;
         }
