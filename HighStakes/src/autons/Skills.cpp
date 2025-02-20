@@ -16,7 +16,7 @@ namespace Autons
 
         pidDrivetrain.turn_settle_error = 1;
         pidDrivetrain.drive_ki = .03;
-        pidDrivetrain.turn_timeout = 1300;
+        pidDrivetrain.turn_timeout = 1400;
         pidDrivetrain.drive_timeout = 800;
         pidDrivetrain.set_coordinates(72, 9.5, 0);
 
@@ -50,7 +50,7 @@ namespace Autons
         intakeMotors.spin(forward);
         pidDrivetrain.drive_distance(24);
         pidDrivetrain.turn_to_angle(90);
-        pidDrivetrain.drive_distance(23);
+        pidDrivetrain.drive_distance(20);
 
         // 3 rings on left corner
         pidDrivetrain.drive_max_voltage = lowSpeed;
@@ -58,10 +58,11 @@ namespace Autons
         pidDrivetrain.turn_to_angle(0);
         pidDrivetrain.drive_distance(21);
         pidDrivetrain.drive_distance(10);
+        wait(250, msec);
         pidDrivetrain.drive_distance(-10.5);
         pidDrivetrain.turn_to_angle(90);
         pidDrivetrain.drive_distance(10);
-        pidDrivetrain.drive_distance(-12);
+        pidDrivetrain.drive_distance(-9);
 
         pidDrivetrain.turn_to_angle(180 + 45);
         intakeMotors.stop();
@@ -97,7 +98,7 @@ namespace Autons
         intakeMotors.spin(forward);
         pidDrivetrain.drive_distance(24);
         pidDrivetrain.turn_to_angle(270);
-        pidDrivetrain.drive_distance(24);
+        pidDrivetrain.drive_distance(21);
 
         // 3 rings on right corner
         pidDrivetrain.drive_max_voltage = lowSpeed;
@@ -105,6 +106,7 @@ namespace Autons
         pidDrivetrain.turn_to_angle(0);
         pidDrivetrain.drive_distance(22);
         pidDrivetrain.drive_distance(12);
+        wait(250, msec);
         pidDrivetrain.drive_distance(-13);
         pidDrivetrain.turn_to_angle(270);
         pidDrivetrain.drive_distance(10);
@@ -138,19 +140,19 @@ namespace Autons
         pidDrivetrain.drive_max_voltage = lowSpeed;
 
         pidDrivetrain.turn_to_angle(0);
-        pidDrivetrain.drive_distance(-16);
+        pidDrivetrain.drive_distance(-17);
         wait(100, msec);
         mobileGoalLock.set(true);
         wait(100, msec);
 
         pidDrivetrain.drive_max_voltage = maxSpeed;
-        pidDrivetrain.drive_distance(6.5);
+        pidDrivetrain.drive_distance(7.5);
 
         // shove right blue goal into corner
         pidDrivetrain.turn_to_angle(70);
         mobileGoalLock.set(false);
         wait(250, msec);
-        float goalDropDist2 = 48 - 7.5 - 10 - 1.5;
+        float goalDropDist2 = 48 - 7.5 - 10 - 1;
 
         // shove left blue goal into corner
         pidDrivetrain.drive_max_voltage = maxSpeed;
