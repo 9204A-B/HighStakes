@@ -50,7 +50,7 @@ namespace Autons
         intakeMotors.spin(forward);
         pidDrivetrain.drive_distance(24);
         pidDrivetrain.turn_to_angle(90);
-        pidDrivetrain.drive_distance(20);
+        pidDrivetrain.drive_distance(22);
 
         // 3 rings on left corner
         pidDrivetrain.drive_max_voltage = lowSpeed;
@@ -62,7 +62,7 @@ namespace Autons
         pidDrivetrain.drive_distance(-10.5);
         pidDrivetrain.turn_to_angle(90);
         pidDrivetrain.drive_distance(10);
-        pidDrivetrain.drive_distance(-9);
+        pidDrivetrain.drive_distance(-11);
 
         pidDrivetrain.turn_to_angle(180 + 45);
         intakeMotors.stop();
@@ -84,7 +84,7 @@ namespace Autons
         pidDrivetrain.drive_distance(-48);     
 
         pidDrivetrain.drive_max_voltage = lowSpeed;
-        pidDrivetrain.drive_distance(-22);
+        pidDrivetrain.drive_distance(-24);
         wait(100, msec);
         mobileGoalLock.set(true);
         wait(100, msec);
@@ -98,7 +98,7 @@ namespace Autons
         intakeMotors.spin(forward);
         pidDrivetrain.drive_distance(24);
         pidDrivetrain.turn_to_angle(270);
-        pidDrivetrain.drive_distance(21);
+        pidDrivetrain.drive_distance(24);
 
         // 3 rings on right corner
         pidDrivetrain.drive_max_voltage = lowSpeed;

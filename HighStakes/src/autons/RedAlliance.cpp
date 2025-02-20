@@ -63,10 +63,10 @@ namespace Autons
             // SERIOUSLY TEST THE FOLLOWING ROUTE
             pidDrivetrain.turn_to_angle(115);
             pidDrivetrain.drive_distance(11);
-            pidDrivetrain.drive_distance(-5);
+            pidDrivetrain.drive_distance(-10);
             wait(250, msec);
 
-            pidDrivetrain.turn_to_angle(20);
+            pidDrivetrain.turn_to_angle(45);
             pidDrivetrain.drive_timeout = 1200;
             pidDrivetrain.drive_distance(13);
             wait(250, msec);

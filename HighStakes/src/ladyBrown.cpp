@@ -59,7 +59,7 @@ void ladybrownScoring()
     {
         lbSelect = 2;
         YPress();
-        wait(100, msec);
+        wait(60, msec);
         lb.setStopping(hold);
         lb.setVelocity(80, percent);
         lb.spinFor(.6, sec);
