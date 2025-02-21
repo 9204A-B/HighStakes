@@ -54,16 +54,16 @@ namespace Autons
             pidDrivetrain.drive_max_voltage = 12;
             wait(250, msec);
             
-            pidDrivetrain.turn_to_angle(90 + 45);
+            pidDrivetrain.turn_to_angle(90 + 40);
             intakeMotors.spin(forward);
-            pidDrivetrain.drive_distance(31.6 - 7); // tweak until the robot picks up ring and doesn't cross
+            pidDrivetrain.drive_distance(31.6 - 7.25); // tweak until the robot picks up ring and doesn't cross
             pidDrivetrain.drive_timeout = 800;
             pidDrivetrain.drive_distance(-5);
 
             // SERIOUSLY TEST THE FOLLOWING ROUTE
             pidDrivetrain.turn_to_angle(115);
-            pidDrivetrain.drive_distance(11);
-            pidDrivetrain.drive_distance(-10);
+            pidDrivetrain.drive_distance(10);
+            pidDrivetrain.drive_distance(-11);
             wait(250, msec);
 
             pidDrivetrain.turn_to_angle(45);

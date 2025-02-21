@@ -6,6 +6,7 @@ using namespace Autons;
 void drive(void)
 {
     antiJamEnable = false;
+    colorSortEnable = false;
     Drivetrain.setDriveVelocity(100, percent);
     Drivetrain.setStopping(brake);
     // thread lockThread = thread(lock);
@@ -23,6 +24,7 @@ void drive(void)
 
 void auton(void)
 {
+    colorSortEnable = true;
     if (allianceSelect == 0)
     {
         Autons::Skills::run();

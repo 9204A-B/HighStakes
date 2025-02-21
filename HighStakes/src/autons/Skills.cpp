@@ -140,7 +140,7 @@ namespace Autons
         pidDrivetrain.drive_max_voltage = lowSpeed;
 
         pidDrivetrain.turn_to_angle(0);
-        pidDrivetrain.drive_distance(-17);
+        pidDrivetrain.drive_distance(-18);
         wait(100, msec);
         mobileGoalLock.set(true);
         wait(100, msec);
@@ -152,7 +152,7 @@ namespace Autons
         pidDrivetrain.turn_to_angle(70);
         mobileGoalLock.set(false);
         wait(250, msec);
-        float goalDropDist2 = 48 - 7.5 - 10 - 1;
+        float goalDropDist2 = 48 - 7.5 - 10 - 1 ;
 
         // shove left blue goal into corner
         pidDrivetrain.drive_max_voltage = maxSpeed;
@@ -177,7 +177,7 @@ namespace Autons
         // shove empty goal
         mobileGoalLock.set(false);
         wait(250, msec);
-        pidDrivetrain.drive_distance(-72);
+        pidDrivetrain.drive_distance(-78);
         pidDrivetrain.drive_distance(48);
     }
 }
