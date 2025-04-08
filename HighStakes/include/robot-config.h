@@ -32,7 +32,7 @@ extern bool intakeReverse;
 extern bool antiJamEnable;
 
 extern motor lb;
-extern distance lbDistance;
+extern rotation lbRotation;
 extern int lbSelect;
 
 extern digital_out Doinker;

@@ -32,7 +32,8 @@ void ladybrownLoading()
 
     if (lbSelect == 0)
     {
-        while (lbDistance.objectDistance(mm) < 70)
+        // TODO: Tune rotation sensor so we don't break the new lb        
+        while (lbRotation.position(rotationUnits::deg) < 70)
         {
             lb.setVelocity(25, percent);
             lb.spin(forward);
@@ -41,7 +42,8 @@ void ladybrownLoading()
     }
     else if (lbSelect == 2)
     {
-        while (lbDistance.objectDistance(mm) > 70)
+        // Here as well
+        while (lbRotation.position(rotationUnits::deg) > 70)
         {
             lb.setVelocity(25, percent);
             lb.spin(reverse);
