@@ -6,27 +6,25 @@ int redHue = 5;
 int error = 20;
 
 void colorSort() // i tried to make this cleaner
-{
+{                // 'Tis cleaner
     colorSensor.setLightPower(50, percent);
-    while (true)
+    colorSensor.setLight(ledState::on);
+    if (
+        (allianceSelect <= 1 &&
+        colorSortEnable && 
+        intakeMotors.voltage() > 0 &&
+        abs(colorSensor.hue() - blueHue) < error) ||
+
+        (allianceSelect == 2 &&
+        colorSortEnable && 
+        intakeMotors.voltage() > 0 &&
+        abs(colorSensor.hue() - redHue) < error)
+    )
     {
-        if (
-            (allianceSelect <= 1 &&
-            colorSortEnable && 
-            intakeMotors.voltage() > 0 &&
-            abs(colorSensor.hue() - blueHue) < error) ||
-            (allianceSelect == 2 &&
-            colorSortEnable && 
-            intakeMotors.voltage() > 0 &&
-            abs(colorSensor.hue() - redHue) < error)
-        )
-        {
-            wait(60, msec); // delay for the ring to travel further up the intake
-            intakeMotors.stop(brake);
-            wait(175, msec); // amount of time the intake stops for
-            intakeMotors.spin(forward);
-        }
-        wait(15, msec);
+        wait(60, msec); // delay for the ring to travel further up the intake
+        intakeMotors.stop(brake);
+        wait(175, msec); // amount of time the intake stops for
+        intakeMotors.spin(forward);
     }
 }
 

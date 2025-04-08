@@ -38,10 +38,13 @@ int main()
     Controller.ButtonL1.pressed(driverLock);
     button.high(autonUpdate);
     Brain.Screen.pressed(allianceUpdate);
+    // Need to tune this
+    // colorSensor.objectDetectThreshold();
+    colorSensor.objectDetected(colorSort);
 
     thread antiJamThread = thread(antiJam);
     thread tempThread = thread(warning);
-    thread colorSortThread = thread(colorSort);
+    
     selector();
     wait(15, msec);
 }
