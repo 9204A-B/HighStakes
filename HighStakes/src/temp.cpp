@@ -5,6 +5,7 @@ using namespace vex;
 void warning()
 {
     motor* motors[] = {&leftMotorA, &leftMotorB, &leftMotorC, &rightMotorA, &rightMotorB, &rightMotorC, &intakeMotors};
+    // TODO: Probably need to update the ports
     int ports[] = {11, 12, 13, 18, 19, 20, 21};
 
     while (true)
@@ -18,8 +19,9 @@ void warning()
                 Controller.Screen.print("Motor port: %d", ports[x]);
                 Controller.Screen.print(", temp: %f", motors[x]->temperature(celsius));
                 Controller.rumble("...--");
+                wait(250, msec);
             }
-        }
-        wait(250, msec);
+        }      
+        wait(250, msec);  
     }
 }

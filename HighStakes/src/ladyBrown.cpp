@@ -57,7 +57,8 @@ void ladybrownLoading()
 
 void ladybrownScoring()
 {
-    if (lbDistance.isObjectDetected())
+    // This requires tuning as well
+    if (lbRotation.position(rotationUnits::deg) < 50)
     {
         lbSelect = 2;
         YPress();

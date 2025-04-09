@@ -43,21 +43,13 @@ void antiJam()
 {
     while (true)
     {
-        float intakeRPM = intakeMotors.velocity(rpm);
-        if (intakeRPM < 0)
-        {
-            intakeRPM *= -1;
-        }
+        float intakeRPM = fabs(intakeMotors.velocity(rpm));
 
         if (intakeRPM < 70)
         {
             wait(50, msec);
 
-            intakeRPM = intakeMotors.velocity(rpm);
-            if (intakeRPM < 0)
-            {
-                intakeRPM *= -1;
-            }
+            intakeRPM = fabs(intakeMotors.velocity(rpm));
 
             if ((intakeMotors.voltage() > 3) && (intakeRPM < 50) && (lbSelect != 1) && antiJamEnable)
             {
