@@ -12,7 +12,7 @@ motor rightMotorA = motor(PORT18, ratio6_1, true);
 motor rightMotorB = motor(PORT19, ratio6_1);
 motor rightMotorC = motor(PORT20, ratio6_1);
 
-inertial Inertial = inertial(PORT10);
+inertial Inertial = inertial(PORT1);
 motor_group leftMotors = motor_group(leftMotorA, leftMotorB, leftMotorC);
 motor_group rightMotors = motor_group(rightMotorA, rightMotorB, rightMotorC);
 smartdrive Drivetrain = smartdrive(leftMotors, rightMotors, Inertial, 82.55, 387.35, 304.8, mm, .6);

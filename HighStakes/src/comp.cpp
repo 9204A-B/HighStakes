@@ -1,4 +1,5 @@
 #include "vex.h"
+#include "drive.h"
 
 using namespace vex;
 using namespace Autons;
@@ -15,10 +16,8 @@ void drive(void)
     thread doinkerThread = thread(doink);
     while (true)
     {
-        leftMotors.setVelocity(Controller.Axis3.position() + Controller.Axis1.position() * 0.80, percent);
-        rightMotors.setVelocity(Controller.Axis3.position() - Controller.Axis1.position() * 0.80, percent);
-        leftMotors.spin(forward);
-        rightMotors.spin(forward);
+        setDriveExpo(vex::directionType::fwd, (Controller.Axis3.position() + Controller.Axis1.position()), Side::LEFT);
+        setDriveExpo(vex::directionType::fwd, (Controller.Axis3.position() - Controller.Axis1.position()), Side::RIGHT);
         wait(10, msec);
     }
 }
