@@ -33,7 +33,7 @@ void ladybrownLoading()
     if (lbSelect == 0)
     {
         // TODO: Tune rotation sensor so we don't break the new lb        
-        while (lbRotation.position(rotationUnits::deg) < 70)
+        while (lbRotation.position(rotationUnits::deg) < 348)
         {
             lb.setVelocity(25, percent);
             lb.spin(forward);
@@ -43,7 +43,7 @@ void ladybrownLoading()
     else if (lbSelect == 2)
     {
         // Here as well
-        while (lbRotation.position(rotationUnits::deg) > 70)
+        while (lbRotation.position(rotationUnits::deg) > 190.5)
         {
             lb.setVelocity(25, percent);
             lb.spin(reverse);
@@ -58,7 +58,7 @@ void ladybrownLoading()
 void ladybrownScoring()
 {
     // This requires tuning as well
-    if (lbRotation.position(rotationUnits::deg) < 50)
+    if (lbRotation.position(rotationUnits::deg) < 190.5)
     {
         lbSelect = 2;
         YPress();
