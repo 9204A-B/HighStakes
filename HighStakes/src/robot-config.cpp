@@ -22,8 +22,8 @@ float turnScale = 0.8;
 
 digital_out mobileGoalLock = digital_out(Brain.ThreeWirePort.D);
 distance goalDetect = distance(PORT2);
+int clampDistance = 100;
 bool locked = false;
-int clampDistance = 20;
 
 motor intakeMotors = motor(PORT4, ratio6_1, true);
 int intakeSpeed = 93;
