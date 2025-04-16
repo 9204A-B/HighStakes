@@ -1,6 +1,5 @@
 void drive(void);
 void auton(void);
-void lock(void);
 void driverLock(void);
 void intake(void);
 void R1Press(void);
