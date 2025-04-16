@@ -1,6 +1,15 @@
 #include "vex.h"
 using namespace vex;
 
+float max_voltage = 6;
+float settle_error = .5;
+float settle_time = 300;
+float timeout = 500;
+float kp = .375;
+float ki = 0;
+float kd = 2.4;
+float starti = 1.5;
+
 void lbLoadButton()
 {
     if (lbSelect == 1)
@@ -33,22 +42,24 @@ void ladybrownLoading()
     if (lbSelect == 0)
     {
         // TODO: Tune rotation sensor so we don't break the new lb        
-        while (lbRotation.position(rotationUnits::deg) < 348)
-        {
-            lb.setVelocity(25, percent);
-            lb.spin(forward);
-            wait(5, msec);
-        }
+        // while (lbRotation.position(rotationUnits::deg) < 348)
+        // {
+        //     lb.setVelocity(25, percent);
+        //     lb.spin(forward);
+        //     wait(5, msec);
+        // }
+        Drive::MotorTurn(lbRotation, lb, 348, max_voltage, settle_error, settle_time, timeout, kp, ki, kd, starti);
     }
     else if (lbSelect == 2)
     {
         // Here as well
-        while (lbRotation.position(rotationUnits::deg) > 190.5)
-        {
-            lb.setVelocity(25, percent);
-            lb.spin(reverse);
-            wait(5, msec);
-        }
+        // while (lbRotation.position(rotationUnits::deg) > 190.5)
+        // {
+        //     lb.setVelocity(25, percent);
+        //     lb.spin(reverse);
+        //     wait(5, msec);
+        // }
+        Drive::MotorTurn(lbRotation, lb, 190.5, max_voltage, settle_error, settle_time, timeout, kp, ki, kd, starti);
     }
     lbSelect = 1;
 

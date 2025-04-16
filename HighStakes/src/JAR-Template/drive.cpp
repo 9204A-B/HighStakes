@@ -325,13 +325,13 @@ void Drive::drive_distance(float distance, float heading, float drive_max_voltag
   }
 }
 
-void Drive::MotorTurn(motor Motor, float distance, float drive_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout, float drive_kp, float drive_ki, float drive_kd, float drive_starti)
+void Drive::MotorTurn(rotation Rotation, motor Motor, float distance, float drive_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout, float drive_kp, float drive_ki, float drive_kd, float drive_starti)
 {
   PID drivePID(distance, drive_kp, drive_ki, drive_kd, drive_starti, drive_settle_error, drive_settle_time, drive_timeout);  
   float start_average_position = Motor.position(deg);
   float average_position = start_average_position;
   while(drivePID.is_settled() == false){
-    average_position = Motor.position(deg);
+    average_position = Rotation.position(deg);
     printf("Pos: %f", average_position);
     printf("\n");
     float drive_error = distance+start_average_position-average_position;    
