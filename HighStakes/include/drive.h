@@ -6,3 +6,5 @@ enum Side
 };
 
 void setDriveExpo(vex::directionType direction, float percent, Side side);
+
+float _expoFunction(float percent);

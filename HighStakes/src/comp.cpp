@@ -10,8 +10,6 @@ void drive(void)
     colorSortEnable = false;
     Drivetrain.setDriveVelocity(100, percent);
     Drivetrain.setStopping(brake);
-    // Not sure why the goal lock thread was commented out?
-    thread lockThread = thread(lock);
     thread timeThread = thread(startTimer);
     thread doinkerThread = thread(doink);
     while (true)
