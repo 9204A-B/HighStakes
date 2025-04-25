@@ -48,7 +48,7 @@ void ladybrownLoading()
         //     lb.spin(forward);
         //     wait(5, msec);
         // }
-        Drive::MotorTurn(lbRotation, lb, 348, max_voltage, settle_error, settle_time, timeout, kp, ki, kd, starti);
+        Drive::MotorTurn(lbRotation, lb, 10, max_voltage, settle_error, settle_time, timeout, kp, ki, kd, starti);
     }
     else if (lbSelect == 2)
     {
