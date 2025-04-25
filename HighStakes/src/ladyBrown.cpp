@@ -1,14 +1,14 @@
 #include "vex.h"
 using namespace vex;
 
-float max_voltage = 6;
-float settle_error = .5;
+float max_voltage = 4;
+float settle_error = 0;
 float settle_time = 300;
 float timeout = 500;
 float kp = .375;
 float ki = 0;
-float kd = 2.4;
-float starti = 1.5;
+float kd = 1.4;
+float starti = .5;
 
 void lbLoadButton()
 {
@@ -48,7 +48,7 @@ void ladybrownLoading()
         //     lb.spin(forward);
         //     wait(5, msec);
         // }
-        Drive::MotorTurn(lbRotation, lb, 10, max_voltage, settle_error, settle_time, timeout, kp, ki, kd, starti);
+        Drive::MotorTurn(lbRotation, lb, 25, max_voltage, settle_error, settle_time, timeout, kp, ki, kd, starti);
     }
     else if (lbSelect == 2)
     {
@@ -59,7 +59,7 @@ void ladybrownLoading()
         //     lb.spin(reverse);
         //     wait(5, msec);
         // }
-        Drive::MotorTurn(lbRotation, lb, 190.5, max_voltage, settle_error, settle_time, timeout, kp, ki, kd, starti);
+        Drive::MotorTurn(lbRotation, lb, 180, max_voltage, settle_error, settle_time, timeout, kp, ki, 1.8, starti);
     }
     lbSelect = 1;
 
@@ -68,17 +68,21 @@ void ladybrownLoading()
 
 void ladybrownScoring()
 {
+    lbSelect = 2;
+    YPress();
+    lb.setStopping(hold);
+    Drive::MotorTurn(lbRotation, lb, 180, 12, settle_error, settle_time, timeout, .5, ki, 5, 25);
     // This requires tuning as well
-    if (lbRotation.position(rotationUnits::deg) < 190.5)
-    {
-        lbSelect = 2;
-        YPress();
-        wait(60, msec);
-        lb.setStopping(hold);
-        lb.setVelocity(80, percent);
-        lb.spinFor(.6, sec);
-        wait(.5, sec);
-    }
+    // if (lbRotation.position(rotationUnits::deg) < 180)
+    // {
+    //     lbSelect = 2;
+    //     YPress();
+    //     wait(60, msec);
+    //     lb.setStopping(hold);
+    //     lb.setVelocity(80, percent);
+    //     lb.spinFor(.6, sec);
+    //     wait(.5, sec);
+    // }
 }
 
 void ladybrownReset()
