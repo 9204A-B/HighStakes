@@ -39,22 +39,42 @@ void auton(void)
         }
         case 1:
         {
-            Autons::RedAlliance::run(Autons::Route::soloAWP);
+            Autons::RedAlliance::run(Autons::Route::neg_3p1_Ladder);
             break;
         }
         case 2:
         {
-            Autons::RedAlliance::run(Autons::Route::fourRing_Corner);
+            Autons::RedAlliance::run(Autons::Route::neg_4r_Ladder);
             break;
         }
         case 3:
         {
-            Autons::RedAlliance::run(Autons::Route::mogoSide_Corner);
+            Autons::RedAlliance::run(Autons::Route::pos_1p1_Ladder);
             break;
         }
         case 4:
         {
-            Autons::RedAlliance::run(Autons::Route::mogoSide_Ladder);
+            Autons::RedAlliance::run(Autons::Route::pos_2r_Ladder);
+            break;
+        }
+        case 5:
+        {
+            Autons::RedAlliance::run(Autons::Route::neg_3p1_Elim);
+            break;
+        }
+        case 6:
+        {
+            Autons::RedAlliance::run(Autons::Route::neg_4r_Elim);
+            break;
+        }
+        case 7:
+        {
+            Autons::RedAlliance::run(Autons::Route::pos_1p1_Elim);
+            break;
+        }
+        case 8:
+        {
+            Autons::RedAlliance::run(Autons::Route::pos_2r_Elim);
             break;
         }
         }
@@ -70,22 +90,42 @@ void auton(void)
         }
         case 1:
         {
-            Autons::BlueAlliance::run(Autons::Route::soloAWP);
+            Autons::BlueAlliance::run(Autons::Route::neg_3p1_Ladder);
             break;
         }
         case 2:
         {
-            Autons::BlueAlliance::run(Autons::Route::fourRing_Corner);
+            Autons::BlueAlliance::run(Autons::Route::neg_4r_Ladder);
             break;
         }
         case 3:
         {
-            Autons::BlueAlliance::run(Autons::Route::mogoSide_Corner);
+            Autons::BlueAlliance::run(Autons::Route::pos_1p1_Ladder);
             break;
         }
         case 4:
         {
-            Autons::BlueAlliance::run(Autons::Route::mogoSide_Ladder);
+            Autons::BlueAlliance::run(Autons::Route::pos_2r_Ladder);
+            break;
+        }
+        case 5:
+        {
+            Autons::BlueAlliance::run(Autons::Route::neg_3p1_Elim);
+            break;
+        }
+        case 6:
+        {
+            Autons::BlueAlliance::run(Autons::Route::neg_4r_Elim);
+            break;
+        }
+        case 7:
+        {
+            Autons::BlueAlliance::run(Autons::Route::pos_1p1_Elim);
+            break;
+        }
+        case 8:
+        {
+            Autons::BlueAlliance::run(Autons::Route::pos_2r_Elim);
             break;
         }
         }

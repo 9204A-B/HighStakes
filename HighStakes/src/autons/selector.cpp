@@ -31,22 +31,22 @@ void selector(void)
                 Brain.Screen.print("Negative 3 + 1 - Ladder Touch");
             }
             case 2 {
-                Brain.Screen.print("Negative 3 + 1 - Corner End");
-            }
-            case 3 {
                 Brain.Screen.print("Negative 4-ring - Ladder Touch");
             }
-            case 4 {
-                Brain.Screen.print("Negative 4-ring - Corner End");
-            }
-            case 5 {
+            case 3 {
                 Brain.Screen.print("Positive 1 + 1 - Ladder Touch");
             }
+            case 4 {
+                Brain.Screen.print("Positive 2-ring - Ladder Touch");
+            }
+            case 5 {
+                Brain.Screen.print("Negative 3 + 1 - Corner End");
+            }
             case 6 {
-                Brain.Screen.print("Positive 1 + 1 - Screening");
+                Brain.Screen.print("Negative 4-ring - Corner End");
             }
             case 7 {
-                Brain.Screen.print("Positive 2-ring - Ladder Touch");
+                Brain.Screen.print("Positive 1 + 1 - Screening");
             }
             case 8 {
                 Brain.Screen.print("Positive 2-ring - Screening");
