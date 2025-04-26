@@ -24,11 +24,15 @@ namespace Autons
         neg_4r_Elim,
         pos_1p1_Ladder,
         pos_2r_Ladder,
-        pos_3p1_Elim,
+        pos_1p1_Elim,
         pos_2r_Elim,
-        AllianceStake,
+        allianceStake,
         neg_Route,
         pos_Route,
+        neg_Ladder_End,
+        pos_Ladder_End,
+        neg_Corner_End,
+        pos_Screen_End,
         test
     };
 

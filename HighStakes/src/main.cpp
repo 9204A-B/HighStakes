@@ -19,7 +19,7 @@ int main()
 
     while (Inertial.isCalibrating())
     {
-        Brain.Screen.print("Calibrating inertial + TEST ");
+        Brain.Screen.print("Calibrating inertial");
         wait(150, msec);
     }
     wait(25, msec);
@@ -44,7 +44,7 @@ int main()
 
     thread antiJamThread = thread(antiJam);
     thread tempThread = thread(warning);
-    
+
     selector();
     wait(15, msec);
 }

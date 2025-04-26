@@ -14,160 +14,128 @@ namespace Autons
         case Autons::Route::test:
         {
             // red test slot
+            break;
+        }
+        case Autons::Route::allianceStake:
+        {
+            // drives forward
+            // scores alliance stake
+            // drives back to start position
 
             break;
         }
-        case Autons::Route::ClusterStart:
+        case Autons::Route::neg_Ladder_End:
         {
-            // starting position variables
-            float startX = 10;
-            float startY = 9.5;
-            float scoreRot = -70;
-
-            float goalHeading = (-90 + (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
-            float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
-
-            pidDrivetrain.drive_max_voltage = 7;
-            pidDrivetrain.turn_max_voltage = 10;
-
-            //ladybrown to score preload onto alliance
-            pidDrivetrain.turn_ki = 0;
-            pidDrivetrain.turn_kd = 0;
-            pidDrivetrain.turn_settle_error = 5;
-            pidDrivetrain.turn_timeout = 450;
-            pidDrivetrain.set_heading(-90);
-            pidDrivetrain.turn_to_angle(scoreRot);
-            ladybrownScoring();
-            ladybrownReset();
-
-            // drive to goal and clamp
-            pidDrivetrain.turn_ki = 0.03;
-            pidDrivetrain.turn_kd = 3;
-            pidDrivetrain.turn_settle_error = 1;
-            pidDrivetrain.turn_timeout = 800;
-            pidDrivetrain.turn_to_angle(goalHeading);
-            pidDrivetrain.drive_distance(goalDist + 7);
-            mobileGoalLock.set(true);
-
-            // turn and drive for rings 2 and 3
-            intakeMotors.setVelocity(intakeSpeed, percent);
-            pidDrivetrain.drive_max_voltage = 12;
-            wait(250, msec);
-            
-            pidDrivetrain.turn_to_angle(90 + 40);
-            intakeMotors.spin(forward);
-            pidDrivetrain.drive_distance(31.6 - 7.25); // tweak until the robot picks up ring and doesn't cross
-            pidDrivetrain.drive_timeout = 800;
-            pidDrivetrain.drive_distance(-5);
-
-            // SERIOUSLY TEST THE FOLLOWING ROUTE
-            pidDrivetrain.turn_to_angle(115);
-            pidDrivetrain.drive_distance(10);
-            pidDrivetrain.drive_distance(-11);
-            wait(250, msec);
-
-            pidDrivetrain.turn_to_angle(45);
-            pidDrivetrain.drive_timeout = 1200;
-            pidDrivetrain.drive_distance(13);
-            wait(250, msec);
+            // touches the ladder for AWP
 
             break;
         }
-        case Autons::Route::soloAWP:
+        case Autons::Route::neg_Corner_End:
         {
-            // starting on the left
-            // gets 3 rings onto a mobile goal + 1 alliance
-            // SOLO AWP :D
-
-            RedAlliance::run(Autons::Route::ClusterStart);
-
-            // ladder touch
-            pidDrivetrain.turn_to_angle(-110);
-            intakeMotors.stop();
-            pidDrivetrain.drive_max_voltage = 11;
-            pidDrivetrain.drive_distance(28);
+            // drives towards positive corner
 
             break;
         }
-        case Autons::Route::fourRing_Corner:
+        case Autons::Route::neg_Route:
         {
-            // starting on the left
-            // gets 3 rings onto a mobile goal + alliance
-            // nearer to positive corner
-
-            RedAlliance::run(Autons::Route::ClusterStart);
-
-            // drive to corner
-            pidDrivetrain.turn_to_angle(270 + 26.6);
-            intakeMotors.stop();
-            pidDrivetrain.drive_distance(60);
+            // clamps mogo and runs intake
+            // scores 2 rings in center stack
+            // scores 1 more ring
 
             break;
         }
-        case Autons::Route::MogoStart:
+        case Autons::Route::pos_Ladder_End:
         {
-            // starting position variables
-            float startX = 10;
-            float startY = 9.5;
-            float scoreRot = 70;
-
-            float goalHeading = (90 - (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
-            float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
-
-            pidDrivetrain.drive_max_voltage = 7;
-            pidDrivetrain.turn_max_voltage = 10;
-
-            //ladybrown to score preload onto alliance
-            pidDrivetrain.turn_ki = 0;
-            pidDrivetrain.turn_kd = 0;
-            pidDrivetrain.turn_settle_error = 5;
-            pidDrivetrain.turn_timeout = 450;
-            pidDrivetrain.set_heading(90);
-            pidDrivetrain.turn_to_angle(scoreRot);
-            ladybrownScoring();
-            ladybrownReset();
-
-            // drive to goal and clamp
-            pidDrivetrain.turn_ki = 0.03;
-            pidDrivetrain.turn_kd = 3;
-            pidDrivetrain.turn_settle_error = 1;
-            pidDrivetrain.turn_timeout = 800;
-            pidDrivetrain.turn_to_angle(goalHeading);
-            pidDrivetrain.drive_distance(goalDist + 7);
-            mobileGoalLock.set(true);
-
-            // intake ring 2
-            intakeMotors.setVelocity(intakeSpeed, percent);
-            intakeMotors.spin(forward);
-            wait(250, msec);
-            pidDrivetrain.turn_to_angle(270);
-            pidDrivetrain.drive_distance(18);
-        }
-        case Autons::Route::mogoSide_Corner:
-        {
-            // scores 1 ring onto alliance and 1 onto mobile goal
-            // finishes in the corner
-
-            RedAlliance::run(Autons::Route::MogoStart);
-
-            // driving into the corner
-            pidDrivetrain.turn_to_angle(-30);
-            intakeMotors.stop();
-            pidDrivetrain.drive_distance(24);
+            // touches the ladder for AWP
 
             break;
         }
-        case Autons::Route::mogoSide_Ladder:
+        case Autons::Route::pos_Screen_End:
         {
-            // scores 1 ring onto alliance and 1 onto mobile goal
-            // finishes touching the ladder
+            // positions robot for screening/3rd goal rush
 
-            RedAlliance::run(Autons::Route::MogoStart);
+            break;
+        }
+        case Autons::Route::pos_Route:
+        {
+            // clamps mogo and runs intake
+            // scores 1 ring
 
-            // driving into the ladder
-            pidDrivetrain.turn_to_angle(90 + 18.4);
-            intakeMotors.stop();
-            pidDrivetrain.drive_distance(37);
+            break;
+        }
+        case Autons::Route::neg_3p1_Ladder:
+        {
+            // negative side 3 + 1 with ladder touch (quals)
+
+            Autons::RedAlliance::run(Autons::Route::allianceStake);
+            Autons::RedAlliance::run(Autons::Route::neg_Route);
+            Autons::RedAlliance::run(Autons::Route::neg_Ladder_End);
+
+            break;
+        }
+        case Autons::Route::neg_3p1_Elim:
+        {
+            // negative side 3 + 1 ending near positive corner (elims)
+
+            Autons::RedAlliance::run(Autons::Route::allianceStake);
+            Autons::RedAlliance::run(Autons::Route::neg_Route);
+            Autons::RedAlliance::run(Autons::Route::neg_Ladder_End);
+
+            break;
+        }
+        case Autons::Route::neg_4r_Ladder:
+        {
+            // negative side 4-ring with ladder touch (quals)
+
+            Autons::RedAlliance::run(Autons::Route::neg_Route);
+            Autons::RedAlliance::run(Autons::Route::neg_Ladder_End);
+
+            break;
+        }
+        case Autons::Route::neg_4r_Elim:
+        {
+            // negative side 4-ring ending near positive corner (elims)
+
+            Autons::RedAlliance::run(Autons::Route::neg_Route);
+            Autons::RedAlliance::run(Autons::Route::neg_Corner_End);
+
+            break;
+        }
+        case Autons::Route::pos_1p1_Ladder:
+        {
+            // positive side 1 + 1 with ladder touch (quals)
+
+            Autons::RedAlliance::run(Autons::Route::allianceStake);
+            Autons::RedAlliance::run(Autons::Route::pos_Route);
+            Autons::RedAlliance::run(Autons::Route::pos_Ladder_End);
+
+            break;
+        }
+        case Autons::Route::pos_1p1_Elim:
+        {
+            // positive side 1 + 1 screening ready (elims)
+
+            Autons::RedAlliance::run(Autons::Route::allianceStake);
+            Autons::RedAlliance::run(Autons::Route::pos_Route);
+            Autons::RedAlliance::run(Autons::Route::pos_Screen_End);
+
+            break;
+        }
+        case Autons::Route::pos_2r_Ladder:
+        {
+            // positive side 2-ring with ladder touch (quals)
+
+            Autons::RedAlliance::run(Autons::Route::pos_Route);
+            Autons::RedAlliance::run(Autons::Route::pos_Ladder_End);
+
+            break;
+        }
+        case Autons::Route::pos_2r_Elim:
+        {
+            // positive side 2-ring screening ready (elims)
+
+            Autons::RedAlliance::run(Autons::Route::pos_Route);
+            Autons::RedAlliance::run(Autons::Route::pos_Screen_End);
 
             break;
         }
