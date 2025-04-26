@@ -18,12 +18,17 @@ namespace Autons
 
     enum Route
     {
-        ClusterStart,
-        MogoStart,
-        soloAWP,
-        fourRing_Corner,
-        mogoSide_Corner,
-        mogoSide_Ladder,
+        neg_3p1_Ladder,
+        neg_4r_Ladder,
+        neg_3p1_Elim,
+        neg_4r_Elim,
+        pos_1p1_Ladder,
+        pos_2r_Ladder,
+        pos_3p1_Elim,
+        pos_2r_Elim,
+        AllianceStake,
+        neg_Route,
+        pos_Route,
         test
     };
 
