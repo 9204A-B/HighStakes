@@ -16,13 +16,13 @@ void selector(void)
         if (allianceSelect == 1)
         {
             Brain.Screen.clearScreen(vex::color::red);
+            Brain.Screen.print("Red Alliance selected");
         }
         else if (allianceSelect == 2)
         {
             Brain.Screen.clearScreen(vex::color::cyan);
+            Brain.Screen.print("Blue Alliance selected");
         }
-        Brain.Screen.clearScreen(vex::color::red);
-        Brain.Screen.print("Red Alliance selected");
         Brain.Screen.newLine();
 
         switch (autonSelect)
@@ -68,7 +68,7 @@ void allianceUpdate(void)
 
 void autonUpdate(void)
 {
-    if (autonSelect == 4)
+    if (autonSelect == 8)
     {
         autonSelect = 0;
         return;
