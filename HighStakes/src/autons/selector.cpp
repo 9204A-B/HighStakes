@@ -11,58 +11,46 @@ void selector(void)
         Brain.Screen.clearScreen(vex::color::purple);
         Brain.Screen.print("Programming Skills");
     }
-    else if (allianceSelect == 1)
+    else if (allianceSelect > 0)
     {
+        if (allianceSelect == 1)
+        {
+            Brain.Screen.clearScreen(vex::color::red);
+        }
+        else if (allianceSelect == 2)
+        {
+            Brain.Screen.clearScreen(vex::color::cyan);
+        }
         Brain.Screen.clearScreen(vex::color::red);
         Brain.Screen.print("Red Alliance selected");
         Brain.Screen.newLine();
 
-        if (autonSelect == 1)
+        switch (autonSelect)
         {
-            Brain.Screen.print("Left Side Solo AWP");
-        }
-        else if (autonSelect == 2)
-        {
-            Brain.Screen.print("Left Side, 1 Alliance + 3 Mogo + Corner End");
-        }
-        else if (autonSelect == 3)
-        {
-            Brain.Screen.print("Right side 2-ring mobile goal + Corner End");
-        }
-        else if (autonSelect == 4)
-        {
-            Brain.Screen.print("Right side 2-ring mobile goal + Ladder Touch");
-        }
-        else if (autonSelect == 0)
-        {
-            Brain.Screen.print("Red test slot");
-        }
-    }
-    else if (allianceSelect == 2)
-    {
-        Brain.Screen.clearScreen(vex::color::cyan);
-        Brain.Screen.print("Blue Alliance selected");
-        Brain.Screen.newLine();
-
-        if (autonSelect == 1)
-        {
-            Brain.Screen.print("Right Side Solo AWP");
-        }
-        else if (autonSelect == 2)
-        {
-            Brain.Screen.print("Right Side, 1 Alliance + 3 Mogo + Corner End");
-        }
-        else if (autonSelect == 3)
-        {
-            Brain.Screen.print("Left side  2-ring mobile goal + Corner End");
-        }
-        else if (autonSelect == 4)
-        {
-            Brain.Screen.print("Left side  2-ring mobile goal + Ladder Touch");
-        }
-        else if (autonSelect == 0)
-        {
-            Brain.Screen.print("Blue test slot");
+            case 1 {
+                Brain.Screen.print("Negative 3 + 1 - Ladder Touch");
+            }
+            case 2 {
+                Brain.Screen.print("Negative 3 + 1 - Corner End");
+            }
+            case 3 {
+                Brain.Screen.print("Negative 4-ring - Ladder Touch");
+            }
+            case 4 {
+                Brain.Screen.print("Negative 4-ring - Corner End");
+            }
+            case 5 {
+                Brain.Screen.print("Positive 1 + 1 - Ladder Touch");
+            }
+            case 6 {
+                Brain.Screen.print("Positive 1 + 1 - Screening");
+            }
+            case 7 {
+                Brain.Screen.print("Positive 2-ring - Ladder Touch");
+            }
+            case 8 {
+                Brain.Screen.print("Positive 2-ring - Screening");
+            }
         }
     }
 }
