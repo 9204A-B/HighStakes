@@ -3,7 +3,8 @@
 using namespace vex;
 
 brain Brain;
-controller Controller;
+controller Controller = controller(primary);
+controller teleControl = controller(partner);
 
 motor leftMotorA = motor(PORT11, ratio6_1);
 motor leftMotorB = motor(PORT12, ratio6_1, true);

@@ -4,6 +4,7 @@ using namespace vex;
 
 extern brain Brain;
 extern controller Controller;
+extern controller teleControl;
 
 extern motor leftMotorA;
 extern motor leftMotorB;
