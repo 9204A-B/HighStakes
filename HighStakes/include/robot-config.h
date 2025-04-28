@@ -35,6 +35,7 @@ extern motor lb;
 extern rotation lbRotation;
 extern int lbSelect;
 extern bool locked;
+extern bool lbShift;
 
 extern digital_out Doinker;
 

@@ -22,6 +22,13 @@ namespace Autons
             // scores alliance stake
             // drives back to start position
 
+            pidDrivetrain.drive_distance(3);
+            Drive::MotorTurn(lbRotation, lb, 200, 12, 0, 300, 750, .16, 0, .75, 25);
+            pidDrivetrain.drive_max_voltage = 8;
+            pidDrivetrain.drive_distance(-36);
+
+            mobileGoalLock.set(true);
+            Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 750, .16, 0, .75, 25);
             break;
         }
         case Autons::Route::neg_Ladder_End:

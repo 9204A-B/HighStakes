@@ -27,29 +27,40 @@ void selector(void)
 
         switch (autonSelect)
         {
-            case 1 {
+            case 1: {
                 Brain.Screen.print("Negative 3 + 1 - Ladder Touch");
+                break;
             }
-            case 2 {
+            case 2: {
                 Brain.Screen.print("Negative 4-ring - Ladder Touch");
+                break;
             }
-            case 3 {
+            case 3: {
                 Brain.Screen.print("Positive 1 + 1 - Ladder Touch");
+                break;
             }
-            case 4 {
+            case 4: {
                 Brain.Screen.print("Positive 2-ring - Ladder Touch");
+                break;
             }
-            case 5 {
+            case 5: {
                 Brain.Screen.print("Negative 3 + 1 - Corner End");
+                break;
             }
-            case 6 {
+            case 6: {
                 Brain.Screen.print("Negative 4-ring - Corner End");
+                break;
             }
-            case 7 {
+            case 7: {
                 Brain.Screen.print("Positive 1 + 1 - Screening");
+                break;
             }
-            case 8 {
+            case 8: {
                 Brain.Screen.print("Positive 2-ring - Screening");
+                break;
+            }
+            case 0: {
+                Brain.Screen.print("Test Slot");
             }
         }
     }

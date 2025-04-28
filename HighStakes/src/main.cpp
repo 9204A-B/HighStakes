@@ -31,8 +31,13 @@ int main()
 
     Controller.ButtonR1.pressed(R1Press);
     Controller.ButtonR2.pressed(R2Press);
+
     Controller.ButtonRight.pressed(lbLoadButton);
     Controller.ButtonY.pressed(lbScoreButton);
+    Controller.ButtonB.pressed(lbResetButton);
+    Controller.ButtonDown.pressed(lbShiftKey);
+    Controller.ButtonDown.released(lbUnshiftKey);
+
     Controller.ButtonB.pressed(YPress);
     Controller.ButtonX.pressed(sortToggle);
     Controller.ButtonL1.pressed(driverLock);
