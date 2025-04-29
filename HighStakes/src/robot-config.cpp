@@ -33,7 +33,7 @@ bool intakeReverse = false;
 bool antiJamEnable = true;
 
 motor lb = motor(PORT3, ratio36_1);
-rotation lbRotation = rotation(PORT5, true);
+rotation lbRotation = rotation(PORT5);
 int lbSelect = 0;
 bool lbShift = false;
 

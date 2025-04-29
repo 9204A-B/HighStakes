@@ -13,12 +13,12 @@ void colorSort() // i tried to make this cleaner
         (allianceSelect <= 1 &&
         colorSortEnable && 
         intakeMotors.voltage() > 0 &&
-        abs(colorSensor.hue() - blueHue) < error) ||
+        fabs(colorSensor.hue() - blueHue) < error) ||
 
         (allianceSelect == 2 &&
         colorSortEnable && 
         intakeMotors.voltage() > 0 &&
-        abs(colorSensor.hue() - redHue) < error)
+        fabs(colorSensor.hue() - redHue) < error)
     )
     {
         wait(60, msec); // delay for the ring to travel further up the intake

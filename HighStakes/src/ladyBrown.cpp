@@ -40,7 +40,7 @@ void lbScoreButton()
     }
     else {
         YPress();
-        Drive::MotorTurn(lbRotation, lb, 160, 12, settle_error, settle_time, timeout, .16, ki, .75, 25);
+        Drive::MotorTurn(lbRotation, lb, 160, 12, settle_error, settle_time, timeout, .15, ki, .6, 25);
         lb.setStopping(hold);
         lbSelect = 2;
     }
@@ -49,7 +49,7 @@ void lbScoreButton()
 
 void lbResetButton()
 {
-    Drive::MotorTurn(lbRotation, lb, 0, 12, settle_error, settle_time, timeout, .16, ki, .75, 25);
+    Drive::MotorTurn(lbRotation, lb, 0, 12, settle_error, settle_time, timeout, .15, ki, .6, 25);
     lb.setStopping(coast);
 }
 

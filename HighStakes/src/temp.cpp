@@ -16,7 +16,7 @@ void warning()
             {            
                 Controller.Screen.clearScreen();
                 Controller.Screen.setCursor(1, 1);
-                Controller.Screen.print(names[x]);
+                //Controller.Screen.print(names[x]);
                 Controller.Screen.setCursor(2, 1);
                 Controller.Screen.print("temp: %f", motors[x]->temperature(celsius));
                 Controller.rumble("...--");
