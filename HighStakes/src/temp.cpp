@@ -5,8 +5,7 @@ using namespace vex;
 
 void warning()
 {
-    motor* motors[] = {&leftMotorA, &leftMotorB, &leftMotorC, &rightMotorA, &rightMotorB, &rightMotorC, &intakeMotors, &lb};
-    std::string names[] = {"left Motors", "left Motors", "left Motors", "right Motors", "right Motors", "right Motors", "intake", "lb"};
+    motor* motors[] = {&leftMotorA, &leftMotorB, &leftMotorC, &rightMotorA, &rightMotorB, &rightMotorC, &intakeMotors, &lb};    
 
     while (true)
     {
@@ -16,7 +15,19 @@ void warning()
             {            
                 Controller.Screen.clearScreen();
                 Controller.Screen.setCursor(1, 1);
-                Controller.Screen.print(names[x]);
+                if (x < 6)
+                {
+                    Controller.Screen.print("Drive motors overheating");
+                }
+                else if (x == 6)
+                {
+                    Controller.Screen.print("Intake overheating");                    
+                }
+                else 
+                {
+                    Controller.Screen.print("Lady brown overheating");
+                }
+
                 Controller.Screen.setCursor(2, 1);
                 Controller.Screen.print("temp: %f", motors[x]->temperature(celsius));
                 Controller.rumble("...--");
