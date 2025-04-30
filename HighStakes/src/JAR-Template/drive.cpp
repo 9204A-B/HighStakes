@@ -332,7 +332,7 @@ void Drive::MotorTurn(rotation Rotation, motor Motor, float distance, float driv
   float average_position = start_average_position;
   while(drivePID.is_settled() == false){
     average_position = Rotation.position(deg);
-    float drive_error = distance+start_average_position-average_position;    
+    float drive_error = distance - average_position;
     float drive_output = drivePID.compute(drive_error);
 
     drive_output = clamp(drive_output, -drive_max_voltage, drive_max_voltage);  
