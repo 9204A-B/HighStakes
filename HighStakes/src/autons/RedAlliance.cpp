@@ -28,6 +28,12 @@ namespace Autons
         case Autons::Route::test:
         {
             // red test slot
+
+            Autons::RedAlliance::run(Autons::Route::negAllianceStake);
+            mobileGoalLock.set(true);
+            wait(500, msec);
+            pidDrivetrain.turn_to_angle(90);
+
             break;
         }
         case Autons::Route::negAllianceStake:
@@ -39,13 +45,17 @@ namespace Autons
             pidDrivetrain.set_heading(-90);
 
             pidDrivetrain.turn_to_angle(negScoreRot);
-            Drive::MotorTurn(lbRotation, lb, 180, 10, 5, 300, 750, .16, 0, .6, 25);
-            Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 750, .16, 0, .6, 25);
+            pidDrivetrain.turn_ki = 0;
+            pidDrivetrain.turn_kd = 0;
+            Drive::MotorTurn(lbRotation, lb, 170, 12, 5, 300, 550, .16, 0, .6, 25);
+            Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 550, .16, 0, .6, 25);
+            pidDrivetrain.turn_ki = 0.03;
+            pidDrivetrain.turn_kd = 3;
 
             pidDrivetrain.turn_to_angle(negGoalHeading);
             pidDrivetrain.drive_distance(goalDist + 17);
             pidDrivetrain.drive_max_voltage = 6;
-            pidDrivetrain.drive_distance(-10);
+            pidDrivetrain.drive_distance(-12);
             
             break;
         }
@@ -54,13 +64,13 @@ namespace Autons
             // scores alliance stake starting from positive side
 
             pidDrivetrain.set_heading(posScoreRot);
-            Drive::MotorTurn(lbRotation, lb, 180, 10, 5, 300, 750, .16, 0, .6, 25);
+            Drive::MotorTurn(lbRotation, lb, 180, 12, 5, 300, 750, .16, 0, .6, 25);
             Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 750, .16, 0, .6, 25);
 
             pidDrivetrain.turn_to_angle(posGoalHeading);
-            pidDrivetrain.drive_distance(goalDist + 17);
-            pidDrivetrain.drive_max_voltage = 6;
-            pidDrivetrain.drive_distance(-10);
+            pidDrivetrain.drive_distance(goalDist + 6);
+            pidDrivetrain.drive_max_voltage = 5;
+            pidDrivetrain.drive_distance(-17);
         }
         case Autons::Route::neg_Ladder_End:
         {
@@ -68,7 +78,7 @@ namespace Autons
 
             pidDrivetrain.turn_to_angle(-90 - 18.4);
             intakeMotors.stop();
-            pidDrivetrain.drive_distance(38);
+            pidDrivetrain.drive_distance(30);
             break;
         }
         case Autons::Route::neg_Corner_End:
@@ -89,11 +99,11 @@ namespace Autons
 
             pidDrivetrain.drive_max_voltage = 9;
             pidDrivetrain.turn_to_angle(180 - 45);
-            pidDrivetrain.drive_distance(33.9 - 9.5);
+            pidDrivetrain.drive_distance(33.9 - 15);
             wait(100, msec);
-            pidDrivetrain.drive_distance(-1 * (17 - 9.5)); // value subtracted from 17 should be the same as the value subtracted on the previous line
+            pidDrivetrain.drive_distance(-1 * (17 - 15)); // value subtracted from 17 should be the same as the value subtracted on the previous line
 
-            pidDrivetrain.turn_to_angle(180 - 61.3); // 61.3 = arctan([12 + 3.5] / [12 - 3.5])
+            pidDrivetrain.turn_to_angle(180 - 75); // 61.3 = arctan([12 + 3.5] / [12 - 3.5])
             pidDrivetrain.drive_distance(11);      // should put the robot on a line AND intaking a ring
             wait(100, msec);
 
@@ -137,9 +147,7 @@ namespace Autons
         {
             // negative side 3 + 1 with ladder touch (quals)
 
-            pidDrivetrain.set_heading(neg_StartAngle);
-
-            Autons::RedAlliance::run(Autons::Route::allianceStake);
+            Autons::RedAlliance::run(Autons::Route::negAllianceStake);
             Autons::RedAlliance::run(Autons::Route::neg_Route);
             Autons::RedAlliance::run(Autons::Route::neg_Ladder_End);
 
@@ -149,9 +157,8 @@ namespace Autons
         {
             // negative side 3 + 1 ending near positive corner (elims)
 
-            pidDrivetrain.set_heading(neg_StartAngle);
 
-            Autons::RedAlliance::run(Autons::Route::allianceStake);
+            Autons::RedAlliance::run(Autons::Route::negAllianceStake);
             Autons::RedAlliance::run(Autons::Route::neg_Route);
             Autons::RedAlliance::run(Autons::Route::neg_Ladder_End);
 
@@ -160,8 +167,6 @@ namespace Autons
         case Autons::Route::neg_4r_Ladder:
         {
             // negative side 4-ring with ladder touch (quals)
-
-            pidDrivetrain.set_heading(neg_StartAngle);
 
             Autons::RedAlliance::run(Autons::Route::neg_Route);
             Autons::RedAlliance::run(Autons::Route::neg_Ladder_End);
@@ -172,8 +177,6 @@ namespace Autons
         {
             // negative side 4-ring ending near positive corner (elims)
 
-            pidDrivetrain.set_heading(neg_StartAngle);
-
             Autons::RedAlliance::run(Autons::Route::neg_Route);
             Autons::RedAlliance::run(Autons::Route::neg_Corner_End);
 
@@ -183,9 +186,7 @@ namespace Autons
         {
             // positive side 1 + 1 with ladder touch (quals)
 
-            pidDrivetrain.set_heading(pos_StartAngle);
-
-            Autons::RedAlliance::run(Autons::Route::allianceStake);
+            Autons::RedAlliance::run(Autons::Route::posAllianceStake);
             Autons::RedAlliance::run(Autons::Route::pos_Route);
             Autons::RedAlliance::run(Autons::Route::pos_Ladder_End);
 
@@ -195,9 +196,7 @@ namespace Autons
         {
             // positive side 1 + 1 screening ready (elims)
 
-            pidDrivetrain.set_heading(pos_StartAngle);
-
-            Autons::RedAlliance::run(Autons::Route::allianceStake);
+            Autons::RedAlliance::run(Autons::Route::posAllianceStake);
             Autons::RedAlliance::run(Autons::Route::pos_Route);
             Autons::RedAlliance::run(Autons::Route::pos_Screen_End);
 
@@ -207,8 +206,6 @@ namespace Autons
         {
             // positive side 2-ring with ladder touch (quals)
 
-            pidDrivetrain.set_heading(pos_StartAngle);
-
             Autons::RedAlliance::run(Autons::Route::pos_Route);
             Autons::RedAlliance::run(Autons::Route::pos_Ladder_End);
 
@@ -217,8 +214,6 @@ namespace Autons
         case Autons::Route::pos_2r_Elim:
         {
             // positive side 2-ring screening ready (elims)
-
-            pidDrivetrain.set_heading(pos_StartAngle);
 
             Autons::RedAlliance::run(Autons::Route::pos_Route);
             Autons::RedAlliance::run(Autons::Route::pos_Screen_End);

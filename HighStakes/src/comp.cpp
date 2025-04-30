@@ -7,7 +7,7 @@ using namespace Autons;
 void drive(void)
 {
     antiJamEnable = false;
-    colorSortEnable = false;
+    colorSortEnable = true;
     Drivetrain.setDriveVelocity(100, percent);
     Drivetrain.setStopping(brake);
     thread timeThread = thread(startTimer);

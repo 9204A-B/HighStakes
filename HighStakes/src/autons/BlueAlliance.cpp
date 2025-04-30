@@ -18,7 +18,7 @@ namespace Autons
             // red test slot
             break;
         }
-        case Autons::Route::allianceStake:
+        case Autons::Route::negAllianceStake:
         {
             // drives forward
             // scores alliance stake
@@ -69,7 +69,7 @@ namespace Autons
         {
             // negative side 3 + 1 with ladder touch (quals)
 
-            Autons::BlueAlliance::run(Autons::Route::allianceStake);
+            Autons::BlueAlliance::run(Autons::Route::negAllianceStake);
             Autons::BlueAlliance::run(Autons::Route::neg_Route);
             Autons::BlueAlliance::run(Autons::Route::neg_Ladder_End);
 
@@ -79,7 +79,7 @@ namespace Autons
         {
             // negative side 3 + 1 ending near positive corner (elims)
 
-            Autons::BlueAlliance::run(Autons::Route::allianceStake);
+            Autons::BlueAlliance::run(Autons::Route::negAllianceStake);
             Autons::BlueAlliance::run(Autons::Route::neg_Route);
             Autons::BlueAlliance::run(Autons::Route::neg_Ladder_End);
 
@@ -107,7 +107,7 @@ namespace Autons
         {
             // positive side 1 + 1 with ladder touch (quals)
 
-            Autons::BlueAlliance::run(Autons::Route::allianceStake);
+            Autons::BlueAlliance::run(Autons::Route::posAllianceStake);
             Autons::BlueAlliance::run(Autons::Route::pos_Route);
             Autons::BlueAlliance::run(Autons::Route::pos_Ladder_End);
 
@@ -117,7 +117,7 @@ namespace Autons
         {
             // positive side 1 + 1 screening ready (elims)
 
-            Autons::BlueAlliance::run(Autons::Route::allianceStake);
+            Autons::BlueAlliance::run(Autons::Route::posAllianceStake);
             Autons::BlueAlliance::run(Autons::Route::pos_Route);
             Autons::BlueAlliance::run(Autons::Route::pos_Screen_End);
 
