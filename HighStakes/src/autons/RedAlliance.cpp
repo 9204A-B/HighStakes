@@ -10,9 +10,18 @@ namespace Autons
         // in JAR template, positive angles -> clockwise, negative -> counter-clockwise
         default_constants();
 
-        float neg_StartAngle = -29.74; // 29.74 = arctan(8 / 14)
-        float pos_StartAngle = -neg_StartAngle;
-        intakeMotors.setVelocity(intakeSpeed);
+        float startX = 10;
+        float startY = 9.5;
+        float negScoreRot = -70;
+
+        float posScoreRot = -negScoreRot;
+        float negGoalHeading = (-90 + (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
+        float posGoalHeading = -negGoalHeading;
+        float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
+
+        intakeMotors.setVelocity(intakeSpeed, percent);
+        pidDrivetrain.drive_max_voltage = 9;
+        pidDrivetrain.turn_max_voltage = 10;
 
         switch (route)
         {
@@ -21,19 +30,37 @@ namespace Autons
             // red test slot
             break;
         }
-        case Autons::Route::allianceStake:
+        case Autons::Route::negAllianceStake:
         {
             // drives forward
             // scores alliance stake
             // drives back to start position
 
-            pidDrivetrain.drive_distance(3);
-            Drive::MotorTurn(lbRotation, lb, 200, 12, 0, 300, 750, .16, 0, .75, 25);
-            pidDrivetrain.drive_max_voltage = 8;
-            pidDrivetrain.drive_distance(-36); // tweak this until robot is centered on the mogo
+            pidDrivetrain.set_heading(-90);
 
-            Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 750, .16, 0, .75, 25);
+            pidDrivetrain.turn_to_angle(negScoreRot);
+            Drive::MotorTurn(lbRotation, lb, 180, 10, 5, 300, 750, .16, 0, .6, 25);
+            Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 750, .16, 0, .6, 25);
+
+            pidDrivetrain.turn_to_angle(negGoalHeading);
+            pidDrivetrain.drive_distance(goalDist + 17);
+            pidDrivetrain.drive_max_voltage = 6;
+            pidDrivetrain.drive_distance(-10);
+            
             break;
+        }
+        case Autons::Route::posAllianceStake:
+        {
+            // scores alliance stake starting from positive side
+
+            pidDrivetrain.set_heading(posScoreRot);
+            Drive::MotorTurn(lbRotation, lb, 180, 10, 5, 300, 750, .16, 0, .6, 25);
+            Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 750, .16, 0, .6, 25);
+
+            pidDrivetrain.turn_to_angle(posGoalHeading);
+            pidDrivetrain.drive_distance(goalDist + 17);
+            pidDrivetrain.drive_max_voltage = 6;
+            pidDrivetrain.drive_distance(-10);
         }
         case Autons::Route::neg_Ladder_End:
         {
@@ -57,16 +84,18 @@ namespace Autons
             // scores 1 more ring
 
             mobileGoalLock.set(true);
+            wait(500, msec);
             intakeMotors.spin(forward);
 
+            pidDrivetrain.drive_max_voltage = 9;
             pidDrivetrain.turn_to_angle(180 - 45);
-            pidDrivetrain.drive_distance(33.9 - 7.5);
-            wait(750, msec);
-            pidDrivetrain.drive_distance(-1 * (17 - 7.5)); // value subtracted from 17 should be the same as the value subtracted on the previous line
+            pidDrivetrain.drive_distance(33.9 - 9.5);
+            wait(100, msec);
+            pidDrivetrain.drive_distance(-1 * (17 - 9.5)); // value subtracted from 17 should be the same as the value subtracted on the previous line
 
             pidDrivetrain.turn_to_angle(180 - 61.3); // 61.3 = arctan([12 + 3.5] / [12 - 3.5])
-            pidDrivetrain.drive_distance(13.7);      // should put the robot on a line AND intaking a ring
-            wait(750, msec);
+            pidDrivetrain.drive_distance(11);      // should put the robot on a line AND intaking a ring
+            wait(100, msec);
 
             pidDrivetrain.turn_to_angle(0);
             pidDrivetrain.drive_distance(24 - 6.6); // should put them right on top of a ring
