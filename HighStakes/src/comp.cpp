@@ -23,6 +23,7 @@ void drive(void)
 void auton(void)
 {
     colorSortEnable = true;
+    antiJamEnable = true;
     if (allianceSelect == 0)
     {
         Autons::Skills::run();

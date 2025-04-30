@@ -45,12 +45,8 @@ namespace Autons
             pidDrivetrain.set_heading(-90);
 
             pidDrivetrain.turn_to_angle(negScoreRot);
-            pidDrivetrain.turn_ki = 0;
-            pidDrivetrain.turn_kd = 0;
-            Drive::MotorTurn(lbRotation, lb, 170, 12, 5, 300, 550, .16, 0, .6, 25);
-            Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 550, .16, 0, .6, 25);
-            pidDrivetrain.turn_ki = 0.03;
-            pidDrivetrain.turn_kd = 3;
+            Drive::MotorTurn(lbRotation, lb, 180, 12, 5, 300, 650, .16, 0, .6, 25);
+            Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 650, .16, 0, .6, 25);
 
             pidDrivetrain.turn_to_angle(negGoalHeading);
             pidDrivetrain.drive_distance(goalDist + 17);
@@ -78,7 +74,7 @@ namespace Autons
 
             pidDrivetrain.turn_to_angle(-90 - 18.4);
             intakeMotors.stop();
-            pidDrivetrain.drive_distance(30);
+            pidDrivetrain.drive_distance(32.5);
             break;
         }
         case Autons::Route::neg_Corner_End:
@@ -98,16 +94,17 @@ namespace Autons
             intakeMotors.spin(forward);
 
             pidDrivetrain.drive_max_voltage = 9;
-            pidDrivetrain.turn_to_angle(180 - 45);
-            pidDrivetrain.drive_distance(33.9 - 15);
+            pidDrivetrain.turn_to_angle(180 - 42.5);
+            pidDrivetrain.drive_distance(33.9 - 16.25);
             wait(100, msec);
-            pidDrivetrain.drive_distance(-1 * (17 - 15)); // value subtracted from 17 should be the same as the value subtracted on the previous line
+            pidDrivetrain.drive_distance(-1 * (17 - 16.25)); // value subtracted from 17 should be the same as the value subtracted on the previous line
 
             pidDrivetrain.turn_to_angle(180 - 75); // 61.3 = arctan([12 + 3.5] / [12 - 3.5])
-            pidDrivetrain.drive_distance(11);      // should put the robot on a line AND intaking a ring
+            pidDrivetrain.drive_distance(10);      // should put the robot on a line AND intaking a ring
             wait(100, msec);
+            pidDrivetrain.drive_distance(-3);
 
-            pidDrivetrain.turn_to_angle(0);
+            pidDrivetrain.turn_to_angle(15);
             pidDrivetrain.drive_distance(24 - 6.6); // should put them right on top of a ring
             wait(750, msec);
 
