@@ -356,6 +356,11 @@ void Drive::MotorTurn(rotation Rotation, motor Motor, float distance, float driv
   while (drivePID.is_settled() == false)
   {
     average_position = Rotation.position(deg);
+
+    if (average_position > 300) {
+      average_position -= 360;
+    }
+
     float drive_error = distance - average_position;
     float drive_output = drivePID.compute(drive_error);
 
