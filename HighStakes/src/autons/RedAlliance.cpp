@@ -11,7 +11,7 @@ namespace Autons
         default_constants();
 
         float startX = 10;
-        float startY = 9.5;
+        float startY = 8.5;
         float negScoreRot = -70;
 
         float posScoreRot = -negScoreRot;
@@ -43,6 +43,7 @@ namespace Autons
             // drives back to start position
 
             pidDrivetrain.set_heading(-90);
+            pidDrivetrain.set_coordinates(72 - 10, 8.5, -90);
 
             pidDrivetrain.turn_to_angle(negScoreRot);
             Drive::MotorTurn(lbRotation, lb, 180, 12, 5, 300, 650, .16, 0, .6, 25);
@@ -59,14 +60,17 @@ namespace Autons
         {
             // scores alliance stake starting from positive side
 
-            pidDrivetrain.set_heading(posScoreRot);
-            Drive::MotorTurn(lbRotation, lb, 180, 12, 5, 300, 750, .16, 0, .6, 25);
-            Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 750, .16, 0, .6, 25);
+            pidDrivetrain.set_heading(90);
+            pidDrivetrain.turn_to_angle(posScoreRot);
+            Drive::MotorTurn(lbRotation, lb, 180, 12, 5, 300, 650, .16, 0, .6, 25);
+            Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 650, .16, 0, .6, 25);
 
             pidDrivetrain.turn_to_angle(posGoalHeading);
-            pidDrivetrain.drive_distance(goalDist + 6);
-            pidDrivetrain.drive_max_voltage = 5;
-            pidDrivetrain.drive_distance(-17);
+            pidDrivetrain.drive_distance(goalDist + 17);
+            pidDrivetrain.drive_max_voltage = 6;
+            pidDrivetrain.drive_distance(-12);
+            
+            break;
         }
         case Autons::Route::neg_Ladder_End:
         {
@@ -90,19 +94,22 @@ namespace Autons
             // scores 1 more ring
 
             mobileGoalLock.set(true);
-            wait(500, msec);
+            wait(250, msec);
             intakeMotors.spin(forward);
 
-            pidDrivetrain.drive_max_voltage = 9;
-            pidDrivetrain.turn_to_angle(180 - 42.5);
-            pidDrivetrain.drive_distance(33.9 - 16.25);
+            pidDrivetrain.drive_max_voltage = 12;
+            pidDrivetrain.turn_to_angle(180 - 45);
+            pidDrivetrain.drive_distance(33.9 - 16.1);
             wait(100, msec);
-            pidDrivetrain.drive_distance(-1 * (17 - 16.25)); // value subtracted from 17 should be the same as the value subtracted on the previous line
+            pidDrivetrain.drive_max_voltage = 7;
+            pidDrivetrain.drive_distance(-2.5); // value subtracted from 17 should be the same as the value subtracted on the previous line
 
             pidDrivetrain.turn_to_angle(180 - 75); // 61.3 = arctan([12 + 3.5] / [12 - 3.5])
-            pidDrivetrain.drive_distance(10);      // should put the robot on a line AND intaking a ring
+            pidDrivetrain.drive_max_voltage = 12;
+            pidDrivetrain.drive_distance(12);      // should put the robot on a line AND intaking a ring
             wait(100, msec);
-            pidDrivetrain.drive_distance(-3);
+            pidDrivetrain.drive_max_voltage = 7;
+            pidDrivetrain.drive_distance(-5);
 
             pidDrivetrain.turn_to_angle(15);
             pidDrivetrain.drive_distance(24 - 6.6); // should put them right on top of a ring
@@ -129,6 +136,7 @@ namespace Autons
 
             mobileGoalLock.set(true);
             intakeMotors.spin(forward);
+            wait(250, msec);
 
             pidDrivetrain.turn_to_angle(-90);
             pidDrivetrain.drive_distance(24);

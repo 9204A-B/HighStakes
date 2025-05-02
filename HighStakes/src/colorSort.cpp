@@ -3,7 +3,7 @@ using namespace vex;
 
 int blueHue = 200;
 int redHue = 5;
-int error = 20;
+int error = 30;
 
 void colorSort() // i tried to make this cleaner
 {                // 'Tis cleaner
@@ -23,7 +23,7 @@ void colorSort() // i tried to make this cleaner
     {
         wait(60, msec); // delay for the ring to travel further up the intake
         intakeMotors.stop(brake);
-        wait(175, msec); // amount of time the intake stops for
+        wait(185, msec); // amount of time the intake stops for
         intakeMotors.spin(forward);
     }
 }

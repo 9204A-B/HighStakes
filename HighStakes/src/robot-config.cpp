@@ -17,7 +17,7 @@ inertial Inertial = inertial(PORT1);
 motor_group leftMotors = motor_group(leftMotorA, leftMotorB, leftMotorC);
 motor_group rightMotors = motor_group(rightMotorA, rightMotorB, rightMotorC);
 smartdrive Drivetrain = smartdrive(leftMotors, rightMotors, Inertial, 82.55, 387.35, 304.8, mm, .6);
-Drive pidDrivetrain(TANK_TWO_ROTATION, leftMotors, rightMotors, PORT1, 3.25, .6, 360, PORT1, -PORT2, PORT3, -PORT4, PORT7, 2, 4, PORT8, 2, 0);
+Drive pidDrivetrain(ZERO_TRACKER_ODOM, leftMotors, rightMotors, PORT1, 3.25, .6, 360, PORT1, -PORT2, PORT3, -PORT4, PORT19, 3.25, 5.5, 0, 0, 0);
 float turnExp = 1; // MUST BE >= 1
 float turnScale = 0.8;
 
