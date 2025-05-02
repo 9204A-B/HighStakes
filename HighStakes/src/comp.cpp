@@ -26,8 +26,7 @@ void auton(void)
     antiJamEnable = true;
     if (allianceSelect == 0)
     {
-        Autons::Skills::run();
-        // Autons::RedAlliance::run(Autons::Route::soloAWP);
+        Autons::RedAlliance::run(Autons::Route::test);
     }
     else if (allianceSelect == 1)
     {

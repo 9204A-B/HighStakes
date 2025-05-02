@@ -11,8 +11,8 @@ namespace Autons
         default_constants();
 
         float startX = 10;
-        float startY = 8.5;
-        float negScoreRot = -70;
+        float startY = 9;
+        float negScoreRot = -60;
 
         float posScoreRot = -negScoreRot;
         float negGoalHeading = (-90 + (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
@@ -21,7 +21,7 @@ namespace Autons
 
         intakeMotors.setVelocity(intakeSpeed, percent);
         pidDrivetrain.drive_max_voltage = 9;
-        pidDrivetrain.turn_max_voltage = 10;
+        pidDrivetrain.turn_max_voltage = 12;
 
         switch (route)
         {
@@ -29,10 +29,7 @@ namespace Autons
         {
             // red test slot
 
-            Autons::RedAlliance::run(Autons::Route::negAllianceStake);
-            mobileGoalLock.set(true);
-            wait(500, msec);
-            pidDrivetrain.turn_to_angle(90);
+            Autons::RedAlliance::run(Autons::Route::pos_1p1_Ladder);
 
             break;
         }
@@ -62,13 +59,13 @@ namespace Autons
 
             pidDrivetrain.set_heading(90);
             pidDrivetrain.turn_to_angle(posScoreRot);
-            Drive::MotorTurn(lbRotation, lb, 180, 12, 5, 300, 650, .16, 0, .6, 25);
-            Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 650, .16, 0, .6, 25);
+            Drive::MotorTurn(lbRotation, lb, 180, 12, 5, 300, 700, .16, 0, .6, 25);
+            Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 700, .16, 0, .6, 25);
 
             pidDrivetrain.turn_to_angle(posGoalHeading);
-            pidDrivetrain.drive_distance(goalDist + 17);
-            pidDrivetrain.drive_max_voltage = 6;
-            pidDrivetrain.drive_distance(-12);
+            pidDrivetrain.drive_distance(goalDist + 18);
+            pidDrivetrain.drive_max_voltage = 5;
+            pidDrivetrain.drive_distance(-12.5);
             
             break;
         }
@@ -136,6 +133,7 @@ namespace Autons
 
             mobileGoalLock.set(true);
             intakeMotors.spin(forward);
+            pidDrivetrain.drive_max_voltage = 9;
             wait(250, msec);
 
             pidDrivetrain.turn_to_angle(-90);
