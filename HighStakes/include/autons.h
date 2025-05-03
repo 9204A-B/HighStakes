@@ -28,6 +28,7 @@ namespace Autons
         pos_2r_Elim,
         negAllianceStake,
         posAllianceStake,
+        noAlliance,
         neg_Route,
         pos_Route,
         neg_Ladder_End,

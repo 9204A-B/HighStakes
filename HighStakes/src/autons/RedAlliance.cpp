@@ -50,7 +50,7 @@ namespace Autons
             pidDrivetrain.drive_distance(goalDist + 18);
             pidDrivetrain.drive_max_voltage = 5;
             pidDrivetrain.drive_distance(-13);
-            
+
             break;
         }
         case Autons::Route::posAllianceStake:
@@ -66,8 +66,18 @@ namespace Autons
             pidDrivetrain.drive_distance(goalDist + 18);
             pidDrivetrain.drive_max_voltage = 5;
             pidDrivetrain.drive_distance(-13);
-            
+
             break;
+        }
+        case Autons::Route::noAlliance:
+        {
+            pidDrivetrain.set_heading(0);
+
+            // distance from line to goal = 12 + 24 = 36
+            // subrtract 7.5, half length of robot ; 28.5"
+            pidDrivetrain.drive_distance(-28.5 + 12);
+            pidDrivetrain.drive_max_voltage = 5;
+            pidDrivetrain.drive_distance(-12);
         }
         case Autons::Route::neg_Ladder_End:
         {
@@ -82,6 +92,11 @@ namespace Autons
         case Autons::Route::neg_Corner_End:
         {
             // drives towards positive corner
+
+            pidDrivetrain.drive_max_voltage = 12;
+            pidDrivetrain.turn_to_angle(-90 + 14);
+            pidDrivetrain.drive_distance(50);
+            pidDrivetrain.drive_stop(brake);
 
             break;
         }
@@ -104,7 +119,7 @@ namespace Autons
 
             pidDrivetrain.turn_to_angle(180 - 75); // 61.3 = arctan([12 + 3.5] / [12 - 3.5])
             pidDrivetrain.drive_max_voltage = 12;
-            pidDrivetrain.drive_distance(12);      // should put the robot on a line AND intaking a ring
+            pidDrivetrain.drive_distance(12); // should put the robot on a line AND intaking a ring
             wait(100, msec);
             pidDrivetrain.drive_max_voltage = 9;
             pidDrivetrain.drive_distance(-5);
@@ -122,7 +137,6 @@ namespace Autons
             pidDrivetrain.turn_to_angle(90 + 18.4);
             pidDrivetrain.drive_distance(32.5);
             pidDrivetrain.drive_stop(brake);
-            
 
             break;
         }
@@ -171,7 +185,6 @@ namespace Autons
         {
             // negative side 3 + 1 ending near positive corner (elims)
 
-
             Autons::RedAlliance::run(Autons::Route::negAllianceStake);
             Autons::RedAlliance::run(Autons::Route::neg_Route);
             Autons::RedAlliance::run(Autons::Route::neg_Ladder_End);
@@ -182,6 +195,7 @@ namespace Autons
         {
             // negative side 4-ring with ladder touch (quals)
 
+            Autons::RedAlliance::run(Autons::Route::noAlliance);
             Autons::RedAlliance::run(Autons::Route::neg_Route);
             Autons::RedAlliance::run(Autons::Route::neg_Ladder_End);
 
@@ -191,6 +205,7 @@ namespace Autons
         {
             // negative side 4-ring ending near positive corner (elims)
 
+            Autons::RedAlliance::run(Autons::Route::noAlliance);
             Autons::RedAlliance::run(Autons::Route::neg_Route);
             Autons::RedAlliance::run(Autons::Route::neg_Corner_End);
 
@@ -220,6 +235,7 @@ namespace Autons
         {
             // positive side 2-ring with ladder touch (quals)
 
+            Autons::RedAlliance::run(Autons::Route::noAlliance);
             Autons::RedAlliance::run(Autons::Route::pos_Route);
             Autons::RedAlliance::run(Autons::Route::pos_Ladder_End);
 
@@ -229,6 +245,7 @@ namespace Autons
         {
             // positive side 2-ring screening ready (elims)
 
+            Autons::RedAlliance::run(Autons::Route::noAlliance);
             Autons::RedAlliance::run(Autons::Route::pos_Route);
             Autons::RedAlliance::run(Autons::Route::pos_Screen_End);
 
