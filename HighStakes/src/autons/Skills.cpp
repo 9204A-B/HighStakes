@@ -18,7 +18,7 @@ namespace Autons
         pidDrivetrain.drive_ki = .03;
         pidDrivetrain.turn_timeout = 1400;
         pidDrivetrain.drive_timeout = 800;
-        pidDrivetrain.set_coordinates(72, 9.5, 0);
+        pidDrivetrain.set_coordinates(72, 9, 0);
 
         pidDrivetrain.drive_max_voltage = medSpeed;
         pidDrivetrain.turn_max_voltage = medSpeed;

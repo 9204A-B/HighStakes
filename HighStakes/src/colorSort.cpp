@@ -1,14 +1,13 @@
 #include "vex.h"
 using namespace vex;
 
-int blueHue = 200;
+int blueHue = 210;
 int redHue = 5;
-int error = 30;
+int error = 40;
 
 void colorSort() // i tried to make this cleaner
 {                // 'Tis cleaner
-    colorSensor.setLightPower(50, percent);
-    colorSensor.setLight(ledState::on);
+    printf("ring detected");
     if (
         (allianceSelect <= 1 &&
         colorSortEnable && 
@@ -21,9 +20,11 @@ void colorSort() // i tried to make this cleaner
         fabs(colorSensor.hue() - redHue) < error)
     )
     {
+        printf("color sort");
+        
         wait(60, msec); // delay for the ring to travel further up the intake
-        intakeMotors.stop(brake);
-        wait(185, msec); // amount of time the intake stops for
+        intakeMotors.spin(reverse);
+        wait(160, msec); // amount of time the intake stops for
         intakeMotors.spin(forward);
     }
 }

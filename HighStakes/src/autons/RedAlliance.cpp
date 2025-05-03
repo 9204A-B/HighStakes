@@ -12,14 +12,14 @@ namespace Autons
 
         float startX = 10;
         float startY = 9;
-        float negScoreRot = -60;
+        float negScoreRot = -55;
 
         float posScoreRot = -negScoreRot;
         float negGoalHeading = (-90 + (atan((48 - startY) / (24 - startX))) * (180 / 3.141));
         float posGoalHeading = -negGoalHeading;
         float goalDist = -1 * (sqrt(pow(24 - startX, 2) + pow(48 - startY, 2)));
 
-        intakeMotors.setVelocity(intakeSpeed, percent);
+        intakeMotors.setVelocity(70, percent);
         pidDrivetrain.drive_max_voltage = 9;
         pidDrivetrain.turn_max_voltage = 12;
 
@@ -29,7 +29,7 @@ namespace Autons
         {
             // red test slot
 
-            Autons::RedAlliance::run(Autons::Route::pos_1p1_Ladder);
+            Autons::RedAlliance::run(Autons::Route::neg_3p1_Ladder);
 
             break;
         }
@@ -42,14 +42,14 @@ namespace Autons
             pidDrivetrain.set_heading(-90);
             pidDrivetrain.set_coordinates(72 - 10, 8.5, -90);
 
-            pidDrivetrain.turn_to_angle(negScoreRot);
+            pidDrivetrain.turn_to_angle(negScoreRot - 5);
             Drive::MotorTurn(lbRotation, lb, 180, 12, 5, 300, 650, .16, 0, .6, 25);
             Drive::MotorTurn(lbRotation, lb, 0, 12, 5, 300, 650, .16, 0, .6, 25);
 
-            pidDrivetrain.turn_to_angle(negGoalHeading);
-            pidDrivetrain.drive_distance(goalDist + 17);
-            pidDrivetrain.drive_max_voltage = 6;
-            pidDrivetrain.drive_distance(-12);
+            pidDrivetrain.turn_to_angle(negGoalHeading + 5);
+            pidDrivetrain.drive_distance(goalDist + 18);
+            pidDrivetrain.drive_max_voltage = 5;
+            pidDrivetrain.drive_distance(-13);
             
             break;
         }
@@ -65,7 +65,7 @@ namespace Autons
             pidDrivetrain.turn_to_angle(posGoalHeading);
             pidDrivetrain.drive_distance(goalDist + 18);
             pidDrivetrain.drive_max_voltage = 5;
-            pidDrivetrain.drive_distance(-12.5);
+            pidDrivetrain.drive_distance(-13);
             
             break;
         }
@@ -76,6 +76,7 @@ namespace Autons
             pidDrivetrain.turn_to_angle(-90 - 18.4);
             intakeMotors.stop();
             pidDrivetrain.drive_distance(32.5);
+            pidDrivetrain.drive_stop(brake);
             break;
         }
         case Autons::Route::neg_Corner_End:
@@ -95,17 +96,17 @@ namespace Autons
             intakeMotors.spin(forward);
 
             pidDrivetrain.drive_max_voltage = 12;
-            pidDrivetrain.turn_to_angle(180 - 45);
-            pidDrivetrain.drive_distance(33.9 - 16.1);
+            pidDrivetrain.turn_to_angle(180 - 50);
+            pidDrivetrain.drive_distance(33.9 - 16);
             wait(100, msec);
-            pidDrivetrain.drive_max_voltage = 7;
-            pidDrivetrain.drive_distance(-2.5); // value subtracted from 17 should be the same as the value subtracted on the previous line
+            pidDrivetrain.drive_max_voltage = 9;
+            pidDrivetrain.drive_distance(-5); // value subtracted from 17 should be the same as the value subtracted on the previous line
 
             pidDrivetrain.turn_to_angle(180 - 75); // 61.3 = arctan([12 + 3.5] / [12 - 3.5])
             pidDrivetrain.drive_max_voltage = 12;
             pidDrivetrain.drive_distance(12);      // should put the robot on a line AND intaking a ring
             wait(100, msec);
-            pidDrivetrain.drive_max_voltage = 7;
+            pidDrivetrain.drive_max_voltage = 9;
             pidDrivetrain.drive_distance(-5);
 
             pidDrivetrain.turn_to_angle(15);
@@ -118,11 +119,19 @@ namespace Autons
         {
             // touches the ladder for AWP
 
+            pidDrivetrain.turn_to_angle(90 + 18.4);
+            pidDrivetrain.drive_distance(32.5);
+            pidDrivetrain.drive_stop(brake);
+            
+
             break;
         }
         case Autons::Route::pos_Screen_End:
         {
             // positions robot for screening/3rd goal rush
+
+            pidDrivetrain.drive_distance(8);
+            pidDrivetrain.turn_to_angle(45);
 
             break;
         }
@@ -136,13 +145,15 @@ namespace Autons
             pidDrivetrain.drive_max_voltage = 9;
             wait(250, msec);
 
+            pidDrivetrain.drive_timeout = 1100;
             pidDrivetrain.turn_to_angle(-90);
             pidDrivetrain.drive_distance(24);
 
-            pidDrivetrain.turn_to_angle(63.4);
-            pidDrivetrain.drive_distance(53.7 + 7);
-            wait(1000, msec);
-            pidDrivetrain.drive_distance(-7);
+            pidDrivetrain.turn_to_angle(90 + 60);
+            pidDrivetrain.drive_distance(-10);
+            mobileGoalLock.set(false);
+            intakeMotors.stop();
+            pidDrivetrain.drive_distance(10);
 
             break;
         }
