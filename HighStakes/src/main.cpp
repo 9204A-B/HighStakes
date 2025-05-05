@@ -44,9 +44,10 @@ int main()
     button.high(autonUpdate);
     Brain.Screen.pressed(allianceUpdate);
     // Need to tune this
-    colorSensor.objectDetectThreshold(230);
-    colorSensor.integrationTime(5);
-    colorSensor.objectDetected(colorSort);
+    // colorSensor.objectDetectThreshold(230);
+    // colorSensor.integrationTime(5);
+    // colorSensor.objectDetected(colorSort);
+    colorDistance.changed(colorSort);
     colorSensor.setLightPower(50, percent);
     colorSensor.setLight(ledState::on);
 
