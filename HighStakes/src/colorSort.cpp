@@ -22,9 +22,9 @@ void colorSort() // i tried to make this cleaner
     {
         printf("color sort");
         
-        wait(60, msec); // delay for the ring to travel further up the intake
+        wait(30, msec); // delay for the ring to travel further up the intake
         intakeMotors.spin(reverse);
-        wait(160, msec); // amount of time the intake stops for
+        wait(165, msec); // amount of time the intake stops for
         intakeMotors.spin(forward);
     }
 }

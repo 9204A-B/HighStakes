@@ -27,7 +27,7 @@ int clampDistance = 100;
 bool locked = false;
 
 motor intakeMotors = motor(PORT4, ratio6_1, true);
-int intakeSpeed = 93;
+int intakeSpeed = 85;
 bool intakeForward = false;
 bool intakeReverse = false;
 bool antiJamEnable = true;
