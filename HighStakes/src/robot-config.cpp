@@ -45,6 +45,7 @@ int allianceSelect = 0;
 int autonSelect = 0;
 
 optical colorSensor = optical(PORT6);
+distance colorDistance = distance(PORT14);
 bool colorSortEnable = true;
 
 void vexcodeInit(void)

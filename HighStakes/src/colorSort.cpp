@@ -3,11 +3,16 @@ using namespace vex;
 
 int blueHue = 210;
 int redHue = 5;
-int error = 40;
+int error = 20;
 
 void colorSort() // i tried to make this cleaner
 {                // 'Tis cleaner
-    printf("ring detected");
+    printf("ring detected\n");
+
+    if (colorDistance.objectDistance(mm) > 50) {
+        return;
+    }
+
     if (
         (allianceSelect <= 1 &&
         colorSortEnable && 
@@ -24,7 +29,7 @@ void colorSort() // i tried to make this cleaner
         
         wait(35, msec); // delay for the ring to travel further up the intake
         intakeMotors.spin(reverse);
-        wait(165, msec); // amount of time the intake stops for
+        wait(150, msec); // amount of time the intake stops for
         intakeMotors.spin(forward);
     }
 }

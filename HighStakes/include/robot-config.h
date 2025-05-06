@@ -47,6 +47,7 @@ extern int autonSelect;
 
 extern optical colorSensor;
 extern bool colorSortEnable;
+extern distance colorDistance;
 
 void vexcodeInit(void);
 #endif
