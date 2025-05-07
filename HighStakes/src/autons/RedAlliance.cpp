@@ -29,8 +29,7 @@ namespace Autons
         {
             // red test slot
 
-            pidDrivetrain.set_heading(-90);
-            Autons::RedAlliance::run(Autons::Route::neg_Route);
+            Autons::RedAlliance::run(Autons::Route::neg_4r_Ladder);
 
             break;
         }
@@ -79,6 +78,8 @@ namespace Autons
             pidDrivetrain.drive_distance(-28.5 + 12);
             pidDrivetrain.drive_max_voltage = 5;
             pidDrivetrain.drive_distance(-12);
+
+            break;
         }
         case Autons::Route::neg_Ladder_End:
         {
@@ -112,19 +113,18 @@ namespace Autons
             intakeMotors.spin(forward);
 
             pidDrivetrain.drive_max_voltage = 12;
-            pidDrivetrain.turn_to_angle(180 - 45);
-            pidDrivetrain.drive_distance(33.9 - 15);
+            pidDrivetrain.turn_to_angle(90 + 45);
+            pidDrivetrain.drive_distance(33.9 - 15.75);
             wait(100, msec);
-            pidDrivetrain.drive_max_voltage = 9; // value subtracted from 17 should be the same as the value subtracted on the previous line
 
             pidDrivetrain.turn_to_angle(90);
-            pidDrivetrain.drive_distance(36); // should put the robot on a line AND intaking a ring
+            pidDrivetrain.drive_distance(16); // should put the robot on a line AND intaking a ring
             wait(100, msec);
             pidDrivetrain.drive_max_voltage = 9;
-            pidDrivetrain.drive_distance(-24);
+            pidDrivetrain.drive_distance(-12.5);
 
             pidDrivetrain.turn_to_angle(0);
-            pidDrivetrain.drive_distance(24 - 6.6); // should put them right on top of a ring
+            pidDrivetrain.drive_distance(24 - 8.5); // should put them right on top of a ring
             wait(750, msec);
 
             break;

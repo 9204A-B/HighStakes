@@ -89,6 +89,7 @@ void ladybrownLoading()
         //     wait(5, msec);
         // }
         Drive::MotorTurn(lbRotation, lb, 180, max_voltage, settle_error, settle_time, timeout, kp, ki, 1.8, starti);
+        lb.stop(hold);
     }
     lbSelect = 1;
 
@@ -98,7 +99,7 @@ void ladybrownLoading()
 void ladybrownScoring()
 {
     lbSelect = 2;
-    YPress();
+    // YPress();
     Drive::MotorTurn(lbRotation, lb, 160, 12, settle_error, settle_time, timeout, .16, ki, .75, 25);
     lb.setStopping(hold);
     // This requires tuning as well

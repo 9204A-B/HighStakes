@@ -23,11 +23,11 @@ void drive(void)
 
 void auton(void)
 {
-    colorSortEnable = true;
+    colorSortEnable = false;
     antiJamEnable = true;
     if (allianceSelect == 0)
     {
-        Autons::RedAlliance::run(Autons::Route::test);
+        Autons::BlueAlliance::run(Autons::Route::test);
     }
     else if (allianceSelect == 1)
     {
