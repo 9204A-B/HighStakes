@@ -9,7 +9,7 @@ void drive(void)
     antiJamEnable = false;
     colorSortEnable = true;
     Drivetrain.setDriveVelocity(100, percent);
-    Drivetrain.setStopping(brake);
+    Drivetrain.setStopping(coast);
     intakeMotors.setVelocity(intakeSpeed, percent);
     thread timeThread = thread(startTimer);
     thread doinkerThread = thread(doink);
@@ -25,6 +25,7 @@ void auton(void)
 {
     colorSortEnable = false;
     antiJamEnable = true;
+    Drivetrain.setStopping(brake);
     if (allianceSelect == 0)
     {
         Autons::BlueAlliance::run(Autons::Route::test);

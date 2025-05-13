@@ -87,7 +87,7 @@ namespace Autons
 
             pidDrivetrain.turn_to_angle(-90 - 18.4);
             intakeMotors.stop();
-            pidDrivetrain.drive_distance(32.5);
+            pidDrivetrain.drive_distance(30);
             pidDrivetrain.drive_stop(brake);
             break;
         }
@@ -115,11 +115,9 @@ namespace Autons
             pidDrivetrain.drive_max_voltage = 12;
             pidDrivetrain.turn_to_angle(90 + 45);
             pidDrivetrain.drive_distance(33.9 - 15.75);
-            wait(100, msec);
 
             pidDrivetrain.turn_to_angle(90);
             pidDrivetrain.drive_distance(16); // should put the robot on a line AND intaking a ring
-            wait(100, msec);
             pidDrivetrain.drive_max_voltage = 9;
             pidDrivetrain.drive_distance(-12.5);
 
@@ -134,7 +132,7 @@ namespace Autons
             // touches the ladder for AWP
 
             pidDrivetrain.turn_to_angle(90 + 18.4);
-            pidDrivetrain.drive_distance(32.5);
+            pidDrivetrain.drive_distance(30);
             pidDrivetrain.drive_stop(brake);
 
             break;
