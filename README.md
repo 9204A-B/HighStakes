@@ -3,6 +3,7 @@
 ## Overview
 This is the codebase for **9204A Dragons**' robot, which went **10-0** and earned **#1 seed** at the **2025 VEX Robotics World Championship Research Division**!
 This was one of the most consistent and reliable bots we ever built, being able to bully other bots.
+
 <img src="bot.png" width="50%" height="50%"> 
 
 ## Features
